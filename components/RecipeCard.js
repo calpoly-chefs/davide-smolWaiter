@@ -9,10 +9,10 @@ export default class RecipeCard extends Component {
    */
   render() {
     return (
-      <View style={rc_styles.container}>
+      <View style={rc_styles.parent}>
         <TouchableOpacity
           onPress={this._handleExternalLink.bind(this, this.props.source)}
-          style={rc_styles.containerChild}
+          style={rc_styles.child}
         >
           <Text style={rc_styles.externalLinkText}>{this.props.name}</Text>
         </TouchableOpacity>
@@ -26,13 +26,12 @@ export default class RecipeCard extends Component {
 }
 
 const rc_styles = StyleSheet.create({
-  // FIXME: this styling is redundent
-  container: {
-    margin: 15,
+  parent: {
+    flex: 1,
     alignItems: "center",
     backgroundColor: "#F0F0EA"
   },
-  containerChild: {
+  child: {
     paddingVertical: 15
   },
   externalLinkText: {
