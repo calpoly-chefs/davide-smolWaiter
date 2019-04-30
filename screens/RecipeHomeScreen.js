@@ -11,6 +11,7 @@ import {
 import { WebBrowser } from "expo";
 
 import { MonoText } from "../components/StyledText";
+import RecipeCard from "../components/RecipeCard";
 
 export default class HomeScreen extends React.Component {
   // Header
@@ -40,26 +41,17 @@ export default class HomeScreen extends React.Component {
             />
           </View>
 
-          {/* Section II - External Links */}
-          {/* TODO: convert to a component */}
-          <View style={styles.tContainer}>
-            <TouchableOpacity
-              onPress={this._handleFood1Press}
-              style={styles.tNewScreen}
-            >
-              <Text style={styles.helpLinkText}>Food 1</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.tContainer}>
-            <TouchableOpacity
-              onPress={this._handleFood2Press}
-              style={styles.tNewScreen}
-            >
-              <Text style={styles.helpLinkText}>Food 2</Text>
-            </TouchableOpacity>
-          </View>
+          {/* Section II - Component example */}
+          <RecipeCard
+            name="Ratatouille"
+            source="https://images.app.goo.gl/YCLvQaowsQrwsuqy7"
+          />
+          <RecipeCard
+            name="More Ratatouille"
+            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
+          />
 
-          {/* Section III - New screen */}
+          {/* Section III - New screen example */}
           <View style={styles.tContainer}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("RecipeDetails")}
@@ -91,16 +83,6 @@ export default class HomeScreen extends React.Component {
       // End of -- Main Container
     );
   }
-
-  // First external link
-  _handleFood1Press = () => {
-    WebBrowser.openBrowserAsync("https://images.app.goo.gl/YCLvQaowsQrwsuqy7");
-  };
-
-  // Second external link
-  _handleFood2Press = () => {
-    WebBrowser.openBrowserAsync("https://images.app.goo.gl/GKcoEizj2dVMbtXZ8");
-  };
 }
 
 // Style sheet
@@ -182,29 +164,16 @@ const styles = StyleSheet.create({
   navigationFilename: {
     marginTop: 5
   },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: "center",
-    backgroundColor: "#C0C1B8"
-  },
-  helpLink: {
-    paddingVertical: 15
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: "#2e78b7"
-  },
-
   tContainer: {
     marginTop: 15,
     alignItems: "center",
-    backgroundColor: "#F0F0EA"
+    backgroundColor: "#F32D98"
   },
   tNewScreen: {
     paddingVertical: 15
   },
   tNewScreenText: {
     fontSize: 14,
-    color: "#F32D98"
+    color: "#F0F0EA"
   }
 });

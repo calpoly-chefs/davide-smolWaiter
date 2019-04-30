@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
   tContainer: {
     marginTop: 15,
     alignItems: "center",
-    backgroundColor: "#F0F0EA"
+    backgroundColor: "#F32D98"
   },
   tNewScreen: {
     paddingVertical: 15
   },
   tNewScreenText: {
     fontSize: 14,
-    color: "#F32D98"
+    color: "#F0F0EA"
   }
 });
