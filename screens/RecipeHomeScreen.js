@@ -13,110 +13,97 @@ import { WebBrowser } from "expo";
 import { MonoText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
+  // Header
   static navigationOptions = {
-    header: null
+    title: "Recipes"
     // TODO: add filter button
   };
 
   render() {
     return (
+      // Main Container
       <View style={styles.container}>
+        {/* Scrollable Container */}
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
+          {/* Section I - Little Chef Icon */}
           <View style={styles.welcomeContainer}>
             <Image
               source={
                 __DEV__
-                  ? require("../assets/images/robot-dev.png")
-                  : require("../assets/images/robot-prod.png")
+                  ? require("../assets/images/chef-hat-black.png")
+                  : require("../assets/images/chef-hat-black.png")
               }
               style={styles.welcomeImage}
             />
           </View>
 
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View
-              style={[styles.codeHighlightContainer, styles.homeScreenFilename]}
+          {/* Section II - External Links */}
+          {/* TODO: convert to a component */}
+          <View style={styles.tContainer}>
+            <TouchableOpacity
+              onPress={this._handleFood1Press}
+              style={styles.tNewScreen}
             >
-              <MonoText style={styles.codeHighlightText}>
-                screens/HomeScreen.js
-              </MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>I like this</Text>
+              <Text style={styles.helpLinkText}>Food 1</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.tContainer}>
+            <TouchableOpacity
+              onPress={this._handleFood2Press}
+              style={styles.tNewScreen}
+            >
+              <Text style={styles.helpLinkText}>Food 2</Text>
+            </TouchableOpacity>
           </View>
 
-          <View style={styles.helpContainer}>
+          {/* Section III - New screen */}
+          <View style={styles.tContainer}>
             <TouchableOpacity
-              onPress={this._handleHelpPress}
-              style={styles.helpLink}
+              onPress={() => this.props.navigation.navigate("RecipeDetails")}
+              style={styles.tNewScreen}
             >
-              <Text style={styles.helpLinkText}>
-                Help, it didn’t automatically reload!
+              <Text style={styles.tNewScreenText}>
+                Click me to visit an individual recipe
               </Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
+        {/* End of -- Scroll Container */}
 
+        {/* Fixed Container */}
         <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>
-            This is a tab bar. You can edit it in:
+            Learn more about the following text style by visiting...{" "}
           </Text>
-
           <View
             style={[styles.codeHighlightContainer, styles.navigationFilename]}
           >
             <MonoText style={styles.codeHighlightText}>
-              navigation/MainTabNavigator.js
+              components/StyledText.js
             </MonoText>
           </View>
         </View>
+        {/* End of -- Fixed Container */}
       </View>
+      // End of -- Main Container
     );
   }
 
-  _maybeRenderDevelopmentModeWarning() {
-    if (__DEV__) {
-      const learnMoreButton = (
-        <Text onPress={this._handleLearnMorePress} style={styles.helpLinkText}>
-          Learn more
-        </Text>
-      );
-
-      return (
-        <Text style={styles.developmentModeText}>
-          Development mode is enabled, your app will be slower but you can use
-          useful development tools. {learnMoreButton}
-        </Text>
-      );
-    } else {
-      return (
-        <Text style={styles.developmentModeText}>
-          You are not in development mode, your app will run at full speed.
-        </Text>
-      );
-    }
-  }
-
-  _handleLearnMorePress = () => {
-    WebBrowser.openBrowserAsync(
-      "https://docs.expo.io/versions/latest/guides/development-mode"
-    );
+  // First external link
+  _handleFood1Press = () => {
+    WebBrowser.openBrowserAsync("https://images.app.goo.gl/YCLvQaowsQrwsuqy7");
   };
 
-  _handleHelpPress = () => {
-    WebBrowser.openBrowserAsync(
-      "https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes"
-    );
+  // Second external link
+  _handleFood2Press = () => {
+    WebBrowser.openBrowserAsync("https://images.app.goo.gl/GKcoEizj2dVMbtXZ8");
   };
 }
 
+// Style sheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -170,6 +157,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
+
     ...Platform.select({
       ios: {
         shadowColor: "black",
@@ -183,7 +171,8 @@ const styles = StyleSheet.create({
     }),
     alignItems: "center",
     backgroundColor: "#fbfbfb",
-    paddingVertical: 20
+    paddingVertical: 20,
+    paddingHorizontal: 50
   },
   tabBarInfoText: {
     fontSize: 17,
@@ -195,7 +184,8 @@ const styles = StyleSheet.create({
   },
   helpContainer: {
     marginTop: 15,
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#C0C1B8"
   },
   helpLink: {
     paddingVertical: 15
@@ -203,5 +193,18 @@ const styles = StyleSheet.create({
   helpLinkText: {
     fontSize: 14,
     color: "#2e78b7"
+  },
+
+  tContainer: {
+    marginTop: 15,
+    alignItems: "center",
+    backgroundColor: "#F0F0EA"
+  },
+  tNewScreen: {
+    paddingVertical: 15
+  },
+  tNewScreenText: {
+    fontSize: 14,
+    color: "#F32D98"
   }
 });

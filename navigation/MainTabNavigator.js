@@ -7,15 +7,18 @@ import {
   createBottomTabNavigator
 } from "react-navigation";
 
-import RecipesScreen from "../screens/RecipeScreen";
-import JournalScreen from "../screens/JournalScreen";
+import RecipesHomeScreen from "../screens/RecipeHomeScreen";
+import RecipesDetailsScreen from "../screens/RecipeDetailsScreen";
+import JournalHomeScreen from "../screens/JournalHomeScreen";
+import JournalDetailsScreen from "../screens/JournalDetailsScreen";
 import AddModal from "../screens/AddModal";
 import ProfileScreen from "../screens/ProfileScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 
 // createStackNavigator provides a way for native transitions between screens
 const RecipeStack = createStackNavigator({
-  Recipe: RecipesScreen
+  RecipeHome: RecipesHomeScreen,
+  RecipeDetails: RecipesDetailsScreen
 });
 
 RecipeStack.navigationOptions = {
@@ -37,7 +40,8 @@ RecipeStack.navigationOptions = {
 };
 
 const JournalStack = createStackNavigator({
-  Journal: JournalScreen
+  JournalHome: JournalHomeScreen,
+  JournalDetails: JournalDetailsScreen
 });
 
 JournalStack.navigationOptions = {
