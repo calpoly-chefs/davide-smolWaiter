@@ -68,7 +68,7 @@ export default class HomeScreen extends React.Component {
           />
 
           {/* Section III - New screen example */}
-          {/* <View style={styles.tContainer}>
+          <View style={styles.tContainer}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("RecipeDetails")}
               style={styles.tNewScreen}
@@ -77,7 +77,7 @@ export default class HomeScreen extends React.Component {
                 Click me to visit an individual recipe
               </Text>
             </TouchableOpacity>
-          </View> */}
+          </View>
         </ScrollView>
         {/* End of -- Scroll Container */}
 
@@ -115,7 +115,9 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   contentContainer: {
-    paddingTop: 30
+    // paddingTop: 30
+    paddingHorizontal: 10,
+    paddingVertical: 10
   },
   welcomeContainer: {
     alignItems: "center",
