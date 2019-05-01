@@ -30,7 +30,7 @@ export default class HomeScreen extends React.Component {
           contentContainerStyle={styles.contentContainer}
         >
           {/* Section I - Little Chef Icon */}
-          <View style={styles.welcomeContainer}>
+          {/* <View style={styles.welcomeContainer}>
             <Image
               source={
                 __DEV__
@@ -39,7 +39,7 @@ export default class HomeScreen extends React.Component {
               }
               style={styles.welcomeImage}
             />
-          </View>
+          </View> */}
 
           {/* Section II - Component example */}
           <RecipeCard
@@ -50,9 +50,25 @@ export default class HomeScreen extends React.Component {
             name="More Ratatouille"
             source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
           />
+          <RecipeCard
+            name="More Ratatouille"
+            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
+          />
+          <RecipeCard
+            name="More Ratatouille"
+            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
+          />
+          <RecipeCard
+            name="More Ratatouille"
+            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
+          />
+          <RecipeCard
+            name="More Ratatouille"
+            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
+          />
 
           {/* Section III - New screen example */}
-          <View style={styles.tContainer}>
+          {/* <View style={styles.tContainer}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("RecipeDetails")}
               style={styles.tNewScreen}
@@ -61,12 +77,12 @@ export default class HomeScreen extends React.Component {
                 Click me to visit an individual recipe
               </Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
         </ScrollView>
         {/* End of -- Scroll Container */}
 
         {/* Fixed Container */}
-        <View style={styles.tabBarInfoContainer}>
+        {/* <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>
             Learn more about the following text style by visiting...{" "}
           </Text>
@@ -77,7 +93,7 @@ export default class HomeScreen extends React.Component {
               components/StyledText.js
             </MonoText>
           </View>
-        </View>
+        </View> */}
         {/* End of -- Fixed Container */}
       </View>
       // End of -- Main Container

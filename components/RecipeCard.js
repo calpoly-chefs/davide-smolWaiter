@@ -40,9 +40,8 @@ export default class RecipeCard extends Component {
 const rc_styles = StyleSheet.create({
   parent: {
     flex: 1,
-    alignItems: "left",
     // backgroundColor: "#F0F0EA",
-    borderRadius: "14px",
+    borderRadius: 14,
     borderColor: "#F0F0EA",
     borderWidth: 1,
   },
