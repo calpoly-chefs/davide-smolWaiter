@@ -1,0 +1,10 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 7211,
+  "expoServerNgrokUrl": "https://rh-jrx.tlarson07.smolwaiter.exp.direct",
+  "packagerNgrokUrl": "https://packager.rh-jrx.tlarson07.smolwaiter.exp.direct",
+  "ngrokPid": 7237,
+  "webpackServerPort": null
+}
