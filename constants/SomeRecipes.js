@@ -18,13 +18,36 @@ export default function Recipes() {
           units: "cups",
           ingredient: "testing",
           recipe: 1,
-          annotations: []
+          annotations: ["best anno", "something else"]
         },
         {
           id: 3,
           quantity: 1,
           units: "Tbsp",
           ingredient: "something",
+          recipe: 1,
+          annotations: []
+        }
+      ],
+      steps: [
+        {
+          id: 6,
+          stepNum: 1,
+          step: "do something",
+          recipe: 1,
+          annotations: []
+        },
+        {
+          id: 7,
+          stepNum: 2,
+          step: "do something else",
+          recipe: 1,
+          annotations: []
+        },
+        {
+          id: 8,
+          stepNum: 3,
+          step: "what else should we do?",
           recipe: 1,
           annotations: []
         }
