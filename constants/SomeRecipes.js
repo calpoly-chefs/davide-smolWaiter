@@ -1,5 +1,4 @@
 import React from "react";
-import RecipeCard from "../RecipeCard.js";
 
 export default function Recipes() {
   let recipes = [

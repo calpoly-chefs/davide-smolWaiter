@@ -13,8 +13,8 @@ export default class RecipeHeader extends Component {
         {/* <View className="rating"><Star /><Star /><Star /><Star /><Star /></View> */}
         <Text style={rh_styles.author}>Mel's Kitchen</Text>
         <Text style={rh_styles.time}>
-          Prep Time: {recipes[0]["prep-time"] + " min"}, Cook Time:{" "}
-          {recipes[0]["diff-time"] + " min"}
+          Prep Time: {recipes[0].prepTime + " min"}, Cook Time:{" "}
+          {recipes[0].diffTime + " min"}
         </Text>
       </View>
     );

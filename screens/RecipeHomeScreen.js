@@ -42,30 +42,26 @@ export default class HomeScreen extends React.Component {
           </View> */}
 
           {/* Section II - Component example */}
-          <RecipeCard
-            name="Ratatouille"
-            source="https://images.app.goo.gl/YCLvQaowsQrwsuqy7"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("RecipeHome")}
+            style={styles.tNewScreen} 
+          >
+            <RecipeCard />
+          </TouchableOpacity>
+          
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("RecipeDetails")}
+            style={styles.tNewScreen} 
+          >
+            <RecipeCard />
+          </TouchableOpacity>
+          
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("RecipeDetails")}
+            style={styles.tNewScreen} 
+          >
+            <RecipeCard />
+          </TouchableOpacity>
 
           {/* Section III - New screen example */}
           <View style={styles.tContainer}>
@@ -188,7 +184,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F32D98"
   },
   tNewScreen: {
-    paddingVertical: 15
+    paddingVertical: 5
   },
   tNewScreenText: {
     fontSize: 14,
