@@ -42,23 +42,17 @@ export default class HomeScreen extends React.Component {
           </View> */}
 
           {/* Section II - Component example */}
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("RecipeHome")}
-            style={styles.tNewScreen} 
-          >
-            <RecipeCard />
-          </TouchableOpacity>
           
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("RecipeDetails")}
-            style={styles.tNewScreen} 
+            style={styles.tNewScreen}
           >
             <RecipeCard />
           </TouchableOpacity>
-          
+
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("RecipeDetails")}
-            style={styles.tNewScreen} 
+            style={styles.tNewScreen}
           >
             <RecipeCard />
           </TouchableOpacity>

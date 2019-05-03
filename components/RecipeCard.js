@@ -3,6 +3,8 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { WebBrowser } from "expo";
 import RecipeHeader from "../components/RecipeHeader";
 import Recipes from "../constants/SomeRecipes";
+import {CloudinaryContext, Image, Transformation} from "react-native-cloudinary";
+import CloudinaryImage from 'react-native-cloudinary-image-display';
 
 export default class RecipeCard extends Component {
   /* props
@@ -14,22 +16,25 @@ export default class RecipeCard extends Component {
     const recipes = Recipes();
     return (
       <View style={rc_styles.parent}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={this._handleExternalLink.bind(this, this.props.source)}
+          // onPress={this.props.nav.navigation.navigate("RecipeDetails")}
           style={rc_styles.child}
-        >
+        > */}
           {/* <Text style={rc_styles.externalLinkText}>{this.props.name}</Text> */}
 
-          <RecipeHeader recipes={recipes} />
-          <View className="card-image">
-            {/* <CloudinaryContext cloudName="littlechef">
-              <Image className="img" publicId="bars.jpg">
-              <Transformation gravity="south" height="134" width="349" y="180" crop="crop" />
-              </Image>
-            </CloudinaryContext> */}
+          <View style={rc_styles.image}>
+            <CloudinaryImage
+              cloudName={"littlechef"}
+              imageId={"bars.jpg"}
+              width={350}
+              height={134}
+              borderRadius={"14px 14px 0px 0px"}
+              style={rc_styles.image}
+            />
           </View>
-
-        </TouchableOpacity>
+          <RecipeHeader recipes={recipes} />
+        {/* </TouchableOpacity> */}
       </View>
     );
   }
@@ -43,9 +48,12 @@ const rc_styles = StyleSheet.create({
   parent: {
     flex: 1,
     // backgroundColor: "#F0F0EA",
+    justifyContent: "flex-start",
+    flexDirection: "column",
     borderRadius: 14,
     borderColor: "#F0F0EA",
     borderWidth: 1,
+    paddingVertical: 15
   },
   child: {
     paddingVertical: 15
@@ -53,7 +61,16 @@ const rc_styles = StyleSheet.create({
   externalLinkText: {
     fontSize: 14,
     color: "#F32D98"
+  },
+  image: {
+    flex: 1,
+    marginTop: -7,
+    flexDirection: "column",
+    width: 392,
+    // borderRadius: "14px 14px 0px 0px",
+    borderTopRightRadius: 14,
+    alignSelf: "center"
   }
 });
 
-const tags = ["sweet", "salty", "vegan"]
+const tags = ["sweet", "salty", "vegan"];
