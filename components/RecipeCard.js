@@ -3,8 +3,13 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { WebBrowser } from "expo";
 import RecipeHeader from "../components/RecipeHeader";
 import Recipes from "../constants/SomeRecipes";
-import {CloudinaryContext, Image, Transformation} from "react-native-cloudinary";
-import CloudinaryImage from 'react-native-cloudinary-image-display';
+import {
+  CloudinaryContext,
+  Image,
+  Transformation
+} from "react-native-cloudinary";
+import CloudinaryImage from "react-native-cloudinary-image-display";
+import { withNavigation } from "react-navigation";
 
 export default class RecipeCard extends Component {
   /* props
@@ -16,32 +21,29 @@ export default class RecipeCard extends Component {
     const recipes = Recipes();
     return (
       <View style={rc_styles.parent}>
-        {/* <TouchableOpacity
-          onPress={this._handleExternalLink.bind(this, this.props.source)}
-          // onPress={this.props.nav.navigation.navigate("RecipeDetails")}
+        <TouchableOpacity
+          // onPress={this._handleExternalLink.bind(this, this.props.source)}
+          onPress={() => this.props.navigation.navigate("RecipeDetails")}
           style={rc_styles.child}
-        > */}
+        >
           {/* <Text style={rc_styles.externalLinkText}>{this.props.name}</Text> */}
 
-          <View style={rc_styles.image}>
-            <CloudinaryImage
-              cloudName={"littlechef"}
-              imageId={"bars.jpg"}
-              width={350}
-              height={134}
-              borderRadius={"14px 14px 0px 0px"}
-              style={rc_styles.image}
-            />
-          </View>
+          <CloudinaryImage
+            cloudName={"littlechef"}
+            imageId={"bars.jpg"}
+            width={350}
+            height={134}
+            style={rc_styles.image}
+          />
           <RecipeHeader recipes={recipes} />
-        {/* </TouchableOpacity> */}
+        </TouchableOpacity>
       </View>
     );
   }
-  _handleExternalLink = source => {
-    console.log(source);
-    WebBrowser.openBrowserAsync(source);
-  };
+  // _handleExternalLink = source => {
+  //   console.log(source);
+  //   WebBrowser.openBrowserAsync(source);
+  // };
 }
 
 const rc_styles = StyleSheet.create({
@@ -53,10 +55,13 @@ const rc_styles = StyleSheet.create({
     borderRadius: 14,
     borderColor: "#F0F0EA",
     borderWidth: 1,
-    paddingVertical: 15
+    marginBottom: 10,
+    overflow:"hidden"
   },
   child: {
-    paddingVertical: 15
+    // paddingVertical: 15
+    // borderTopRightRadius: 14,
+    // borderTopLeftRadius: 14,
   },
   externalLinkText: {
     fontSize: 14,
@@ -64,13 +69,11 @@ const rc_styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    marginTop: -7,
     flexDirection: "column",
-    width: 392,
-    // borderRadius: "14px 14px 0px 0px",
-    borderTopRightRadius: 14,
-    alignSelf: "center"
+    alignSelf: "flex-end",
   }
 });
 
 const tags = ["sweet", "salty", "vegan"];
+
+// export default withNavigation(RecipeCard);

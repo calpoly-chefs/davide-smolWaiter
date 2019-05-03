@@ -42,23 +42,14 @@ export default class HomeScreen extends React.Component {
           </View> */}
 
           {/* Section II - Component example */}
-          
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("RecipeDetails")}
-            style={styles.tNewScreen}
-          >
-            <RecipeCard />
-          </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("RecipeDetails")}
-            style={styles.tNewScreen}
-          >
-            <RecipeCard />
-          </TouchableOpacity>
+          <RecipeCard navigation={this.props.navigation}/>
+          <RecipeCard navigation={this.props.navigation}/>
+          <RecipeCard navigation={this.props.navigation}/>
+          <RecipeCard navigation={this.props.navigation}/>
 
           {/* Section III - New screen example */}
-          <View style={styles.tContainer}>
+          {/* <View style={styles.tContainer}>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("RecipeDetails")}
               style={styles.tNewScreen}
@@ -67,7 +58,7 @@ export default class HomeScreen extends React.Component {
                 Click me to visit an individual recipe
               </Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
         </ScrollView>
         {/* End of -- Scroll Container */}
 
