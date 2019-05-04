@@ -33,7 +33,11 @@ export default class RecipeDetailsScreen extends React.Component {
         <View style={styles.childContainer}>
           <Text style={styles.header}>Steps</Text>
           {someRecipes[0].steps.map(object => (
-            <Step id={object.stepNum} text={object.step} />
+            <Step
+              id={object.stepNum}
+              text={object.step}
+              annotations={object.annotations}
+            />
           ))}
         </View>
       </ScrollView>
