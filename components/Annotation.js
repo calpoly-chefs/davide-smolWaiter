@@ -35,7 +35,8 @@ const anno_styles = StyleSheet.create({
     paddingLeft: 15,
     paddingTop: 10,
     paddingRight: 15,
-    fontSize: 14
+    fontSize: 14,
+    fontWeight: "bold"
   },
 
   anno_date: {

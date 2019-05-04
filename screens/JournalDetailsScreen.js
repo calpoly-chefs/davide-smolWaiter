@@ -33,7 +33,11 @@ export default class JournalDetailsScreen extends React.Component {
         <View contentContainerStyle={styles.childContainer}>
           <Text style={styles.header}>Steps</Text>
           {someRecipes[0].steps.map(object => (
-            <Step id={object.stepNum} text={object.step} />
+            <Step
+              id={object.stepNum}
+              text={object.step}
+              annotations={object.annotations}
+            />
           ))}
         </View>
       </ScrollView>
