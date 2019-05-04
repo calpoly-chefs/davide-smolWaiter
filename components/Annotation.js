@@ -6,6 +6,7 @@ export default class Annotation extends React.Component {
     return (
       <View style={anno_styles.container}>
         <Text style={anno_styles.anno_text}>{this.props.text.toString()}</Text>
+        <Text style={anno_styles.anno_date}>{this.props.date.toString()}</Text>
       </View>
     );
   }
@@ -31,8 +32,19 @@ const anno_styles = StyleSheet.create({
   },
 
   anno_text: {
-    padding: 15,
+    paddingLeft: 15,
+    paddingTop: 10,
+    paddingRight: 15,
     fontSize: 14
+  },
+
+  anno_date: {
+    paddingLeft: 15,
+    paddingTop: 2,
+    paddingRight: 15,
+    paddingBottom: 10,
+    fontSize: 10,
+    color: "grey"
   },
 
   id_text: {

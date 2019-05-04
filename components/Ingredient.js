@@ -10,8 +10,8 @@ export default class Ingredient extends React.Component {
         <View style={ing_styles.childContainer}>
           <Text style={ing_styles.ing_text}>{this.props.text}</Text>
         </View>
-        {this.props.annotations.slice(0, 1).map(text => (
-          <Annotation text={text} />
+        {this.props.annotations.slice(0, 1).map(object => (
+          <Annotation date={object.date} text={object.text} />
         ))}
       </View>
     );

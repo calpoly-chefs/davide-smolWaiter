@@ -18,13 +18,24 @@ export default function Recipes() {
           units: "cups",
           ingredient: "testing",
           recipe: 1,
-          annotations: ["best anno", "something else"]
+          annotations: [
+            { date: "May 4, 2019", text: "best anno" },
+            { date: "Feb 1, 2019", text: "something else" }
+          ]
         },
         {
           id: 3,
           quantity: 1,
           units: "Tbsp",
           ingredient: "something",
+          recipe: 1,
+          annotations: []
+        },
+        {
+          id: 9,
+          quantity: 2,
+          units: "cups",
+          ingredient: "something else",
           recipe: 1,
           annotations: []
         }

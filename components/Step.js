@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FileText, Bold, AlignCenter } from "react-feather";
+import Annotation from "./Annotation.js";
 
 export default class Step extends React.Component {
   render() {
@@ -12,6 +13,9 @@ export default class Step extends React.Component {
         <View style={step_styles.childIdContainer}>
           <Text style={step_styles.id_text}>{this.props.id}</Text>
         </View>
+        {/* {this.props.annotations.slice(0, 1).map(object => (
+          <Annotation date={object.date} text={object.text} />
+        ))} */}
       </View>
     );
   }
