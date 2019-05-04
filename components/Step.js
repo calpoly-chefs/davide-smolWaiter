@@ -13,9 +13,9 @@ export default class Step extends React.Component {
         <View style={step_styles.childIdContainer}>
           <Text style={step_styles.id_text}>{this.props.id}</Text>
         </View>
-        {/* {this.props.annotations.slice(0, 1).map(object => (
+        {this.props.annotations.slice(0, 1).map(object => (
           <Annotation date={object.date} text={object.text} />
-        ))} */}
+        ))}
       </View>
     );
   }
