@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { WebBrowser } from "expo";
 import RecipeHeader from "../components/RecipeHeader";
+import Recipes from "../constants/SomeRecipes";
+import {
+  CloudinaryContext,
+  Image,
+  Transformation
+} from "react-native-cloudinary";
+import CloudinaryImage from "react-native-cloudinary-image-display";
+import { withNavigation } from "react-navigation";
 
 export default class RecipeCard extends Component {
   /* props
@@ -10,100 +18,60 @@ export default class RecipeCard extends Component {
    */
 
   render() {
+    const recipes = Recipes();
     return (
       <View style={rc_styles.parent}>
         <TouchableOpacity
-          onPress={this._handleExternalLink.bind(this, this.props.source)}
+          // onPress={this._handleExternalLink.bind(this, this.props.source)}
+          onPress={() => this.props.navigation.navigate("RecipeDetails")}
           style={rc_styles.child}
         >
           {/* <Text style={rc_styles.externalLinkText}>{this.props.name}</Text> */}
 
+          <CloudinaryImage
+            cloudName={"littlechef"}
+            imageId={"macarons.jpg"}
+            width={350}
+            height={134}
+            style={rc_styles.image}
+          />
           <RecipeHeader recipes={recipes} />
-          <View className="card-image">
-            {/* <CloudinaryContext cloudName="littlechef">
-              <Image className="img" publicId="bars.jpg">
-              <Transformation gravity="south" height="134" width="349" y="180" crop="crop" />
-              </Image>
-            </CloudinaryContext> */}
-          </View>
-
         </TouchableOpacity>
       </View>
     );
   }
-  _handleExternalLink = source => {
-    console.log(source);
-    WebBrowser.openBrowserAsync(source);
-  };
+  // _handleExternalLink = source => {
+  //   console.log(source);
+  //   WebBrowser.openBrowserAsync(source);
+  // };
 }
 
 const rc_styles = StyleSheet.create({
   parent: {
     flex: 1,
     // backgroundColor: "#F0F0EA",
+    justifyContent: "flex-start",
+    flexDirection: "column",
     borderRadius: 14,
     borderColor: "#F0F0EA",
     borderWidth: 1,
+    marginBottom: 10,
+    overflow: "hidden"
   },
   child: {
-    paddingVertical: 15
+    // paddingVertical: 15
+    // borderTopRightRadius: 14,
+    // borderTopLeftRadius: 14,
   },
   externalLinkText: {
     fontSize: 14,
     color: "#F32D98"
+  },
+  image: {
+    flex: 1,
+    flexDirection: "column",
+    alignSelf: "flex-end"
   }
 });
 
-const recipes =
-  [
-  {
-    "id": 1,
-    "title": "Chocolate Chip Caramel Cookie Bars",
-    "source": "manual",
-    "rating": 4,
-    "difficulty": 5,
-    "time": 45,
-    "prep-time": 25,
-    "diff-time": 22,
-    "ingredients": [
-      {
-        "id": 2,
-        "quantity": 3,
-        "units": "cups",
-        "ingredient": "testing",
-        "recipe": 1,
-        "annotations": []
-      },
-      {
-        "id": 3,
-        "quantity": 1,
-        "units": "Tbsp",
-        "ingredient": "something",
-        "recipe": 1,
-        "annotations": []
-      }
-    ],
-    "public": true
-  },
-  {
-    "id": 4,
-    "title": "Chicken",
-    "source": "manual",
-    "rating": 0,
-    "difficulty": 5,
-    "time": 45,
-    "ingredients": [
-      {
-        "id": 5,
-        "quantity": 3,
-        "units": "cups",
-        "ingredient": "third test",
-        "recipe": 4,
-        "annotations": []
-      }
-    ],
-    "public": false
-  }
-  ];
-
-  const tags = ["sweet", "salty", "vegan"]
+const tags = ["sweet", "salty", "vegan"];

@@ -42,30 +42,11 @@ export default class HomeScreen extends React.Component {
           </View> */}
 
           {/* Section II - Component example */}
-          <RecipeCard
-            name="Ratatouille"
-            source="https://images.app.goo.gl/YCLvQaowsQrwsuqy7"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
-          <RecipeCard
-            name="More Ratatouille"
-            source="https://images.app.goo.gl/GKcoEizj2dVMbtXZ8"
-          />
+
+          <RecipeCard navigation={this.props.navigation}/>
+          <RecipeCard navigation={this.props.navigation}/>
+          <RecipeCard navigation={this.props.navigation}/>
+          <RecipeCard navigation={this.props.navigation}/>
 
           {/* Section III - New screen example */}
           {/* <View style={styles.tContainer}>
@@ -115,7 +96,9 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   contentContainer: {
-    paddingTop: 30
+    // paddingTop: 30
+    paddingHorizontal: 10,
+    paddingVertical: 10
   },
   welcomeContainer: {
     alignItems: "center",
@@ -186,7 +169,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F32D98"
   },
   tNewScreen: {
-    paddingVertical: 15
+    paddingVertical: 5
   },
   tNewScreenText: {
     fontSize: 14,
