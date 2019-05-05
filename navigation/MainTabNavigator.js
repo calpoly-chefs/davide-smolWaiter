@@ -14,6 +14,7 @@ import JournalDetailsScreen from "../screens/JournalDetailsScreen";
 import AddModal from "../screens/AddModal";
 import ProfileScreen from "../screens/ProfileScreen";
 import ExploreScreen from "../screens/ExploreScreen";
+import Icon from "react-native-vector-icons/Feather";
 
 // createStackNavigator provides a way for native transitions between screens
 const RecipeStack = createStackNavigator({
@@ -23,7 +24,9 @@ const RecipeStack = createStackNavigator({
 
 RecipeStack.navigationOptions = {
   tabBarLabel: "Recipes",
-  tabBarIcon: null // TODO: add Recipe icon
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="copy" color={tintColor} size={24} />
+  )
 
   // NOTE: here is an example of the old method for adding
   //       tab bar icons. It does not support feather icons.
@@ -46,7 +49,9 @@ const JournalStack = createStackNavigator({
 
 JournalStack.navigationOptions = {
   tabBarLabel: "Journal",
-  tabBarIcon: null // TODO: add Journal icon
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="book-open" color={tintColor} size={24} />
+  )
 };
 
 // TODO: modal transition
@@ -56,7 +61,9 @@ const AddModalStack = createStackNavigator({
 
 AddModalStack.navigationOptions = {
   tabBarLabel: "Add",
-  tabBarIcon: null // TODO: add Add icon
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="plus-circle" color={tintColor} size={24} />
+  )
 };
 
 const ProfileStack = createStackNavigator({
@@ -65,7 +72,9 @@ const ProfileStack = createStackNavigator({
 
 ProfileStack.navigationOptions = {
   tabBarLabel: "Profile",
-  tabBarIcon: null // TODO: add Profile icon
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="user" color={tintColor} size={24} />
+  )
 
   // NOTE:  additional example of the old method for loading
   //       tab bar icons
@@ -84,13 +93,27 @@ const ExploreStack = createStackNavigator({
 
 ExploreStack.navigationOptions = {
   tabBarLabel: "Explore",
-  tabBarIcon: null // TODO: add Explore icon
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="search" color={tintColor} size={24} />
+  )
 };
 
-export default createBottomTabNavigator({
-  RecipeStack,
-  JournalStack,
-  AddModalStack,
-  ProfileStack,
-  ExploreStack
-});
+export default createBottomTabNavigator(
+  {
+    RecipeStack,
+    JournalStack,
+    AddModalStack,
+    ProfileStack,
+    ExploreStack
+  },
+  {
+    tabBarOptions: {
+      showLabel: true, // hide labels
+      activeTintColor: "#4286f4", // active icon color
+      inactiveTintColor: "#999999" // inactive icon color
+      // style: {
+      //   backgroundColor: "#171F33" // TabBar background
+      // }
+    }
+  }
+);
