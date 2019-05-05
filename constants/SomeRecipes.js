@@ -83,6 +83,57 @@ export default function Recipes() {
         }
       ],
       public: false
+    },
+    {
+      id: 5,
+      title: "French Macarons with White Chocolate Ganache",
+      source: "manual",
+      rating: 0,
+      difficulty: 5,
+      time: 100,
+      ingredients: [
+        {
+          id: 9,
+          quantity: 150,
+          units: "grams",
+          ingredient: "powdered sugar",
+          recipe: 5,
+          annotations: []
+        },
+        {
+          id: 10,
+          quantity: 150,
+          units: "grams",
+          ingredient: "almond meal",
+          recipe: 5,
+          annotations: []
+        },
+        {
+          id: 11,
+          quantity: 110,
+          units: "grams",
+          ingredient: "egg whites",
+          recipe: 5,
+          annotations: []
+        },
+        {
+          id: 12,
+          quantity: 40,
+          units: "grams",
+          ingredient: "filtered water",
+          recipe: 5,
+          annotations: []
+        },
+        {
+          id: 13,
+          quantity: 150,
+          units: "grams",
+          ingredient: "granulated sugar",
+          recipe: 5,
+          annotations: []
+        }
+      ],
+      public: false
     }
   ];
   return recipes;

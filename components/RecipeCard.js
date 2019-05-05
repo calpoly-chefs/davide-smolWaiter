@@ -30,7 +30,7 @@ export default class RecipeCard extends Component {
 
           <CloudinaryImage
             cloudName={"littlechef"}
-            imageId={"bars.jpg"}
+            imageId={"macarons.jpg"}
             width={350}
             height={134}
             style={rc_styles.image}
@@ -56,7 +56,7 @@ const rc_styles = StyleSheet.create({
     borderColor: "#F0F0EA",
     borderWidth: 1,
     marginBottom: 10,
-    overflow:"hidden"
+    overflow: "hidden"
   },
   child: {
     // paddingVertical: 15
@@ -70,10 +70,8 @@ const rc_styles = StyleSheet.create({
   image: {
     flex: 1,
     flexDirection: "column",
-    alignSelf: "flex-end",
+    alignSelf: "flex-end"
   }
 });
 
 const tags = ["sweet", "salty", "vegan"];
-
-// export default withNavigation(RecipeCard);

@@ -9,12 +9,12 @@ export default class RecipeHeader extends Component {
 
     return (
       <View style={rh_styles.header} contentContainerSytle={rh_styles.content}>
-        <Text style={rh_styles.title}> {recipes[0]["title"]} </Text>
+        <Text style={rh_styles.title}> {recipes[2]["title"]} </Text>
         {/* <View className="rating"><Star /><Star /><Star /><Star /><Star /></View> */}
         <Text style={rh_styles.author}>Mel's Kitchen</Text>
         <Text style={rh_styles.time}>
-          Prep Time: {recipes[0].prepTime + " min"}, Cook Time:{" "}
-          {recipes[0].diffTime + " min"}
+          Prep Time: {recipes[2].prepTime + " minutes"}, Cook Time:{" "}
+          {recipes[2].diffTime + " min"}
         </Text>
       </View>
     );
