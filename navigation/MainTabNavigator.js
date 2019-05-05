@@ -11,7 +11,7 @@ import RecipesHomeScreen from "../screens/RecipeHomeScreen";
 import RecipesDetailsScreen from "../screens/RecipeDetailsScreen";
 import JournalHomeScreen from "../screens/JournalHomeScreen";
 import JournalDetailsScreen from "../screens/JournalDetailsScreen";
-import AddModal from "../screens/AddModal";
+import AddRecipeScreen from "../screens/QuickActions";
 import ProfileScreen from "../screens/ProfileScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 
@@ -50,14 +50,14 @@ JournalStack.navigationOptions = {
 };
 
 // TODO: modal transition
-const AddModalStack = createStackNavigator({
-  Add: AddModal
-});
+// const AddModalStack = createStackNavigator({
+//   Add: AddRecipeScreen
+// });
 
-AddModalStack.navigationOptions = {
-  tabBarLabel: "Add",
-  tabBarIcon: null // TODO: add Add icon
-};
+// AddModalStack.navigationOptions = {
+//   tabBarLabel: "Add",
+//   tabBarIcon: null // TODO: add Add icon
+// };
 
 const ProfileStack = createStackNavigator({
   Profile: ProfileScreen
@@ -66,16 +66,6 @@ const ProfileStack = createStackNavigator({
 ProfileStack.navigationOptions = {
   tabBarLabel: "Profile",
   tabBarIcon: null // TODO: add Profile icon
-
-  // NOTE:  additional example of the old method for loading
-  //       tab bar icons
-  //
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon
-  //     focused={focused}
-  //     name={Platform.OS === "ios" ? "ios-options" : "md-options"}
-  //   />
-  // )
 };
 
 const ExploreStack = createStackNavigator({
@@ -90,7 +80,7 @@ ExploreStack.navigationOptions = {
 export default createBottomTabNavigator({
   RecipeStack,
   JournalStack,
-  AddModalStack,
+  // AddModalStack,
   ProfileStack,
   ExploreStack
 });
