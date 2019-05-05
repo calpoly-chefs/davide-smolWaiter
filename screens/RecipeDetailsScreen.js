@@ -17,7 +17,7 @@ export default class RecipeDetailsScreen extends React.Component {
     const someRecipes = Recipes();
     return (
       <ScrollView style={styles.container}>
-        {/* <RecipeHeader recipe={someRecipes} /> */}
+        <RecipeHeader recipes={someRecipes} />
         <View style={styles.childContainer}>
           <Text style={styles.header}>Ingredients</Text>
           {/* someRecipes index will need to be changed to recipe id passed in */}
