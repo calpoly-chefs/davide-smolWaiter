@@ -13,14 +13,16 @@ import { WebBrowser } from "expo";
 import { MonoText } from "../components/StyledText";
 import RecipeCard from "../components/RecipeCard";
 
+import Recipes from "../constants/SomeRecipes";
+
 export default class HomeScreen extends React.Component {
   // Header
   static navigationOptions = {
     title: "Recipes"
     // TODO: add filter button
   };
-
   render() {
+    const recipes = Recipes();
     return (
       // Main Container
       <View style={styles.container}>
@@ -43,10 +45,8 @@ export default class HomeScreen extends React.Component {
 
           {/* Section II - Component example */}
 
-          <RecipeCard navigation={this.props.navigation}/>
-          <RecipeCard navigation={this.props.navigation}/>
-          <RecipeCard navigation={this.props.navigation}/>
-          <RecipeCard navigation={this.props.navigation}/>
+          <RecipeCard recipe={recipes[0]} navigation={this.props.navigation} />
+          <RecipeCard recipe={recipes[2]} navigation={this.props.navigation} />
 
           {/* Section III - New screen example */}
           {/* <View style={styles.tContainer}>

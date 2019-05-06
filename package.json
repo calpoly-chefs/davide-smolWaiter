@@ -22,7 +22,7 @@
     "react-native-cloudinary": "^1.0.1",
     "react-native-cloudinary-image-display": "^1.0.7",
     "react-navigation": "^3.9.1",
-    "react-redux": "^6.0.0",
+    "react-redux": "^6.0.1",
     "redux-logger": "^3.0.6",
     "redux-starter-kit": "^0.5.1"
   },
