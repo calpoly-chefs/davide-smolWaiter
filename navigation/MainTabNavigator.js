@@ -55,9 +55,9 @@ JournalStack.navigationOptions = {
 };
 
 // TODO: modal transition
-// const AddModalStack = createStackNavigator({
-//   Add: AddRecipeScreen
-// });
+const AddModalStack = createStackNavigator({
+  Add: AddRecipeScreen
+});
 
 AddModalStack.navigationOptions = {
   tabBarLabel: "Add",

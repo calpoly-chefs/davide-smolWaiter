@@ -3,23 +3,42 @@ import { View, Text, Button } from "react-native";
 import RecipeCard from "../components/RecipeCard";
 import QuickActionsIcon from "../components/QuickActionsIcon";
 import Rating from "../components/Rating";
+import { connect } from "react-redux";
 
-// Don't forget to import it either!
+// Add your imports here
+import counter from "../state/CounterSlice";
 
-export default class EMPTYSCREEN extends React.Component {
+class EMPTYSCREEN extends React.Component {
   render() {
     return (
       <View style={{ marginTop: 50, background: "lightgrey" }}>
         <Text style={{ textAlign: "center", fontSize: 20 }}>Hi there :)</Text>
         <Text style={{ textAlign: "center" }}>
-          This is a blank screen for component experimentation{" "}
+          This is a blank screen for component experimentation
         </Text>
 
-        <View>{/* Add your code here */}</View>
+        <View>
+          {/* Add your code here */}
+          <Text>{this.props.count}</Text>
+          <Button
+            // `dispatch` triggers a state change
+            onPress={() => this.props.dispatch(counter.actions.increment())}
+            title="Increment"
+          />
+          <Button
+            onPress={() => this.props.dispatch(counter.actions.decrement(3))}
+            title="Decrement"
+          />
+        </View>
       </View>
     );
   }
 }
+
+// connects React Component to Redux
+// (passing the entire state would be inefficient,
+//    instead we pass the relavent parts of the state to each component)
+export default connect(state => ({ count: state.count }))(EMPTYSCREEN);
 
 // TEST BUTTON
 //
