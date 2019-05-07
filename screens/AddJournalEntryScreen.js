@@ -1,35 +1,32 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput
+} from "react-native";
 import { WebBrowser } from "expo";
 import RecipeHeader from "../components/RecipeHeader";
 import CloudinaryImage from "react-native-cloudinary-image-display";
+import Recipes from "../constants/SomeRecipes";
+import { Field } from "redux-form";
+import JournalEntryForm from "../components/JournalEntryForm";
 
-export default class RecipeCard extends Component {
+export default class AddJournalEntryScreen extends Component {
   render() {
-    const recipe = this.props.recipe;
     const img1 = "bars_.jpg";
-    const img2 = "macarons.jpg";
+    const recipe = Recipes()[0];
     return (
-      <View style={rc_styles.parent}>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate("RecipeDetails")}
-          style={rc_styles.child}
-        >
-          <CloudinaryImage
-            cloudName={"littlechef"}
-            imageId={recipe.id == 1 ? img1 : img2}
-            width={350}
-            height={134}
-            style={rc_styles.image}
-          />
-          <RecipeHeader recipe={recipe} />
-        </TouchableOpacity>
+      <View style={je_styles.parent}>
+        <RecipeHeader recipe={recipe} />
+        <JournalEntryForm />
       </View>
     );
   }
 }
 
-const rc_styles = StyleSheet.create({
+const je_styles = StyleSheet.create({
   parent: {
     flex: 1,
     // backgroundColor: "#F0F0EA",

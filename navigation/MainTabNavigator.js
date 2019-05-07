@@ -1,6 +1,6 @@
 import React from "react";
 import { Platform } from "react-native";
-import TabBarIcon from "../components/TabBarIcon";
+// import TabBarIcon from "../components/TabBarIcon";
 
 import {
   createStackNavigator,
@@ -9,6 +9,7 @@ import {
 
 import RecipesHomeScreen from "../screens/RecipeHomeScreen";
 import RecipesDetailsScreen from "../screens/RecipeDetailsScreen";
+import AddJournalEntryScreen from "../screens/AddJournalEntryScreen";
 import JournalHomeScreen from "../screens/JournalHomeScreen";
 import JournalDetailsScreen from "../screens/JournalDetailsScreen";
 // import AddRecipeScreen from "../screens/AddModal";
@@ -29,24 +30,12 @@ RecipeStack.navigationOptions = {
   tabBarIcon: ({ tintColor }) => (
     <Icon name="copy" color={tintColor} size={24} />
   )
-
-  // NOTE: here is an example of the old method for adding
-  //       tab bar icons. It does not support feather icons.
-  //
-  // tabBarIcon: ({ focused }) => (
-  //     focused={focused}
-  //     name={
-  //       Platform.OS === "ios"
-  //         ? `ios-information-circle${focused ? "" : "-outline"}`
-  //         : "md-information-circle"
-  //     }
-  //   />
-  // )
 };
 
 const JournalStack = createStackNavigator({
   JournalHome: JournalHomeScreen,
-  JournalDetails: JournalDetailsScreen
+  JournalDetails: JournalDetailsScreen,
+  AddJournalEntry: AddJournalEntryScreen
 });
 
 JournalStack.navigationOptions = {
@@ -77,16 +66,6 @@ ProfileStack.navigationOptions = {
   tabBarIcon: ({ tintColor }) => (
     <Icon name="user" color={tintColor} size={24} />
   )
-
-  // NOTE:  additional example of the old method for loading
-  //       tab bar icons
-  //
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon
-  //     focused={focused}
-  //     name={Platform.OS === "ios" ? "ios-options" : "md-options"}
-  //   />
-  // )
 };
 
 const ExploreStack = createStackNavigator({
@@ -102,19 +81,11 @@ ExploreStack.navigationOptions = {
 
 export default createBottomTabNavigator(
   {
-    Recipes: {
-      screen: RecipeStack
-    },
-    Journal: {
-      screen: JournalStack
-    },
+    RecipeStack,
+    JournalStack,
     // AddModalStack,
-    Profile: {
-      screen: ProfileStack
-    },
-    Explore: {
-      screen: ExploreStack
-    }
+    ProfileStack,
+    ExploreStack
   },
   {
     tabBarOptions: {

@@ -20,6 +20,13 @@ export default class JournalHomeScreen extends React.Component {
               Click me to visit an individual journal entry
             </Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("AddJournalEntry")}
+            style={styles.tNewScreen}
+          >
+            <Text style={styles.tNewScreenText}>Add a journal entry!</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
