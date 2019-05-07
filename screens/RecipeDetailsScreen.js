@@ -7,7 +7,6 @@ import RecipeHeader from "../components/RecipeHeader.js";
 import Recipes from "../constants/SomeRecipes.js";
 import GlobalStyle from "../constants/GlobalStyle.js";
 import Icon from "react-native-vector-icons/Feather";
-import TabBarIcon from "../components/TabBarIcon";
 import { createStackNavigator } from "react-navigation";
 
 export default class RecipeDetailsScreen extends React.Component {

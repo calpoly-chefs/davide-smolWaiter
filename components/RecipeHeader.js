@@ -7,7 +7,6 @@ import Recipes from "../constants/SomeRecipes";
 export default class RecipeHeader extends Component {
   render() {
     const recipe = this.props.recipe;
-    var tags = this.props.tags;
     const author1 = "Mel's Kitchen";
     const author2 = "Chowhound";
 
@@ -82,9 +81,5 @@ const rh_styles = StyleSheet.create({
     fontSize: 13
     // marginLeft: 4,
     // textAlign: "left",
-  },
-
-  tags: {
-    fontSize: 13
   }
 });
