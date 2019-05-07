@@ -16,7 +16,8 @@ const RootStack = createStackNavigator(
     }
   },
   {
-    initialRouteName: "PracticeNavigator",
+    // initialRouteName: "PracticeNavigator",
+    initialRouteName: "MainTabNavigator",
     headerMode: "none",
     mode: "modal",
     transparentCard: true

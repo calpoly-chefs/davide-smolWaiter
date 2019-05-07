@@ -2,15 +2,18 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { WebBrowser } from "expo";
 import Icon from "react-native-vector-icons/Feather";
+import Recipes from "../constants/SomeRecipes";
 
 export default class RecipeHeader extends Component {
   render() {
-    const recipes = this.props.recipes;
+    const recipe = this.props.recipe;
     var tags = this.props.tags;
+    const author1 = "Mel's Kitchen";
+    const author2 = "Chowhound";
 
     return (
       <View style={rh_styles.header} contentContainerSytle={rh_styles.content}>
-        <Text style={rh_styles.title}> {makeTitle(recipes[2]["title"])} </Text>
+        <Text style={rh_styles.title}> {recipe.title} </Text>
         <View style={rh_styles.rating}>
           <Icon name="star" size={20} />
           <Icon name="star" size={20} />
@@ -18,8 +21,10 @@ export default class RecipeHeader extends Component {
           <Icon name="star" size={20} />
           <Icon name="star" size={20} />
         </View>
-        <Text style={rh_styles.author}>Chowhound</Text>
-        <Text style={rh_styles.time}>Time: {makeTime(recipes[2].time)}</Text>
+        <Text style={rh_styles.author}>
+          {recipe.id == 1 ? author1 : author2}
+        </Text>
+        <Text style={rh_styles.time}>Time: {makeTime(recipe.time)}</Text>
       </View>
     );
   }
@@ -34,12 +39,14 @@ const makeTime = time => {
   return hr + " hr " + min + " min";
 };
 
-const makeTitle = title => {
-  if (title.length > 36) {
-    return title.substr(0, 33) + "...";
-  }
-  return title;
-};
+// const makeTitle = title => {
+//   if (title.length > 36) {
+//     return title.substr(0, 33) + "...";
+//   }
+//   return title;
+// };
+
+const makeTags = tags => {};
 
 const rh_styles = StyleSheet.create({
   header: {
