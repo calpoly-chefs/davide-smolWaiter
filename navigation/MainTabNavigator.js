@@ -11,7 +11,7 @@ import RecipesHomeScreen from "../screens/RecipeHomeScreen";
 import RecipesDetailsScreen from "../screens/RecipeDetailsScreen";
 import JournalHomeScreen from "../screens/JournalHomeScreen";
 import JournalDetailsScreen from "../screens/JournalDetailsScreen";
-import AddRecipeScreen from "../screens/QuickActions";
+import AddRecipeScreen from "../screens/AddModal";
 import ProfileScreen from "../screens/ProfileScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import Icon from "react-native-vector-icons/Feather";
