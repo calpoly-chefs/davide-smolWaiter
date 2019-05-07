@@ -11,15 +11,17 @@ import RecipesHomeScreen from "../screens/RecipeHomeScreen";
 import RecipesDetailsScreen from "../screens/RecipeDetailsScreen";
 import JournalHomeScreen from "../screens/JournalHomeScreen";
 import JournalDetailsScreen from "../screens/JournalDetailsScreen";
-import AddRecipeScreen from "../screens/AddModal";
+// import AddRecipeScreen from "../screens/AddModal";
 import ProfileScreen from "../screens/ProfileScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import Icon from "react-native-vector-icons/Feather";
+import QuickActionsScreen from "../screens/QuickActions";
 
 // createStackNavigator provides a way for native transitions between screens
 const RecipeStack = createStackNavigator({
   RecipeHome: RecipesHomeScreen,
   RecipeDetails: RecipesDetailsScreen
+  // QuickActions: QuickActionsScreen
 });
 
 RecipeStack.navigationOptions = {
@@ -55,16 +57,16 @@ JournalStack.navigationOptions = {
 };
 
 // TODO: modal transition
-const AddModalStack = createStackNavigator({
-  Add: AddRecipeScreen
-});
+// const AddModalStack = createStackNavigator({
+//   Add: AddRecipeScreen
+// });
 
-AddModalStack.navigationOptions = {
-  tabBarLabel: "Add",
-  tabBarIcon: ({ tintColor }) => (
-    <Icon name="plus-circle" color={tintColor} size={24} />
-  )
-};
+// AddModalStack.navigationOptions = {
+//   tabBarLabel: "Add",
+//   tabBarIcon: ({ tintColor }) => (
+//     <Icon name="plus-circle" color={tintColor} size={24} />
+//   )
+// };
 
 const ProfileStack = createStackNavigator({
   Profile: ProfileScreen
@@ -100,11 +102,19 @@ ExploreStack.navigationOptions = {
 
 export default createBottomTabNavigator(
   {
-    RecipeStack,
-    JournalStack,
-    AddModalStack,
-    ProfileStack,
-    ExploreStack
+    Recipes: {
+      screen: RecipeStack
+    },
+    Journal: {
+      screen: JournalStack
+    },
+    // AddModalStack,
+    Profile: {
+      screen: ProfileStack
+    },
+    Explore: {
+      screen: ExploreStack
+    }
   },
   {
     tabBarOptions: {

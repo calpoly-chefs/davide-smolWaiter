@@ -11,7 +11,7 @@ import TabBarIcon from "../components/TabBarIcon";
 import { createStackNavigator } from "react-navigation";
 
 export default class RecipeDetailsScreen extends React.Component {
-  static navigationOptions = {
+  static navigationOptions = ({ navigation }) => ({
     title: "A Recipe",
     headerStyle: {
       marginRight: 15
@@ -23,22 +23,15 @@ export default class RecipeDetailsScreen extends React.Component {
         color={"#000"}
         size={24}
         // no stack nagivation to QuickActions set up
-        onPress={() => this.props.navigation.navigate("QuickActions")}
+        onPress={() => navigation.navigate("QuickActions")}
       />
     )
-  };
+  });
 
   render() {
     const someRecipes = Recipes();
     return (
       <ScrollView style={styles.container}>
-        {/* linked to QuickActions modal, need to set up correct stack navigator*/}
-        <Icon
-          name="more-horizontal"
-          color={"#000"}
-          size={24}
-          onPress={() => this.props.navigation.navigate("QuickActions")}
-        />
         <RecipeHeader recipe={someRecipes[0]} />
         <View style={styles.childContainer}>
           <Text style={styles.header}>Ingredients</Text>

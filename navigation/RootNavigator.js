@@ -1,27 +1,22 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation";
-
-import QuickActions from "../screens/QuickActions";
-import MainTabNavigator from "./MainTabNavigator";
+import MainNavigator from "./MainNavigator";
 import EmptyScreen from "../screens/EMPTYSCREEN";
-import RecipeDetails from "../screens/RecipeDetailsScreen";
 
 const RootStack = createStackNavigator(
   {
-    MainTabNavigator: { screen: MainTabNavigator },
-    QuickActionsStackNavigator: {
-      screen: RecipeDetails,
-      screen: QuickActions
+    Main: {
+      screen: MainNavigator
     },
-    PracticeNavigator: {
+    Practice: {
       screen: EmptyScreen
     }
   },
   {
-    initialRouteName: "MainTabNavigator",
-    headerMode: "none",
-    mode: "modal",
-    transparentCard: true
+    initialRouteName: "Main",
+    headerMode: "none"
+    // mode: "modal"
+    // transparentCard: true
   }
 );
 
