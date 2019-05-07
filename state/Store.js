@@ -1,9 +1,11 @@
 import { configureStore } from "redux-starter-kit";
 import CounterSlice from "./CounterSlice";
+import RecipeSlice from "./RecipesSlice";
 
 // combine ruducers into a root reducer (internally calls `configureStore`)
 const reducer = {
-  count: CounterSlice.reducer
+  count: CounterSlice.reducer,
+  recipe: RecipeSlice.reducer
 };
 
 // store

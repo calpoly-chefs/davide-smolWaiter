@@ -10,25 +10,16 @@ import counter from "../state/CounterSlice";
 
 class EMPTYSCREEN extends React.Component {
   render() {
+    const recipe = this.props.recipe.recipes.byId.r1;
     return (
       <View style={{ marginTop: 50, background: "lightgrey" }}>
         <Text style={{ textAlign: "center", fontSize: 20 }}>Hi there :)</Text>
         <Text style={{ textAlign: "center" }}>
           This is a blank screen for component experimentation
         </Text>
-
         <View>
           {/* Add your code here */}
-          <Text>{this.props.count}</Text>
-          <Button
-            // `dispatch` triggers a state change
-            onPress={() => this.props.dispatch(counter.actions.increment())}
-            title="Increment"
-          />
-          <Button
-            onPress={() => this.props.dispatch(counter.actions.decrement(3))}
-            title="Decrement"
-          />
+          <Text>{recipe.title}</Text>
         </View>
       </View>
     );
@@ -38,26 +29,4 @@ class EMPTYSCREEN extends React.Component {
 // connects React Component to Redux
 // (passing the entire state would be inefficient,
 //    instead we pass the relavent parts of the state to each component)
-export default connect(state => ({ count: state.count }))(EMPTYSCREEN);
-
-// TEST BUTTON
-//
-{
-  /* <Button
-onPress={() =>
-  this.props.navigation.navigate("SCREEN_NAME")
-}
-title="Test"
-/> */
-}
-
-// TEST FLEX
-//
-{
-  /* <View 
-    style={{
-        flex: 1, 
-        flexDirection: "row", 
-        backgroundColor: "red"}}>
-</View>  */
-}
+export default connect(state => ({ recipe: state.recipe }))(EMPTYSCREEN);
