@@ -12,7 +12,7 @@ import RecipesDetailsScreen from "../screens/RecipeDetailsScreen";
 import AddJournalEntryScreen from "../screens/AddJournalEntryScreen";
 import JournalHomeScreen from "../screens/JournalHomeScreen";
 import JournalDetailsScreen from "../screens/JournalDetailsScreen";
-// import AddRecipeScreen from "../screens/AddModal";
+import AddRecipeScreen from "../screens/AddModal";
 import ProfileScreen from "../screens/ProfileScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import Icon from "react-native-vector-icons/Feather";
@@ -45,17 +45,17 @@ JournalStack.navigationOptions = {
   )
 };
 
-// TODO: modal transition
-// const AddModalStack = createStackNavigator({
-//   Add: AddRecipeScreen
-// });
+//TODO: modal transition
+const AddModalStack = createStackNavigator({
+  Add: AddRecipeScreen
+});
 
-// AddModalStack.navigationOptions = {
-//   tabBarLabel: "Add",
-//   tabBarIcon: ({ tintColor }) => (
-//     <Icon name="plus-circle" color={tintColor} size={24} />
-//   )
-// };
+AddModalStack.navigationOptions = {
+  tabBarLabel: "Add",
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="plus-circle" color={tintColor} size={24} />
+  )
+};
 
 const ProfileStack = createStackNavigator({
   Profile: ProfileScreen
@@ -83,7 +83,7 @@ export default createBottomTabNavigator(
   {
     RecipeStack,
     JournalStack,
-    // AddModalStack,
+    AddModalStack,
     ProfileStack,
     ExploreStack
   },

@@ -53,6 +53,22 @@ const recipes = createSlice({
           units: "cup (2 sticks, 8 ounces)",
           rId: "r1",
           annotations: ["a1"]
+        },
+        i2: {
+          id: "i2",
+          ingredient: "light brown sugar",
+          quantity: 1,
+          units: "cup (7.5 ounces)",
+          rId: "r1",
+          annotations: []
+        },
+        i3: {
+          id: "i3",
+          ingredient: "powdered sugar",
+          quantity: 150,
+          units: "grams",
+          rId: "r2",
+          annotations: []
         }
       },
       allIds: ["i1"]

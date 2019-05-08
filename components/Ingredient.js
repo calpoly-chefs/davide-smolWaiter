@@ -6,7 +6,7 @@ import Annotation from "./Annotation.js";
 export default class Ingredient extends React.Component {
   render() {
     return (
-      <View style={ing_styles.continer}>
+      <View style={ing_styles.container}>
         <View style={ing_styles.childContainer}>
           <Text style={ing_styles.ing_text}>{this.props.text}</Text>
         </View>
