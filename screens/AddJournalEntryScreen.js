@@ -10,8 +10,8 @@ import { WebBrowser } from "expo";
 import RecipeHeader from "../components/RecipeHeader";
 import CloudinaryImage from "react-native-cloudinary-image-display";
 import Recipes from "../constants/SomeRecipes";
-import { Field } from "redux-form";
 import JournalEntryForm from "../components/JournalEntryForm";
+import { Alert } from "react-native";
 
 export default class AddJournalEntryScreen extends Component {
   render() {
@@ -20,7 +20,10 @@ export default class AddJournalEntryScreen extends Component {
     return (
       <View style={je_styles.parent}>
         <RecipeHeader recipe={recipe} />
-        <JournalEntryForm />
+        <JournalEntryForm
+          onSubmit={values => Alert.alert("Submitted!", JSON.stringify(values))}
+          style={je_styles.form}
+        />
       </View>
     );
   }
@@ -32,10 +35,7 @@ const je_styles = StyleSheet.create({
     // backgroundColor: "#F0F0EA",
     justifyContent: "flex-start",
     flexDirection: "column",
-    borderRadius: 14,
-    borderColor: "#F0F0EA",
-    borderWidth: 1,
-    marginBottom: 10,
+    margin: 10,
     overflow: "hidden"
   },
   child: {
@@ -43,6 +43,7 @@ const je_styles = StyleSheet.create({
     // borderTopRightRadius: 14,
     // borderTopLeftRadius: 14,
   },
+
   externalLinkText: {
     fontSize: 14,
     color: "#F32D98"
@@ -51,5 +52,8 @@ const je_styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignSelf: "flex-end"
+  },
+  form: {
+    // margin: 30
   }
 });
