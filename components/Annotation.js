@@ -13,7 +13,6 @@ export default class Annotation extends React.Component {
 }
 
 const anno_styles = StyleSheet.create({
-  // FIXME: this styling is redundent
   container: {
     marginLeft: 15,
     marginRight: 15,
@@ -46,13 +45,5 @@ const anno_styles = StyleSheet.create({
     paddingBottom: 10,
     fontSize: 10,
     color: "grey"
-  },
-
-  id_text: {
-    paddingTop: 6,
-    paddingLeft: 10.5,
-    fontSize: 14,
-    color: "white",
-    fontWeight: "bold"
   }
 });
