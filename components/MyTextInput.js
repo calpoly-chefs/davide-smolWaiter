@@ -36,8 +36,8 @@ const t_styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: "#F0F0EA",
-    borderRadius: 8
-    // borderColor: "rgba(0, 0, 0, 0.4)",
+    borderRadius: 8,
+    borderColor: "#53E69D"
   },
   valid: {
     borderColor: "#53E69D"

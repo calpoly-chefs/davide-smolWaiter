@@ -66,8 +66,10 @@ let JournalEntryForm = props => {
         />
       </View>
 
-      <TouchableOpacity onPress={props.handleSubmit} style={f_styles.submit}>
-        <Text>Submit!</Text>
+      <TouchableOpacity onPress={props.handleSubmit}>
+        <View style={f_styles.submit}>
+          <Text>Submit!</Text>
+        </View>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -91,11 +93,12 @@ const f_styles = StyleSheet.create({
     paddingBottom: 10
   },
   submit: {
-    backgroundColor: "#F0F0EA",
+    backgroundColor: "#53E69D",
     borderRadius: 8,
     paddingTop: 10,
     alignSelf: "center",
-    height: 50,
+    alignItems: "center",
+    height: 35,
     width: 200
   }
 });

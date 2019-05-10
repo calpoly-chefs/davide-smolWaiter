@@ -13,23 +13,15 @@ export default function Recipes() {
       diffTime: 22,
       ingredients: [
         {
-          id: 2,
-          quantity: 3,
-          units: "cups",
-          ingredient: "testing",
-          recipe: 1,
-          annotations: [
-            { date: "May 4, 2019", text: "best anno" },
-            { date: "Feb 1, 2019", text: "something else" }
-          ]
-        },
-        {
           id: 3,
           quantity: 1,
           units: "cup (2 sticks, 8 ounces)",
           ingredient: "butter, softened",
           recipe: 1,
-          annotations: []
+          annotations: [
+            { date: "May 4, 2019", text: "best anno" },
+            { date: "Feb 1, 2019", text: "something else" }
+          ]
         },
         {
           id: 9,
