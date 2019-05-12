@@ -1,11 +1,11 @@
 import { configureStore } from "redux-starter-kit";
-import CounterSlice from "./CounterSlice";
+import ModalSlice from "./ModalSlice";
 import RecipeSlice from "./RecipesSlice";
 import { reducer as FormReducer } from "redux-form";
 
 // combine ruducers into a root reducer (internally calls `configureStore`)
 const reducer = {
-  count: CounterSlice.reducer,
+  modal: ModalSlice.reducer,
   recipe: RecipeSlice.reducer,
   form: FormReducer
 };

@@ -16,13 +16,12 @@ import AddRecipeScreen from "../screens/AddModal";
 import ProfileScreen from "../screens/ProfileScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import Icon from "react-native-vector-icons/Feather";
-import QuickActionsScreen from "../screens/QuickActions";
 
 // createStackNavigator provides a way for native transitions between screens
 const RecipeStack = createStackNavigator({
   RecipeHome: RecipesHomeScreen,
-  RecipeDetails: RecipesDetailsScreen
-  // QuickActions: QuickActionsScreen
+  RecipeDetails: RecipesDetailsScreen,
+  AddJournalEntry: AddJournalEntryScreen
 });
 
 RecipeStack.navigationOptions = {

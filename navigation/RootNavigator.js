@@ -1,12 +1,12 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation";
-import MainNavigator from "./MainNavigator";
+import MainTabNavigator from "./MainTabNavigator";
 import EmptyScreen from "../screens/EMPTYSCREEN";
 
 const RootStack = createStackNavigator(
   {
     Main: {
-      screen: MainNavigator
+      screen: MainTabNavigator
     },
     Practice: {
       screen: EmptyScreen

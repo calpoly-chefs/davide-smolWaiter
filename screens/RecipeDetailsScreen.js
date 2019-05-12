@@ -1,30 +1,15 @@
 import React from "react";
-import { Text, View, StyleSheet, ScrollView, Button } from "react-native";
-import { ExpoLinksView } from "@expo/samples";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import Ingredient from "../components/Ingredient.js";
 import Step from "../components/Step.js";
 import RecipeHeader from "../components/RecipeHeader.js";
 import Recipes from "../constants/SomeRecipes.js";
-import GlobalStyle from "../constants/GlobalStyle.js";
-import Icon from "react-native-vector-icons/Feather";
-import { createStackNavigator } from "react-navigation";
+import QuickActionModal from "../modals/QuickActionModal";
 
 export default class RecipeDetailsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: "A Recipe",
-    headerStyle: {
-      marginRight: 15
-    },
-    // This icon isn't properly connected with the navigation (using navigation within navigationOptions)
-    headerRight: (
-      <Icon
-        name="more-horizontal"
-        color={"#000"}
-        size={24}
-        // no stack nagivation to QuickActions set up
-        onPress={() => navigation.navigate("QuickActions")}
-      />
-    )
+    headerRight: <QuickActionModal navigation={navigation} />
   });
 
   render() {
