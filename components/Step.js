@@ -2,20 +2,26 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { FileText, Bold, AlignCenter } from "react-feather";
 import Annotation from "./Annotation.js";
+import { connect } from "react-redux";
 
-export default class Step extends React.Component {
+class Step extends React.Component {
   render() {
+    const annotations = this.props.recipe.annotations;
+    const annotationIDs = this.props.annotations;
+    const text = this.props.text;
+    const id = this.props.id;
     return (
       <View style={step_styles.container}>
         <View style={step_styles.childTextContainer}>
-          <Text style={step_styles.step_text}>{this.props.text}</Text>
+          <Text style={step_styles.step_text}>{text}</Text>
         </View>
         <View style={step_styles.childIdContainer}>
-          <Text style={step_styles.id_text}>{this.props.id}</Text>
+          <Text style={step_styles.id_text}>{id}</Text>
         </View>
-        {this.props.annotations.slice(0, 1).map(object => (
-          <Annotation date={object.date} text={object.text} />
-        ))}
+        {annotationIDs.slice(0, 1).map(id => {
+          const anno = annotations.byIds[id];
+          return <Annotation date={anno.date} text={anno.text} />;
+        })}
       </View>
     );
   }
@@ -61,3 +67,5 @@ const step_styles = StyleSheet.create({
     fontWeight: "bold"
   }
 });
+
+export default connect(state => ({ recipe: state.recipe }))(Step);

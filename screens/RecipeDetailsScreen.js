@@ -3,41 +3,66 @@ import { Text, View, StyleSheet, ScrollView } from "react-native";
 import Ingredient from "../components/Ingredient.js";
 import Step from "../components/Step.js";
 import RecipeHeader from "../components/RecipeHeader.js";
-import Recipes from "../constants/SomeRecipes.js";
 import QuickActionModal from "../modals/QuickActionModal";
+import { connect } from "react-redux";
 
-export default class RecipeDetailsScreen extends React.Component {
+class RecipeDetailsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: "A Recipe",
     headerRight: <QuickActionModal navigation={navigation} />
   });
 
+  getIngredients = (currRecipe, ingredients) => {
+    var IngredientIDs = currRecipe.ingredients;
+    return IngredientIDs.map(id => {
+      const ingredient = ingredients.byId[id];
+
+      return (
+        <Ingredient
+          text={`${ingredient.quantity} ${ingredient.units} ${
+            ingredient.ingredient
+          }`}
+          annotations={ingredient.annotations}
+        />
+      );
+    });
+  };
+
+  getSteps = (currRecipe, steps) => {
+    var StepIDs = currRecipe.steps;
+    return StepIDs.map(id => {
+      const step = steps.byId[id];
+
+      return (
+        <Step
+          id={step.stepNum}
+          text={step.step}
+          annotations={step.annotations}
+        />
+      );
+    });
+  };
+
   render() {
-    const someRecipes = Recipes();
+    // this should be changed to reference the current recipe given a current recipe id
+    const recipe = this.props.recipe.recipes.byId.r1;
     return (
       <ScrollView style={styles.container}>
-        <RecipeHeader recipe={someRecipes[0]} />
+        {/* linked to QuickActions modal, need to set up correct stack navigator*/}
+        <RecipeHeader recipe={recipe} />
         <View style={styles.childContainer}>
           <Text style={styles.header}>Ingredients</Text>
-          {/* someRecipes index will need to be changed to recipe id passed in */}
-          {someRecipes[0].ingredients.map(object => (
-            <Ingredient
-              text={
-                object.quantity + " " + object.units + " " + object.ingredient
-              }
-              annotations={object.annotations}
-            />
-          ))}
+          {this.getIngredients(
+            this.props.recipe.recipes.byId.r1,
+            this.props.recipe.ingredients
+          )}
         </View>
         <View style={styles.childContainer}>
           <Text style={styles.header}>Steps</Text>
-          {someRecipes[0].steps.map(object => (
-            <Step
-              id={object.stepNum}
-              text={object.step}
-              annotations={object.annotations}
-            />
-          ))}
+          {this.getSteps(
+            this.props.recipe.recipes.byId.r1,
+            this.props.recipe.steps
+          )}
         </View>
       </ScrollView>
     );
@@ -47,11 +72,13 @@ export default class RecipeDetailsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
+    paddingBottom: 15
   },
   childContainer: {
     flex: 1,
     paddingHorizontal: 10,
+    paddingBottom: 15,
     flexDirection: "column",
     backgroundColor: "#fff"
   },
@@ -63,3 +90,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   }
 });
+
+export default connect(state => ({ recipe: state.recipe }))(
+  RecipeDetailsScreen
+);

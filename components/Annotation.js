@@ -3,10 +3,12 @@ import { View, Text, StyleSheet } from "react-native";
 
 export default class Annotation extends React.Component {
   render() {
+    const text = this.props.text;
+    const date = this.props.date;
     return (
       <View style={anno_styles.container}>
-        <Text style={anno_styles.anno_text}>{this.props.text.toString()}</Text>
-        <Text style={anno_styles.anno_date}>{this.props.date.toString()}</Text>
+        <Text style={anno_styles.anno_text}>{this.props.text}</Text>
+        <Text style={anno_styles.anno_date}>{this.props.date}</Text>
       </View>
     );
   }
