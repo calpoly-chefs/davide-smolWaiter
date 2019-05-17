@@ -35,8 +35,8 @@ class TestModal extends Component {
           visible={this.props.modal}
           transparent={true}
           swipeDirection="down"
-          animationIn="slideInUp"
-          animationOut="slideInDown"
+          animationType={"slide"}
+          animationOut={"slideInDown"}
           onSwipeComplete={() => this.props.dispatch(modal.actions.toggle())}
           onBackdropPress={() => this.props.dispatch(modal.actions.toggle())}
           hideModalContentWhileAnimating={true}
