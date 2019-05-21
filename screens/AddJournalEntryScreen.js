@@ -12,17 +12,20 @@ import CloudinaryImage from "react-native-cloudinary-image-display";
 import Recipes from "../constants/SomeRecipes";
 import JournalEntryForm from "../components/JournalEntryForm";
 import { Alert } from "react-native";
+import { connect } from "react-redux";
 
-export default class AddJournalEntryScreen extends Component {
+class AddJournalEntryScreen extends Component {
   render() {
     const img1 = "bars_.jpg";
-    const recipe = Recipes()[0];
+    const recipe = this.props.recipe;
+    // const recipe = Recipes()[0];
     return (
       <View style={je_styles.parent}>
-        <RecipeHeader recipe={recipe} />
+        <RecipeHeader recipe={recipe.recipes.byId.r1} />
         <JournalEntryForm
           onSubmit={values => Alert.alert("Submitted!", JSON.stringify(values))}
           style={je_styles.form}
+          recipe={recipe}
         />
       </View>
     );
@@ -57,3 +60,7 @@ const je_styles = StyleSheet.create({
     // margin: 30
   }
 });
+
+export default connect(state => ({ recipe: state.recipe }))(
+  AddJournalEntryScreen
+);

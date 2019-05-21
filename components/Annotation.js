@@ -1,15 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Alert, View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 
 export default class Annotation extends React.Component {
+  _onPress(edit) {
+    edit
+      ? Alert.alert("The annotation is touch-ed.")
+      : null
+  }
+
   render() {
     const text = this.props.text;
     const date = this.props.date;
     return (
+      <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
       <View style={anno_styles.container}>
-        <Text style={anno_styles.anno_text}>{this.props.text}</Text>
-        <Text style={anno_styles.anno_date}>{this.props.date}</Text>
+        <Text style={anno_styles.anno_text}>{text}</Text>
+        <Text style={anno_styles.anno_date}>{date}</Text>
       </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

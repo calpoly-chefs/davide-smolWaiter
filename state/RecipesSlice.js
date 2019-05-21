@@ -32,7 +32,7 @@ const recipes = createSlice({
           title: "Chocolate Chip Caramel Cookie Bars",
           ingredients: ["i1", "i2", "i3", "i4", "i5", "i6", "i7", "i8", "i9"],
           steps: ["s1", "s2", "s3", "s4", "s5", "s6"],
-          annotations: ["a1"]
+          annotations: ["a1", "a2"]
         },
         r2: {
           id: "r2",
@@ -60,7 +60,7 @@ const recipes = createSlice({
           quantity: 1,
           units: "cup (7.5 ounces)",
           rId: "r1",
-          annotations: []
+          annotations: ["a2"]
         },
         i3: {
           id: "i3",
@@ -137,7 +137,7 @@ const recipes = createSlice({
           step:
             "Preheat the oven to 350 degrees F. Line a 9X13-inch aluminum baking pan with foil (helps with cleanup) and lightly grease with cooking spray.",
           rId: "r1",
-          annotations: []
+          annotations: ["a3"]
         },
         s2: {
           id: "s2",
@@ -189,6 +189,18 @@ const recipes = createSlice({
           date: "2019-05-04",
           text: "mo butta",
           rId: "r1"
+        },
+        a2: {
+          id: "a2",
+          date: "2019-05-21",
+          text: "less sugar",
+          rId: "r1",
+        },
+        a3: {
+          id: "a3",
+          date: "2019-05-21",
+          text: "don't do this step",
+          rId: "r1",
         }
       },
       allIds: ["a1"]

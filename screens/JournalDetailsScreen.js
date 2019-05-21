@@ -22,6 +22,7 @@ class JournalDetailsScreen extends React.Component {
             ingredient.ingredient
           }`}
           annotations={ingredient.annotations}
+          edit={false}
         />
       );
     });
@@ -37,6 +38,7 @@ class JournalDetailsScreen extends React.Component {
           id={step.stepNum}
           text={step.step}
           annotations={step.annotations}
+          edit={false}
         />
       );
     });

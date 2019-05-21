@@ -23,6 +23,7 @@ class RecipeDetailsScreen extends React.Component {
             ingredient.ingredient
           }`}
           annotations={ingredient.annotations}
+          edit={false}
         />
       );
     });
@@ -38,6 +39,7 @@ class RecipeDetailsScreen extends React.Component {
           id={step.stepNum}
           text={step.step}
           annotations={step.annotations}
+          edit={false}
         />
       );
     });

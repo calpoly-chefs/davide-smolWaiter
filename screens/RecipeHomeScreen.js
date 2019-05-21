@@ -1,28 +1,22 @@
 import React from "react";
 import {
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View
 } from "react-native";
-import { WebBrowser } from "expo";
-
-import { MonoText } from "../components/StyledText";
 import RecipeCard from "../components/RecipeCard";
-
 import Recipes from "../constants/SomeRecipes";
 
 export default class HomeScreen extends React.Component {
-  // Header
   static navigationOptions = {
     title: "Recipes"
     // TODO: add filter button
   };
   render() {
-    const recipes = Recipes();
+    const recipes = Recipes(); // TODO: set up with redux
     return (
       // Main Container
       <View style={styles.container}>
@@ -47,7 +41,6 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    // paddingTop: 30
     paddingHorizontal: 10,
     paddingVertical: 10
   }
