@@ -1,0 +1,9 @@
+export const LOGIN = "LOGIN"
+export const LOGIN_PENDING = 'LOGIN_PENDING';
+export const LOGIN_FULFILLED = 'LOGIN_FULFILLED';
+export const LOGIN_REJECTED = 'LOGIN_REJECTED';
+
+export const RECIPE = "RECIPE"
+export const RECIPE_PENDING = 'RECIPE_PENDING';
+export const RECIPE_FULFILLED = 'RECIPE_FULFILLED';
+export const RECIPE_REJECTED = 'RECIPE_REJECTED';

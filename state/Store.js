@@ -1,3 +1,8 @@
+// NOTE: the state is actively being refactored and moved to smolWaiter/state/configureStore
+//       it will *no longer* use redux-starter-kit because have graduated to the regular old version Redux
+// 
+// please continue using this in the meantime (tlarson)
+
 import { configureStore } from "redux-starter-kit";
 import ModalSlice from "./ModalSlice";
 import RecipeSlice from "./RecipesSlice";

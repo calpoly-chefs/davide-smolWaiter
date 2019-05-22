@@ -1,7 +1,9 @@
 import React from "react";
 import { createStackNavigator } from "react-navigation";
 import MainTabNavigator from "./MainTabNavigator";
-import EmptyScreen from "../screens/EMPTYSCREEN";
+
+import EmptyScreen from "../practice/EMPTYSCREEN";
+import AuthDemo from "../practice/AuthDemo"
 
 const RootStack = createStackNavigator(
   {
@@ -9,11 +11,11 @@ const RootStack = createStackNavigator(
       screen: MainTabNavigator
     },
     Practice: {
-      screen: EmptyScreen
+      screen: AuthDemo
     }
   },
   {
-    initialRouteName: "Main",
+    initialRouteName: "Practice",
     headerMode: "none"
     // mode: "modal"
     // transparentCard: true
