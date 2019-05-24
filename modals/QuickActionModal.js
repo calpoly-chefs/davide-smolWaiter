@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  TouchableOpacity,
-  TouchableHighlight,
-  View,
-  Alert,
-  StyleSheet,
-  Image
-} from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import Modal from "react-native-modal";
 import Icon from "react-native-vector-icons/Feather";
 import Ratings from "../components/Rating";
