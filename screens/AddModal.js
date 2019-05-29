@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
 export default class AddModal extends React.Component {
@@ -25,8 +25,12 @@ export default class AddModal extends React.Component {
               <Text style={styles.iconText}> Camera </Text>
             </View>
             <View style={styles.iconContainer}>
-              <Icon style={styles.icon} name="edit-2" size={35} />
-              <Text style={styles.iconText}> Manual </Text>
+              <TouchableOpacity 
+                onPress={() => this.props.navigation.navigate("AddRecipeManual")}
+              >
+                <Icon style={styles.icon} name="edit-2" size={35} />
+                <Text style={styles.iconText}> Manual </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>

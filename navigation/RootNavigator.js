@@ -3,6 +3,7 @@ import { createStackNavigator } from "react-navigation";
 import MainTabNavigator from "./MainTabNavigator";
 import EmptyScreen from "../screens/EMPTYSCREEN";
 import AddJournalEntryScreen from "../screens/AddJournalEntryScreen";
+import AddRecipeManualScreen from "../screens/AddRecipeManualScreen";
 
 const RootStack = createStackNavigator(
   {
@@ -12,9 +13,6 @@ const RootStack = createStackNavigator(
     // Practice: {
     //   screen: EmptyScreen
     // }
-    Practice: {
-      screen: AddJournalEntryScreen
-    }
   },
   {
     initialRouteName: "Main",

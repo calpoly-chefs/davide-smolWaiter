@@ -15,7 +15,7 @@ class QuickActionsIcon extends React.Component {
       <TouchableOpacity
         onPress={() => {
           this.props.dispatch(modal.actions.setFalse());
-          this.props.navigation.navigate(this.props.nextScreen.toString());
+          this.props.navigation.navigate("AddRecipeManualScreen");
         }}
       >
         <View style={style.parent}>

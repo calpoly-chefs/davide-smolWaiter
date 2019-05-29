@@ -13,10 +13,10 @@ export default class Annotation extends React.Component {
     const date = this.props.date;
     return (
       <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
-      <View style={anno_styles.container}>
-        <Text style={anno_styles.anno_text}>{text}</Text>
-        <Text style={anno_styles.anno_date}>{date}</Text>
-      </View>
+        <View style={anno_styles.container}>
+          <Text style={anno_styles.anno_text}>{text}</Text>
+          <Text style={anno_styles.anno_date}>{date}</Text>
+        </View>
       </TouchableWithoutFeedback>
     );
   }

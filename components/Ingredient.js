@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 
 class Ingredient extends React.Component {
 
-  _onPress(edit) {
-    edit
+  _onPress(edit, hasAnno) {
+    edit && !hasAnno
       ? Alert.alert("This is an ingredient.")
       : null
   }
@@ -16,10 +16,11 @@ class Ingredient extends React.Component {
     const annotations = this.props.recipe.annotations;
     const annotationIDs = this.props.annotations;
     const text = this.props.text;
+    const hasAnno = annotationIDs.length > 0 ? true : false
     return (
       
       <View style={ing_styles.container}>
-        <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
+        <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit, hasAnno)}>
           <View style={ing_styles.childContainer}>
             <Text style={ing_styles.ing_text}>{text}</Text>
           </View>
@@ -38,7 +39,7 @@ const ing_styles = StyleSheet.create({
   // FIXME: this styling is redundent
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
 
   childContainer: {

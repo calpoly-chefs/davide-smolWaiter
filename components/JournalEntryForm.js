@@ -209,7 +209,7 @@ const f_styles = StyleSheet.create({
     alignSelf: "stretch"
   },
   dropdowntext: {
-    fontSize: 15
+    fontSize: 18
   },
   submit: {
     backgroundColor: "#53E69D",
