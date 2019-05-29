@@ -54,17 +54,11 @@ class RecipeDetailsScreen extends React.Component {
         <RecipeHeader recipe={recipe} />
         <View style={styles.childContainer}>
           <Text style={styles.header}>Ingredients</Text>
-          {this.getIngredients(
-            this.props.recipe.recipes.byId.r1,
-            this.props.recipe.ingredients
-          )}
+          {this.getIngredients(recipe, this.props.recipe.ingredients)}
         </View>
         <View style={styles.childContainer}>
           <Text style={styles.header}>Steps</Text>
-          {this.getSteps(
-            this.props.recipe.recipes.byId.r1,
-            this.props.recipe.steps
-          )}
+          {this.getSteps(recipe, this.props.recipe.steps)}
         </View>
       </ScrollView>
     );
