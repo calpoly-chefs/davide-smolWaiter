@@ -34,6 +34,12 @@ class JournalHomeScreen extends React.Component {
               </TouchableOpacity>
             );
           })}
+          {/* <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("AddJournalEntry")}
+            style={styles.tNewScreen}
+          >
+            <Text style={styles.tNewScreenText}>Add a journal entry!</Text>
+          </TouchableOpacity> */}
         </ScrollView>
       </View>
     );
@@ -51,6 +57,9 @@ const styles = StyleSheet.create({
   },
   entryContainer: {
     paddingBottom: 10
+  },
+  tNewScreen: {
+    paddingVertical: 5
   },
   tNewScreenText: {
     fontSize: 14,

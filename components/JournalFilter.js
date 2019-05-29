@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Dimensions } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import modal from "../state/ModalSlice";
 import Modal from "react-native-modal";
+import Rating from "./Rating.js";
 import { connect } from "react-redux";
 
 class JournalFilter extends React.Component {
@@ -36,24 +37,12 @@ class JournalFilter extends React.Component {
             <View style={styles.filtersContainer}>
               <View style={styles.filterContainer}>
                 <Text style={styles.ratingText}>RATING - Highest First</Text>
-                <View style={styles.rating}>
-                  <Icon name="star" size={20} />
-                  <Icon name="star" size={20} />
-                  <Icon name="star" size={20} />
-                  <Icon name="star" size={20} />
-                  <Icon name="star" size={20} />
-                </View>
+                <Rating fillNum={5} dimension={20} />
               </View>
 
               <View style={styles.filterContainer}>
                 <Text style={styles.ratingText}>RATING - Lowest First</Text>
-                <View style={styles.rating}>
-                  <Icon name="star" size={20} />
-                  <Icon name="star" size={20} />
-                  <Icon name="star" size={20} />
-                  <Icon name="star" size={20} />
-                  <Icon name="star" size={20} />
-                </View>
+                <Rating fillNum={1} dimension={20} />
               </View>
 
               <View style={styles.filterContainer}>
@@ -117,6 +106,7 @@ const styles = StyleSheet.create({
   filterContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     padding: 15,
     borderWidth: 0.5,
     borderColor: "#e4e4e4"
