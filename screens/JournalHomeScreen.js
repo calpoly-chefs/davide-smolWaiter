@@ -1,33 +1,40 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
-import { ExpoLinksView } from "@expo/samples";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Text,
+  ScrollView
+} from "react-native";
+import JournalFilter from "../components/JournalFilter.js";
+import { connect } from "react-redux";
+import JournalCard from "../components/JournalCard.js";
 
-export default class JournalHomeScreen extends React.Component {
-  static navigationOptions = {
-    title: "Journal"
-    // TODO: add filter button
-  };
+class JournalHomeScreen extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: "Journal",
+    headerRight: <JournalFilter navigation={navigation} />
+  });
 
+  /* recipe, tags, prepTime, cookTime, difficulty, rating, comment, annotation,timestamp */
   render() {
+    const journalEntry = this.props.journalEntry.journalEntry.byId;
+    const allJournalEntryIDs = this.props.journalEntry.journalEntry.allIds;
     return (
       <View style={styles.container}>
-        <View style={styles.tContainer}>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("JournalDetails")}
-            style={styles.tNewScreen}
-          >
-            <Text style={styles.tNewScreenText}>
-              Click me to visit an individual journal entry
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("AddJournalEntry")}
-            style={styles.tNewScreen}
-          >
-            <Text style={styles.tNewScreenText}>Add a journal entry!</Text>
-          </TouchableOpacity>
-        </View>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+        >
+          {allJournalEntryIDs.map(id => {
+            const entry = journalEntry[id];
+            return (
+              <TouchableOpacity style={styles.entryContainer}>
+                <JournalCard entry={entry} navigation={this.props.navigation} />
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
       </View>
     );
   }
@@ -36,19 +43,21 @@ export default class JournalHomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
     backgroundColor: "#fff"
   },
-  tContainer: {
-    marginTop: 15,
-    alignItems: "center",
-    backgroundColor: "#F32D98"
+  contentContainer: {
+    paddingHorizontal: 2,
+    paddingVertical: 5
   },
-  tNewScreen: {
-    paddingVertical: 15
+  entryContainer: {
+    paddingBottom: 10
   },
   tNewScreenText: {
     fontSize: 14,
     color: "#F0F0EA"
   }
 });
+
+export default connect(state => ({ journalEntry: state.journalEntry }))(
+  JournalHomeScreen
+);
