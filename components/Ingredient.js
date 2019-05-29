@@ -43,8 +43,8 @@ const ing_styles = StyleSheet.create({
   },
 
   childContainer: {
-    marginLeft: 10,
-    marginRight: 10,
+    // marginLeft: 10,
+    // marginRight: 10,
     marginTop: 10,
     alignItems: "flex-start",
     backgroundColor: "#F0F0EA",

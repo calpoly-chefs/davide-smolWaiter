@@ -10,9 +10,9 @@ const RootStack = createStackNavigator(
     Main: {
       screen: MainTabNavigator
     },
-    // Practice: {
-    //   screen: EmptyScreen
-    // }
+    Practice: {
+      screen: AddJournalEntryScreen
+    }
   },
   {
     initialRouteName: "Main",

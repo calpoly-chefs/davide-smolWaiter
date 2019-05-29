@@ -17,49 +17,18 @@ import DropDownItem from "react-native-drop-down-item";
 import Icon from "react-native-vector-icons/Feather";
 import Ionicon from "react-native-vector-icons/Ionicons"
 
-import Ingredient from "../components/Ingredient.js";
-import Step from "../components/Step.js";
+import Ingredients from "../components/Ingredients.js";
+import Steps from "../components/Steps.js";
 
 
 let JournalEntryForm = props => {
   const { handleSubmit } = props;
-  const recipe = props.recipe;
+  const recipe = props.recipe.recipes.byId.r1;
+  const ingredients = props.recipe.ingredients;
+  const steps = props.recipe.steps;
 
   const arrow_up = <Ionicon name='ios-arrow-up' size={20} color='black'/>
   const arrow_down = <Ionicon name='ios-arrow-down' size={20} color={'black'}/>
-
-  const getIngredients = (currRecipe, ingredients) => {
-    var IngredientIDs = currRecipe.ingredients;
-    return IngredientIDs.map(id => {
-      const ingredient = ingredients.byId[id];
-
-      return (
-        <Ingredient
-          text={`${ingredient.quantity} ${ingredient.units} ${
-            ingredient.ingredient
-          }`}
-          annotations={ingredient.annotations}
-          edit={true}
-        />
-      );
-    });
-  };
-
-  const getSteps = (currRecipe, steps) => {
-    var StepIDs = currRecipe.steps;
-    return StepIDs.map(id => {
-      const step = steps.byId[id];
-
-      return (
-        <Step
-          id={step.stepNum}
-          text={step.step}
-          annotations={step.annotations}
-          edit={true}
-        />
-      );
-    });
-  };
 
   return (
     <ScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
@@ -133,7 +102,7 @@ let JournalEntryForm = props => {
             </Text>
           }
         >
-            {getIngredients(recipe.recipes.byId.r1, recipe.ingredients)}
+            <Ingredients recipe={recipe} ingredients={ingredients}/>
         </DropDownItem>
       </View>
 
@@ -150,7 +119,7 @@ let JournalEntryForm = props => {
             </Text>
           }
         >
-            {getSteps(recipe.recipes.byId.r1, recipe.steps)}
+            <Steps recipe={recipe} steps={steps} />
         </DropDownItem>
       </View>
 
@@ -197,13 +166,11 @@ const f_styles = StyleSheet.create({
   },
   field: {
     flex: 1,
-    fontSize: 16,
     paddingBottom: 12
   },
   time: {
     flex: 1,
     flexDirection: "row",
-    alignItems: "stretch"
   },
   dropdown: {
     alignSelf: "stretch"

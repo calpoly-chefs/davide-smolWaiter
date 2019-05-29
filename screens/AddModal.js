@@ -39,13 +39,13 @@ class AddModal extends React.Component {
                 <Text style={styles.iconText}> Camera </Text>
               </View>
               <View style={styles.iconContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate("AddRecipeManual")}
+                >
                   <Icon style={styles.icon} name="edit-2" size={35} />
                   <Text style={styles.iconText}> Manual </Text>
-                  {/* onPress={() => this.props.navigation.navigate("ManualInput")} */}
                 </TouchableOpacity>
               </View>
-              >>>>>>> Stashed changes
             </View>
           </View>
         </Modal>

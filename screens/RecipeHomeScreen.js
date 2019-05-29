@@ -24,7 +24,6 @@ export default class HomeScreen extends React.Component {
   //   const recipeIds = recipes.allIds;
 
   //   return recipeIds.map(r => {
-  //     console.log(r)
   //     return (
   //       <RecipeCard
   //         recipe={recipe[r]}
@@ -38,7 +37,6 @@ export default class HomeScreen extends React.Component {
     // const recipes = this.props.recipe.recipes.byId; // TODO: set up with redux
     const recipes = Recipes();
     return (
-      // Main Container
       <View style={styles.container}>
         <ScrollView
           style={styles.container}
@@ -49,7 +47,6 @@ export default class HomeScreen extends React.Component {
           <RecipeCard recipe={recipes[2]} navigation={this.props.navigation} />
         </ScrollView>
       </View>
-      // End of -- Main Container
     );
   }
 }

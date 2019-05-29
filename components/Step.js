@@ -20,9 +20,9 @@ class Step extends React.Component {
       
       <View style={step_styles.container}>
         <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
-        <View style={step_styles.childTextContainer}>
-          <Text style={step_styles.step_text}>{text}</Text>
-        </View>
+          <View style={step_styles.childTextContainer}>
+            <Text style={step_styles.step_text}>{text}</Text>
+          </View>
         </TouchableWithoutFeedback>
         <View style={step_styles.childIdContainer}>
           <Text style={step_styles.id_text}>{id}</Text>
@@ -41,8 +41,8 @@ class Step extends React.Component {
 const step_styles = StyleSheet.create({
   // FIXME: this styling is redundent
   container: {
-    marginLeft: 10,
-    marginRight: 10,
+    // marginLeft: 10,
+    // marginRight: 10,
     marginTop: 10
   },
 

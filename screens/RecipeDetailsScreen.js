@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
-import Ingredient from "../components/Ingredient.js";
-import Step from "../components/Step.js";
+import Ingredients from "../components/Ingredients.js";
+import Steps from "../components/Steps.js";
 import RecipeHeader from "../components/RecipeHeader.js";
 import QuickActionModal from "../modals/QuickActionModal";
 import { connect } from "react-redux";
@@ -12,53 +12,23 @@ class RecipeDetailsScreen extends React.Component {
     headerRight: <QuickActionModal navigation={navigation} />
   });
 
-  getIngredients = (currRecipe, ingredients) => {
-    var IngredientIDs = currRecipe.ingredients;
-    return IngredientIDs.map(id => {
-      const ingredient = ingredients.byId[id];
-
-      return (
-        <Ingredient
-          text={`${ingredient.quantity} ${ingredient.units} ${
-            ingredient.ingredient
-          }`}
-          annotations={ingredient.annotations}
-          edit={false}
-        />
-      );
-    });
-  };
-
-  getSteps = (currRecipe, steps) => {
-    var StepIDs = currRecipe.steps;
-    return StepIDs.map(id => {
-      const step = steps.byId[id];
-
-      return (
-        <Step
-          id={step.stepNum}
-          text={step.step}
-          annotations={step.annotations}
-          edit={false}
-        />
-      );
-    });
-  };
-
   render() {
     // this should be changed to reference the current recipe given a current recipe id
     const recipe = this.props.recipe.recipes.byId.r1;
+    const ingredients = this.props.recipe.ingredients;
+    const steps = this.props.recipe.steps;
+    
     return (
       <ScrollView style={styles.container}>
         {/* linked to QuickActions modal, need to set up correct stack navigator*/}
         <RecipeHeader recipe={recipe} />
         <View style={styles.childContainer}>
           <Text style={styles.header}>Ingredients</Text>
-          {this.getIngredients(recipe, this.props.recipe.ingredients)}
+          <Ingredients recipe={recipe} ingredients={ingredients}/>
         </View>
         <View style={styles.childContainer}>
           <Text style={styles.header}>Steps</Text>
-          {this.getSteps(recipe, this.props.recipe.steps)}
+          <Steps recipe={recipe} steps={steps} />
         </View>
       </ScrollView>
     );
@@ -73,7 +43,7 @@ const styles = StyleSheet.create({
   },
   childContainer: {
     flex: 1,
-    paddingHorizontal: 10,
+    paddingHorizontal: 20,
     paddingBottom: 15,
     flexDirection: "column",
     backgroundColor: "#fff"
@@ -82,7 +52,7 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 20,
     paddingTop: 10,
-    paddingLeft: 10,
+    // paddingLeft: 10,
     fontWeight: "bold"
   }
 });

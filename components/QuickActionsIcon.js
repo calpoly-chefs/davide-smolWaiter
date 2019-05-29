@@ -11,11 +11,12 @@ class QuickActionsIcon extends React.Component {
   //   * nextScreen - name of the next screen
 
   render() {
+
     return (
       <TouchableOpacity
         onPress={() => {
           this.props.dispatch(modal.actions.setFalse());
-          this.props.navigation.navigate("AddRecipeManualScreen");
+          this.props.navigation.navigate(this.props.nextScreen.toString());
         }}
       >
         <View style={style.parent}>
@@ -28,6 +29,7 @@ class QuickActionsIcon extends React.Component {
     );
   }
 }
+
 const style = StyleSheet.create({
   parent: {
     flex: 0,

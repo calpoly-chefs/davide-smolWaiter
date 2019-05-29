@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Button, View, Text, StyleSheet } from "react-native";
+import { Image, Button, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import QuickActionsIcon from "../components/QuickActionsIcon";
 import Ratings from "../components/Rating";
 
@@ -36,6 +36,8 @@ export default class QuickActions extends React.Component {
             <QuickActionsIcon
               source={require("../assets/images/book-open.png")}
               subtext="Add Entry"
+              navigation={this.props.navigation}
+              nextScreen="AddJournalEntry"
             />
           </View>
         </View>
