@@ -25,7 +25,7 @@ class JournalCard extends Component {
           <View style={jc_styles.text}>
             <Text style={jc_styles.title}> {allRecipes[entry.rId].title} </Text>
             <View style={jc_styles.subtext}>
-              <Rating fillNum={entry.rating} dim={25} />
+              <Rating fillNum={entry.rating} dimension={25} />
               <Text> {entry.timestamp} </Text>
             </View>
           </View>

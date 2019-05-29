@@ -49,12 +49,11 @@ class JournalHomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    padding: 5
+    backgroundColor: "#fff"
   },
   contentContainer: {
-    paddingHorizontal: 2,
-    paddingVertical: 5
+    paddingHorizontal: 10,
+    paddingVertical: 10
   },
   entryContainer: {
     paddingBottom: 10
