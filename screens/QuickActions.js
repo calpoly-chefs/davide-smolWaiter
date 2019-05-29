@@ -12,7 +12,7 @@ export default class QuickActions extends React.Component {
           <Text style={styles.modalHeaderText}> Quick Actions </Text>
 
           {/* Rate Recipe */}
-          <Ratings />
+          <Ratings fillNum={0} dimension={35} />
 
           {/* History */}
           <View style={styles.historyContainer}>
@@ -63,6 +63,14 @@ const styles = StyleSheet.create({
     paddingVertical: 15
     // backgroundColor: "#BDBDBD"
   },
+
+  ratingContainer: {
+    flex: 1,
+    backgroundColor: "black",
+    padding: 200,
+    alignItems: "center"
+  },
+
   modalOptionText: {
     fontSize: 18,
     textAlign: "center"
