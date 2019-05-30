@@ -3,7 +3,7 @@ import { createStackNavigator } from "react-navigation";
 import MainTabNavigator from "./MainTabNavigator";
 
 import EmptyScreen from "../practice/EMPTYSCREEN";
-import AuthDemo from "../practice/AuthDemo"
+import AuthDemo from "../screens/RecipeHomeScreen"
 
 const RootStack = createStackNavigator(
   {

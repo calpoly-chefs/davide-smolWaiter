@@ -1,4 +1,5 @@
-import { RECIPE_PENDING, RECIPE_FULFILLED, RECIPE_REJECTED } from "./constants"
+import { RECIPE_PENDING, RECIPE_FULFILLED, RECIPE_REJECTED } from "../constants/ActionTypes"
+
 
 const initialState = {
     data: [],
@@ -19,7 +20,7 @@ export default function recipeReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
-                data: action.payload
+                data: action.payload.data
             };
         case RECIPE_REJECTED:
             return {

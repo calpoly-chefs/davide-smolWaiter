@@ -17,6 +17,7 @@
     "expo": "^32.0.0",
     "feather-icons": "^4.21.0",
     "nodejs": "0.0.0",
+    "normalizr": "^3.4.0",
     "react": "16.5.0",
     "react-feather": "^1.1.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",

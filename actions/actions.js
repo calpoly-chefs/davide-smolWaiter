@@ -1,5 +1,6 @@
-import { LOGIN } from "../constants/ActionTypes"
+import { LOGIN, RECIPE } from "../constants/ActionTypes"
 import api from "../api"
+import fakeapi from "../practice/fakeapi";
 
 // authenticates a remy by username and password
 // stores the bearer token in the user slice to persist their session
@@ -12,6 +13,18 @@ export function fetchLogin() {
             username: "remy",
             password: "password"
         })
+    }
+}
+
+export function fetchAllRecipes(token) {
+    return {
+        type: RECIPE,
+        payload: api.get("/recipes", {
+
+        })
+        // .then(function (response) {
+        //     console.log("RESP: ", JSON.stringify(response.data))
+        // })
     }
 }
 
