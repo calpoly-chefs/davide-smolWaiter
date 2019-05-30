@@ -17,16 +17,14 @@ export default class Rating extends React.Component {
       if (num <= fillNum) {
         return (
           <Image
-            width={dim}
-            height={dim}
+            style={style(dim).star}
             source={require("../assets/images/starFilled.png")}
           />
         );
       } else {
         return (
           <Image
-            width={dim}
-            height={dim}
+            style={style(dim).star}
             source={require("../assets/images/star.png")}
           />
         );
@@ -36,22 +34,22 @@ export default class Rating extends React.Component {
 
   render() {
     const fillNum = this.props.fillNum;
-    // dim size for QuickActions is 35 and for everywhere else use dim 25
     const dim = this.props.dimension;
-    return <View style={style.parent}>{this.getStars(fillNum, dim)}</View>;
+    return <View style={style(dim).parent}>{this.getStars(fillNum, dim)}</View>;
   }
 }
 
-const style = StyleSheet.create({
-  parent: {
-    flex: 0,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    height: 60
-  },
-  star: {
-    width: 25,
-    height: 25
-  }
-});
+const style = dim =>
+  StyleSheet.create({
+    parent: {
+      flex: 0,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-evenly"
+    },
+
+    star: {
+      width: dim,
+      height: dim
+    }
+  });

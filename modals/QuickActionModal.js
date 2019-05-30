@@ -38,7 +38,7 @@ class TestModal extends Component {
             <Text style={style.modalHeaderText}> Quick Actions </Text>
 
             {/* Rate Recipe */}
-            <Ratings />
+            <Ratings fillNum={0} dimension={35} />
 
             {/* History */}
             <View style={style.historyContainer}>
