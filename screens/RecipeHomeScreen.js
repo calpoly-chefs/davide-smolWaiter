@@ -7,49 +7,54 @@ import {
   TouchableOpacity,
   View
 } from "react-native";
+
+import { fetchAllRecipes } from "../actions/actions"
 import RecipeCard from "../components/RecipeCard";
-import Recipes from "../constants/SomeRecipes";
 import { connect } from "react-redux";
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
+  // Header
   static navigationOptions = {
     title: "Recipes"
     // TODO: add filter button
   };
 
-  // getRecipes(recipes, navigation) {
-  //   // return (
-  //   //   <RecipeCard recipe={recipes[0]} navigation={navigation} />
-  //   // )
-  //   const recipeIds = recipes.allIds;
-
-  //   return recipeIds.map(r => {
-  //     return (
-  //       <RecipeCard
-  //         recipe={recipe[r]}
-  //         navigation={navigation} 
-  //       />
-  //     );
-  //   });
-  // }
+  componentWillMount() {
+    this.props.fetchAllRecipes();
+  }
 
   render() {
-    // const recipes = this.props.recipe.recipes.byId; // TODO: set up with redux
-    const recipes = Recipes();
     return (
       <View style={styles.container}>
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-          {/* {() => getRecipes(recipes, this.props.navigation)} */}
-          <RecipeCard recipe={recipes[0]} navigation={this.props.navigation} />
-          <RecipeCard recipe={recipes[2]} navigation={this.props.navigation} />
+          {this.props.recipes.data.map((rec) => (
+            <RecipeCard recipe={rec} navigation={this.props.navigation} />
+          ))}
         </ScrollView>
       </View>
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+      recipes: state.recipes
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      fetchAllRecipes: () => dispatch(fetchAllRecipes())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeScreen)
 
 // Style sheet
 const styles = StyleSheet.create({
@@ -63,7 +68,3 @@ const styles = StyleSheet.create({
     paddingVertical: 10
   }
 });
-
-// export default connect(state => ({ recipe: state.recipe }))(
-//   HomeScreen
-// );

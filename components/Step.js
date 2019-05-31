@@ -25,7 +25,7 @@ class Step extends React.Component {
           </View>
         </TouchableWithoutFeedback>
         <View style={step_styles.childIdContainer}>
-          <Text style={step_styles.id_text}>{id}</Text>
+          <Text style={step_styles.id_text}>{this.props.stepNum}</Text>
         </View>
         
         {annotationIDs.slice(0, 1).map(id => {

@@ -12,9 +12,13 @@ export default class RecipeCard extends Component {
     return (
       <View style={rc_styles.parent}>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate("RecipeDetails")}
+          onPress={() => this.props.navigation.navigate("RecipeDetails", {
+            recipe: this.props.recipe
+          })}
           style={rc_styles.child}
         >
+          
+
           <CloudinaryImage
             cloudName={"littlechef"}
             imageId={recipe.id == 1 ? img1 : img2}

@@ -1,7 +1,7 @@
 import React from "react";
+import { View, Button, StatusBar, StyleSheet, AsyncStorage } from "react-native";
 import UserIcon from "../components/UserIcon.js";
 import SettingModal from "../components/SettingModal.js";
-import { View, StyleSheet, Text } from "react-native";
 
 export default class ProfileScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -22,9 +22,18 @@ export default class ProfileScreen extends React.Component {
         <View style={styles.bioText}>
           <Text>{bioText}</Text>
         </View>
+      <View style={styles.container}>
+        <Button title="I'm done, sign me out" onPress={this._signOutAsync} />
+        <StatusBar barStyle="default" />
       </View>
+    </View>
     );
   }
+
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth');
+  };
 }
 
 const styles = StyleSheet.create({

@@ -1,9 +1,14 @@
 import React from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
-import { Provider } from "react-redux";
 import { AppLoading, Asset, Font, Icon } from "expo";
+import { Provider } from "react-redux";
+import configureStore from "./state/configureStore"
+import Store from "./state/Store"
 import AppNavigator from "./navigation/AppNavigator";
-import store from "./state/Store";
+
+// NOTE: to prevent interrupting your workflow the old store is still available for now.
+const store = configureStore(); // * new store
+// const store = Store; // * old store 
 
 export default class App extends React.Component {
   state = {
@@ -21,14 +26,15 @@ export default class App extends React.Component {
       );
     } else {
       return (
-        <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-          {/* `Provider` makes the store available to nested componenets
-              that have been wrapped with the `connect` function */}
-          <Provider store={store}>
+        // `Provider` makes the store available to nested componenets
+        // that have been wrapped with the `connect` function
+        <Provider store={store}>
+          <View style={styles.container}>
+            {Platform.OS === "ios" && <StatusBar barStyle="default" />}
             <AppNavigator />
-          </Provider>
-        </View>
+          </View>
+        </Provider>
+
       );
     }
   }

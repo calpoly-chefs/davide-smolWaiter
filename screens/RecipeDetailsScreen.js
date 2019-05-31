@@ -14,7 +14,7 @@ class RecipeDetailsScreen extends React.Component {
 
   render() {
     // this should be changed to reference the current recipe given a current recipe id
-    const recipe = this.props.recipe.recipes.byId.r1;
+    const recipe = this.props.navigation.getParam('recipe', null);
     const ingredients = this.props.recipe.ingredients;
     const steps = this.props.recipe.steps;
     
