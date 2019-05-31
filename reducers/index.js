@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import user from "./loginReducer"
+import auth from "./authReducer"
 import recipes from "./recipeReducer"
 
 // combines all reducers into a single root reducer 
 const rootReducer = combineReducers({
-    user,
+    auth,
     recipes
 })
 

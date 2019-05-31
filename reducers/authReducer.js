@@ -1,10 +1,11 @@
 import { LOGIN_PENDING, LOGIN_FULFILLED, LOGIN_REJECTED } from "../constants/ActionTypes"
 
 const initialState = {
-    authorization: "",
+    token: "",
     isFetching: false,
     error: false,
-    errorMessage: ""
+    errorMessage: "",
+    isAuthenticated: false,
 }
 
 // TODO: brainsotrm new name (loginReducer is limiting)
@@ -13,14 +14,15 @@ export default function loginReducer(state = initialState, action) {
         case LOGIN_PENDING:
             return {
                 ...state,
-                authorization: "",
+                token: "",
                 isFetching: true
             };
         case LOGIN_FULFILLED:
             return {
                 ...state,
                 isFetching: false,
-                authorization: action.payload.headers.authorization
+                token: action.payload.headers.authorization,
+                isAuthenticated: true
             };
         case LOGIN_REJECTED:
             return {
