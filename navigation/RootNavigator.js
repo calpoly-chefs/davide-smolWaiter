@@ -1,28 +1,24 @@
 import React from "react";
-import { createStackNavigator, createSwitchNavigator } from "react-navigation";
+import { createStackNavigator } from "react-navigation";
 import MainTabNavigator from "./MainTabNavigator";
-import AuthNavigator from "./AuthNavigator"
-import AuthLoadingScreen from "../screens/AuthLoadingScreen"
-
 import EmptyScreen from "../screens/EMPTYSCREEN";
 import AddJournalEntryScreen from "../screens/AddJournalEntryScreen";
 import AddRecipeManualScreen from "../screens/AddRecipeManualScreen";
 
-import EmptyScreen from "../practice/EMPTYSCREEN";
-import LoginScreen from "../screens/SignInScreen"
-
-const RootStack = createSwitchNavigator(
+const RootStack = createStackNavigator(
   {
-    AuthLoading: AuthLoadingScreen,
-    Auth: AuthNavigator,
-    App: MainTabNavigator
-
-    // the following screen is for testing purposes only
-    Practice: LoginScreen
+    Main: {
+      screen: MainTabNavigator
+    },
+    Practice: {
+      screen: AddJournalEntryScreen
+    }
   },
   {
-    initialRouteName: "AuthLoading",
+    initialRouteName: "Main",
     headerMode: "none"
+    // mode: "modal"
+    // transparentCard: true
   }
 );
 

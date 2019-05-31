@@ -4,7 +4,7 @@ import {
   createStackNavigator,
   createBottomTabNavigator
 } from "react-navigation";
-
+import { fadeIn } from "react-navigation-transitions";
 import RecipesHomeScreen from "../screens/RecipeHomeScreen";
 import RecipesDetailsScreen from "../screens/RecipeDetailsScreen";
 import AddJournalEntryScreen from "../screens/AddJournalEntryScreen";
@@ -57,10 +57,17 @@ AddModalStack.navigationOptions = {
   )
 };
 
-const ProfileStack = createStackNavigator({
-  Profile: ProfileScreen,
-  AccountSetting: AccountSettingScreen
-});
+const ProfileStack = createStackNavigator(
+  {
+    Profile: ProfileScreen,
+    AccountSetting: AccountSettingScreen
+  },
+  {
+    transitionConfig: () => {
+      return fadeIn();
+    }
+  }
+);
 
 ProfileStack.navigationOptions = {
   tabBarLabel: "Profile",
