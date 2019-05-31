@@ -6,6 +6,8 @@ export default class Ingredients extends React.Component {
     render() {
         const recipe = this.props.recipe
         const ingredients = this.props.ingredients 
+        const edit = this.props.edit
+        
         var IngredientIDs = recipe.ingredients;
 
         return IngredientIDs.map(id => {
@@ -17,7 +19,7 @@ export default class Ingredients extends React.Component {
                         ingredient.ingredient
                     }`}
                     annotations={ingredient.annotations}
-                    edit={false}
+                    edit={edit}
                 />
             );
         });

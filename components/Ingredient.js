@@ -2,14 +2,16 @@ import React from "react";
 import { Alert, View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { FileText } from "react-feather";
 import Annotation from "./Annotation.js";
+import { Field, reduxForm } from "redux-form";
+import MyTextInput from "./MyTextInput";
 import { connect } from "react-redux";
 
 class Ingredient extends React.Component {
 
   _onPress(edit, hasAnno) {
-    edit && !hasAnno
-      ? Alert.alert("This is an ingredient.")
-      : null
+    edit && !hasAnno 
+    ? Alert.alert("hello")
+    : null
   }
 
   render() {
@@ -25,18 +27,18 @@ class Ingredient extends React.Component {
             <Text style={ing_styles.ing_text}>{text}</Text>
           </View>
         </TouchableWithoutFeedback>
+
         {annotationIDs.slice(0, 1).map(id => {
           const anno = annotations.byId[id];
           return <Annotation date={anno.date} text={anno.text} edit={this.props.edit}/>;
         })}
       </View>
-      
     );
   }
 }
 
 const ing_styles = StyleSheet.create({
-  // FIXME: this styling is redundent
+  // FIXME: this styling is redundant
   container: {
     flex: 1,
     backgroundColor: "#fff",

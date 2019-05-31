@@ -11,7 +11,7 @@ const RootStack = createStackNavigator(
       screen: MainTabNavigator
     },
     Practice: {
-      screen: AddJournalEntryScreen
+      screen: AddRecipeManualScreen
     }
   },
   {

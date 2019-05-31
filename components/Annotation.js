@@ -1,5 +1,7 @@
 import React from "react";
 import { Alert, View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { Field, reduxForm } from "redux-form";
+import AnnotationInput from "./MyTextInput";
 
 export default class Annotation extends React.Component {
   _onPress(edit) {
@@ -12,12 +14,17 @@ export default class Annotation extends React.Component {
     const text = this.props.text;
     const date = this.props.date;
     return (
-      <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
+      // <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
         <View style={anno_styles.container}>
-          <Text style={anno_styles.anno_text}>{text}</Text>
+          {/* <Text style={anno_styles.anno_text}>{text}</Text> */}
+          <Field
+            name={"annotation" + date}
+            component={AnnotationInput}
+            placeholder={text}
+          />
           <Text style={anno_styles.anno_date}>{date}</Text>
         </View>
-      </TouchableWithoutFeedback>
+      // {/* </TouchableWithoutFeedback> */}
     );
   }
 }

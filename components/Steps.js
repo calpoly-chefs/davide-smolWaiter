@@ -5,6 +5,7 @@ export default class Steps extends React.Component {
     render() {
         const recipe = this.props.recipe;
         const steps = this.props.steps;
+        const edit = this.props.edit;
 
         var StepIDs = recipe.steps;
         return StepIDs.map(id => {
@@ -15,7 +16,7 @@ export default class Steps extends React.Component {
                     id={step.stepNum}
                     text={step.step}
                     annotations={step.annotations}
-                    edit={false}
+                    edit={edit}
                 />
             );
         });
