@@ -1,4 +1,4 @@
-import { RECIPE_PENDING, RECIPE_FULFILLED, RECIPE_REJECTED } from "./constants"
+import { RECIPE_PENDING, RECIPE_FULFILLED, RECIPE_REJECTED } from "../constants/ActionTypes"
 
 const initialState = {
     data: [],
