@@ -1,11 +1,12 @@
 import React from "react";
-import { TextInput, View, Text, StyleSheet } from "react-native";
+import { TextInput, View, Text, StyleSheet, Picker } from "react-native";
 
 /**
  * to be wrapped with redux-form Field component
  */
 export default function MyTextInput(props) {
-  const { input, meta, ...inputProps } = props;
+//   const { input, meta, ...inputProps, ...pickerProps } = props;
+  const { meta, input: { onChange, value, ...inputProps }, children, ...pickerProps } = props;
 
   // do not display warning if the field has not been touched or if it's currently being edited
   const validationStyles =
@@ -15,17 +16,22 @@ export default function MyTextInput(props) {
         : t_styles.invalid
       : null;
 
+  const filter = ''
   return (
     <View style={[t_styles.inputContainer, validationStyles]}>
-      <TextInput
-        {...inputProps}
-        onChangeText={input.onChange}
-        onBlur={input.onBlur}
-        onFocus={input.onFocus}
-        value={input.value}
-        style={t_styles.input}
-        // keyboardType={"number-pad"}
-      />
+      <Picker
+        prompt="Select rank"
+        selectedValue={ filter }
+        onValueChange={ value => onChange(value) }
+        { ...inputProps }
+        { ...pickerProps }
+      >
+          <Picker.Item label={'Option 1'} value={1} />
+          <Picker.Item label={'Option 2'} value={2} />
+          <Picker.Item label={'Option 3'} value={3} />
+          <Picker.Item label={'Option 4'} value={4} />
+          <Picker.Item label={'Option 5'} value={5} />
+       </Picker>
     </View>
   );
 }

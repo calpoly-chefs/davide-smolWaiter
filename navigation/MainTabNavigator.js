@@ -1,5 +1,4 @@
 import React from "react";
-// import TabBarIcon from "../components/TabBarIcon";
 
 import {
   createStackNavigator,
@@ -12,7 +11,9 @@ import AddJournalEntryScreen from "../screens/AddJournalEntryScreen";
 import JournalHomeScreen from "../screens/JournalHomeScreen";
 import JournalDetailsScreen from "../screens/JournalDetailsScreen";
 import AddRecipeScreen from "../screens/AddModal";
+import AddRecipeManualScreen from "../screens/AddRecipeManualScreen";
 import ProfileScreen from "../screens/ProfileScreen";
+import AccountSettingScreen from "../screens/AccountSettingScreen";
 import ExploreScreen from "../screens/ExploreScreen";
 import Icon from "react-native-vector-icons/Feather";
 
@@ -45,7 +46,8 @@ JournalStack.navigationOptions = {
 
 //TODO: modal transition
 const AddModalStack = createStackNavigator({
-  Add: AddRecipeScreen
+  Add: AddRecipeScreen,
+  AddRecipeManual: AddRecipeManualScreen
 });
 
 AddModalStack.navigationOptions = {
@@ -56,7 +58,8 @@ AddModalStack.navigationOptions = {
 };
 
 const ProfileStack = createStackNavigator({
-  Profile: ProfileScreen
+  Profile: ProfileScreen,
+  AccountSetting: AccountSettingScreen
 });
 
 ProfileStack.navigationOptions = {

@@ -10,21 +10,19 @@ import { WebBrowser } from "expo";
 import RecipeHeader from "../components/RecipeHeader";
 import CloudinaryImage from "react-native-cloudinary-image-display";
 import Recipes from "../constants/SomeRecipes";
-import JournalEntryForm from "../components/JournalEntryForm";
+import RecipeManualForm from "../components/RecipeManualForm";
 import { Alert } from "react-native";
 import { connect } from "react-redux";
 
-class AddJournalEntryScreen extends Component {
+class AddRecipeManualScreen extends Component {
   render() {
     const img1 = "bars_.jpg";
     const recipe = this.props.recipe;
-    // const recipe = Recipes()[0];
     return (
-      <View style={je_styles.parent}>
-        <RecipeHeader recipe={recipe.recipes.byId.r1} />
-        <JournalEntryForm
+      <View style={rm_styles.parent}>
+        <RecipeManualForm
           onSubmit={values => Alert.alert("Submitted!", JSON.stringify(values))}
-          style={je_styles.form}
+          style={rm_styles.form}
           recipe={recipe}
         />
       </View>
@@ -32,7 +30,7 @@ class AddJournalEntryScreen extends Component {
   }
 }
 
-const je_styles = StyleSheet.create({
+const rm_styles = StyleSheet.create({
   parent: {
     flex: 1,
     // backgroundColor: "#F0F0EA",
@@ -62,5 +60,5 @@ const je_styles = StyleSheet.create({
 });
 
 export default connect(state => ({ recipe: state.recipe }))(
-  AddJournalEntryScreen
+  AddRecipeManualScreen
 );

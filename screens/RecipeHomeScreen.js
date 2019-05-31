@@ -1,19 +1,16 @@
 import React from "react";
 import {
   Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View
 } from "react-native";
-import { WebBrowser } from "expo";
-import { connect } from 'react-redux'
-import { fetchAllRecipes } from "../actions/actions"
-import { MonoText } from "../components/StyledText";
-import RecipeCard from "../components/RecipeCard";
 
+import { fetchAllRecipes } from "../actions/actions"
+import RecipeCard from "../components/RecipeCard";
+import { connect } from "react-redux";
 
 class HomeScreen extends React.Component {
   // Header
@@ -28,21 +25,16 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      // Main Container
       <View style={styles.container}>
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
         >
-
           {this.props.recipes.data.map((rec) => (
-            //TODO enable RecipeCard for mapping through recipes
             <RecipeCard recipe={rec} navigation={this.props.navigation} />
           ))}
-          
         </ScrollView>
       </View>
-      // End of -- Main Container
     );
   }
 }
@@ -72,7 +64,6 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    // paddingTop: 30
     paddingHorizontal: 10,
     paddingVertical: 10
   }

@@ -11,6 +11,7 @@ class QuickActionsIcon extends React.Component {
   //   * nextScreen - name of the next screen
 
   render() {
+
     return (
       <TouchableOpacity
         onPress={() => {
@@ -28,6 +29,7 @@ class QuickActionsIcon extends React.Component {
     );
   }
 }
+
 const style = StyleSheet.create({
   parent: {
     flex: 0,

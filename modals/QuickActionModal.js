@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  TouchableOpacity,
-  TouchableHighlight,
-  View,
-  Alert,
-  StyleSheet,
-  Image
-} from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import Modal from "react-native-modal";
 import Icon from "react-native-vector-icons/Feather";
 import Ratings from "../components/Rating";
@@ -35,8 +27,8 @@ class TestModal extends Component {
           visible={this.props.modal}
           transparent={true}
           swipeDirection="down"
-          animationIn="slideInUp"
-          animationOut="slideInDown"
+          animationType={"slide"}
+          animationOut={"slideInDown"}
           onSwipeComplete={() => this.props.dispatch(modal.actions.toggle())}
           onBackdropPress={() => this.props.dispatch(modal.actions.toggle())}
           hideModalContentWhileAnimating={true}
@@ -46,7 +38,7 @@ class TestModal extends Component {
             <Text style={style.modalHeaderText}> Quick Actions </Text>
 
             {/* Rate Recipe */}
-            <Ratings />
+            <Ratings fillNum={0} dimension={35} />
 
             {/* History */}
             <View style={style.historyContainer}>

@@ -1,22 +1,39 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { Alert, View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { FileText, Bold, AlignCenter } from "react-feather";
 import Annotation from "./Annotation.js";
+import { connect } from "react-redux";
 
-export default class Step extends React.Component {
+class Step extends React.Component {
+  _onPress(edit) {
+    edit
+      ? Alert.alert("This is a step.")
+      : null
+  }
+
   render() {
+    const annotations = this.props.recipe.annotations;
+    const annotationIDs = this.props.annotations;
+    const text = this.props.text;
+    const id = this.props.id;
     return (
+      
       <View style={step_styles.container}>
-        <View style={step_styles.childTextContainer}>
-          <Text style={step_styles.step_text}>{this.props.text}</Text>
-        </View>
+        <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
+          <View style={step_styles.childTextContainer}>
+            <Text style={step_styles.step_text}>{text}</Text>
+          </View>
+        </TouchableWithoutFeedback>
         <View style={step_styles.childIdContainer}>
           <Text style={step_styles.id_text}>{this.props.stepNum}</Text>
         </View>
-        {this.props.annotations.slice(0, 1).map(object => (
-          <Annotation date={object.date} text={object.text} />
-        ))}
+        
+        {annotationIDs.slice(0, 1).map(id => {
+          const anno = annotations.byId[id];
+          return <Annotation date={anno.date} text={anno.text} edit={this.props.edit}/>;
+        })}
       </View>
+      
     );
   }
 }
@@ -24,8 +41,8 @@ export default class Step extends React.Component {
 const step_styles = StyleSheet.create({
   // FIXME: this styling is redundent
   container: {
-    marginLeft: 10,
-    marginRight: 10,
+    // marginLeft: 10,
+    // marginRight: 10,
     marginTop: 10
   },
 
@@ -61,3 +78,5 @@ const step_styles = StyleSheet.create({
     fontWeight: "bold"
   }
 });
+
+export default connect(state => ({ recipe: state.recipe }))(Step);

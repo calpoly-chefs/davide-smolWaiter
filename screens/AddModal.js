@@ -1,8 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
+import Modal from "react-native-modal";
+import { connect } from "react-redux";
+import modal from "../state/ModalSlice";
 
-export default class AddModal extends React.Component {
+class AddModal extends React.Component {
   static navigationOptions = {
     title: "Add"
   };
@@ -10,26 +13,42 @@ export default class AddModal extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.mainContainer}>
-          {/* Modal Title */}
-          <Text style={styles.modalHeaderText}> Add Recipe </Text>
+        {/* Modal */}
+        <Modal
+          visible={true}
+          transparent={true}
+          swipeDirection="down"
+          animationType={"slide"}
+          animationOut={"slide"}
+          onSwipeComplete={() => this.props.dispatch(modal.actions.toggle())}
+          onBackdropPress={() => this.props.dispatch(modal.actions.toggle())}
+          hideModalContentWhileAnimating={true}
+        >
+          <View style={styles.mainContainer}>
+            {/* Modal Title */}
+            <Text style={styles.modalHeaderText}> Add Recipe </Text>
 
-          {/* Link, Camera, and Manual */}
-          <View style={styles.iconsContainer}>
-            <View style={styles.iconContainer}>
-              <Icon style={styles.icon} name="link" size={35} />
-              <Text style={styles.iconText}> Link </Text>
-            </View>
-            <View style={styles.iconContainer}>
-              <Icon style={styles.icon} name="camera" size={35} />
-              <Text style={styles.iconText}> Camera </Text>
-            </View>
-            <View style={styles.iconContainer}>
-              <Icon style={styles.icon} name="edit-2" size={35} />
-              <Text style={styles.iconText}> Manual </Text>
+            {/* Link, Camera, and Manual */}
+            <View style={styles.iconsContainer}>
+              <View style={styles.iconContainer}>
+                <Icon style={styles.icon} name="link" size={35} />
+                <Text style={styles.iconText}> Link </Text>
+              </View>
+              <View style={styles.iconContainer}>
+                <Icon style={styles.icon} name="camera" size={35} />
+                <Text style={styles.iconText}> Camera </Text>
+              </View>
+              <View style={styles.iconContainer}>
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate("AddRecipeManual")}
+                >
+                  <Icon style={styles.icon} name="edit-2" size={35} />
+                  <Text style={styles.iconText}> Manual </Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
+        </Modal>
       </View>
     );
   }
@@ -43,7 +62,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     bottom: 0,
-    top: 575,
+    top: 700,
     paddingHorizontal: 20,
     backgroundColor: "#fff"
   },
@@ -75,3 +94,5 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 });
+
+export default connect(state => ({ modal: state.modal }))(AddModal);

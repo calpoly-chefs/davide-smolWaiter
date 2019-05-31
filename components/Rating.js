@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, View, Text, StyleSheet } from "react-native";
+import { getDefaultMiddleware } from "redux-starter-kit";
 
 export default class Rating extends React.Component {
   // props:
@@ -10,53 +11,45 @@ export default class Rating extends React.Component {
   //      - add support for dynamic sizing
   //      - write function to display variable number of filled stars
 
+  getStars = (fillNum, dim) => {
+    var numStar = [1, 2, 3, 4, 5];
+    return numStar.map(num => {
+      if (num <= fillNum) {
+        return (
+          <Image
+            style={style(dim).star}
+            source={require("../assets/images/starFilled.png")}
+          />
+        );
+      } else {
+        return (
+          <Image
+            style={style(dim).star}
+            source={require("../assets/images/star.png")}
+          />
+        );
+      }
+    });
+  };
+
   render() {
-    return (
-      <View style={style.parent}>
-        <View style={style.child}>
-          <Image
-            style={style.star}
-            source={require("../assets/images/star.png")}
-          />
-          <Image
-            style={style.star}
-            source={require("../assets/images/star.png")}
-          />
-          <Image
-            style={style.star}
-            source={require("../assets/images/star.png")}
-          />
-          <Image
-            style={style.star}
-            source={require("../assets/images/star.png")}
-          />
-          <Image
-            style={style.star}
-            source={require("../assets/images/star.png")}
-          />
-        </View>
-      </View>
-    );
+    const fillNum = this.props.fillNum;
+    const dim = this.props.dimension;
+    return <View style={style(dim).parent}>{this.getStars(fillNum, dim)}</View>;
   }
 }
-const style = StyleSheet.create({
-  parent: {
-    flex: 0,
-    height: 60
-    // paddingHorizontal: 20
-    // backgroundColor: "red"
-  },
-  child: {
-    flex: 0,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-evenly",
-    height: 60
-    // paddingHorizontal: 10
-    // backgroundColor: "green"
-  },
-  star: {
-    width: 35,
-    height: 35
-  }
-});
+
+const style = dim =>
+  StyleSheet.create({
+    parent: {
+      flex: 0,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-evenly"
+    },
+
+    star: {
+      width: dim,
+      height: dim
+    }
+  });

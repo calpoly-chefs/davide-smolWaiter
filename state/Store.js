@@ -6,13 +6,15 @@
 import { configureStore } from "redux-starter-kit";
 import ModalSlice from "./ModalSlice";
 import RecipeSlice from "./RecipesSlice";
+import JournalSlice from "./JournalEntrySlice";
 import { reducer as FormReducer } from "redux-form";
 
 // combine ruducers into a root reducer (internally calls `configureStore`)
 const reducer = {
   modal: ModalSlice.reducer,
   recipe: RecipeSlice.reducer,
-  form: FormReducer
+  form: FormReducer,
+  journalEntry: JournalSlice.reducer
 };
 
 // store
