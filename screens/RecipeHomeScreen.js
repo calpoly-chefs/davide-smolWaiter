@@ -35,11 +35,10 @@ class HomeScreen extends React.Component {
           contentContainerStyle={styles.contentContainer}
         >
 
-          {this.props.recipes.data.map((rec) => {
-            console.log(JSON.stringify(rec))
+          {this.props.recipes.data.map((rec) => (
             //TODO enable RecipeCard for mapping through recipes
-            //<RecipeCard recipe={rec} navigation={this.props.navigation} />
-          })}
+            <RecipeCard recipe={rec} navigation={this.props.navigation} />
+          ))}
           
         </ScrollView>
       </View>

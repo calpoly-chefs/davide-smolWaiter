@@ -13,29 +13,32 @@ export default class RecipeDetailsScreen extends React.Component {
   });
 
   render() {
-    const someRecipes = Recipes();
+    const recipe = this.props.navigation.getParam('recipe', null);
+    console.log(recipe);
     return (
       <ScrollView style={styles.container}>
-        <RecipeHeader recipe={someRecipes[0]} />
+
+        {/* <Text>Fetched Recipe: {JSON.stringify(recipe)}</Text> */}
+
+        <RecipeHeader recipe={recipe} />
         <View style={styles.childContainer}>
           <Text style={styles.header}>Ingredients</Text>
-          {/* someRecipes index will need to be changed to recipe id passed in */}
-          {someRecipes[0].ingredients.map(object => (
+          {recipe.ingredients.map(ing => (
             <Ingredient
               text={
-                object.quantity + " " + object.units + " " + object.ingredient
+                ing.quantity + " " + ing.units + " " + ing.ingredient
               }
-              annotations={object.annotations}
+              annotations={ing.annotations}
             />
           ))}
         </View>
         <View style={styles.childContainer}>
           <Text style={styles.header}>Steps</Text>
-          {someRecipes[0].steps.map(object => (
+          {recipe.steps.map((step, stepNum) => (
             <Step
-              id={object.stepNum}
-              text={object.step}
-              annotations={object.annotations}
+              stepNum={stepNum}
+              text={step.step}
+              annotations={step.annotations}
             />
           ))}
         </View>
