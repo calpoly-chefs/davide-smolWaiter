@@ -5,33 +5,34 @@ import Annotation from "./Annotation.js";
 import { connect } from "react-redux";
 
 class Step extends React.Component {
-  _onPress(edit) {
-    edit
+  _onPress(edit, hasAnno) {
+    edit && !hasAnno
       ? Alert.alert("This is a step.")
       : null
   }
 
   render() {
-    const annotations = this.props.recipe.annotations;
-    const annotationIDs = this.props.annotations;
+    const annotations = this.props.annotations;
     const text = this.props.text;
-    const id = this.props.id;
+    const stepNum = this.props.stepNum;
+    const hasAnno = annotations.length > 0 ? true : false
+
     return (
       
       <View style={step_styles.container}>
-        <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
+        <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit, hasAnno)}>
           <View style={step_styles.childTextContainer}>
             <Text style={step_styles.step_text}>{text}</Text>
           </View>
         </TouchableWithoutFeedback>
         <View style={step_styles.childIdContainer}>
-          <Text style={step_styles.id_text}>{this.props.stepNum}</Text>
+          <Text style={step_styles.id_text}>{stepNum}</Text>
         </View>
-        
-        {annotationIDs.slice(0, 1).map(id => {
-          const anno = annotations.byId[id];
-          return <Annotation date={anno.date} text={anno.text} edit={this.props.edit}/>;
-        })}
+        {hasAnno 
+          ? annotations.map( (anno) => (
+              <Annotation date={anno.date} text={anno.text} edit={this.props.edit}/>
+            )) 
+          : null}
       </View>
       
     );

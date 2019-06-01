@@ -15,8 +15,8 @@ class RecipeDetailsScreen extends React.Component {
   render() {
     // this should be changed to reference the current recipe given a current recipe id
     const recipe = this.props.navigation.getParam('recipe', null);
-    const ingredients = this.props.recipe.ingredients;
-    const steps = this.props.recipe.steps;
+    const ingredients = recipe.ingredients;
+    const steps = recipe.steps;
     
     return (
       <ScrollView style={styles.container}>
@@ -24,11 +24,11 @@ class RecipeDetailsScreen extends React.Component {
         <RecipeHeader recipe={recipe} />
         <View style={styles.childContainer}>
           <Text style={styles.header}>Ingredients</Text>
-          <Ingredients recipe={recipe} ingredients={ingredients}/>
+          <Ingredients ingredients={ingredients} edit={false}/>
         </View>
         <View style={styles.childContainer}>
           <Text style={styles.header}>Steps</Text>
-          <Steps recipe={recipe} steps={steps} />
+          <Steps steps={steps} edit={false}/>
         </View>
       </ScrollView>
     );

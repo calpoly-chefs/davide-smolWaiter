@@ -23,11 +23,11 @@ class JournalDetailsScreen extends React.Component {
         <RecipeHeader recipe={recipe} />
         <View style={styles.childContainer}>
           <Text style={styles.header}>Ingredients</Text>
-          <Ingredients recipe={recipe} ingredients={ingredients}/>
+          <Ingredients ingredients={ingredients} edit={false}/>
         </View>
         <View style={styles.childContainer}>
           <Text style={styles.header}>Steps</Text>
-          <Steps recipe={recipe} steps={steps} />
+          <Steps steps={steps} edit={false}/>
         </View>
       </ScrollView>
     );

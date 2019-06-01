@@ -8,7 +8,7 @@ import {
   View
 } from "react-native";
 
-import { fetchAllRecipes } from "../actions/actions"
+import { fetchAllRecipes } from "../actions/actions";
 import RecipeCard from "../components/RecipeCard";
 import { connect } from "react-redux";
 

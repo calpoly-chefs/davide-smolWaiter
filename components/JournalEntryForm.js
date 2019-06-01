@@ -102,7 +102,7 @@ let JournalEntryForm = props => {
             </Text>
           }
         >
-            <Ingredients recipe={recipe} ingredients={ingredients} edit={true}/>
+            <Ingredients ingredients={ingredients} edit={true}/>
         </DropDownItem>
       </View>
 
@@ -119,7 +119,7 @@ let JournalEntryForm = props => {
             </Text>
           }
         >
-            <Steps recipe={recipe} steps={steps} edit={true}/>
+            <Steps steps={steps} edit={true}/>
         </DropDownItem>
       </View>
 
