@@ -2,13 +2,13 @@ import React from "react";
 import { Platform, StatusBar, StyleSheet, View } from "react-native";
 import { AppLoading, Asset, Font, Icon } from "expo";
 import { Provider } from "react-redux";
-import configureStore from "./state/configureStore"
-import Store from "./state/Store"
+import configureStore from "./state/configureStore";
+import Store from "./state/Store";
 import AppNavigator from "./navigation/AppNavigator";
 
 // NOTE: to prevent interrupting your workflow the old store is still available for now.
 const store = configureStore(); // * new store
-// const store = Store; // * old store 
+// const store = Store; // * old store
 
 export default class App extends React.Component {
   state = {
@@ -34,7 +34,6 @@ export default class App extends React.Component {
             <AppNavigator />
           </View>
         </Provider>
-
       );
     }
   }

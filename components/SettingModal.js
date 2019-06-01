@@ -1,5 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback
+} from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import modal from "../state/ModalSlice";
 import UserIcon from "./UserIcon.js";
@@ -18,13 +24,13 @@ class SettingModal extends React.Component {
             this.props.dispatch(modal.actions.setTrue());
           }}
         />
-
+        // TODO: Modal animation need to be corrected
         <ModalWrapper
           containerStyle={styles.modalContainer}
           visible={this.props.modal}
           transparent={false}
           position="right"
-          onRequestClose={() => this.props.dispatch(modal.actions.toggle())}
+          onRequestClose={() => this.props.dispatch(modal.actions.setFalse())}
           hideModalContentWhileAnimating={true}
         >
           <View style={styles.modal}>
@@ -37,13 +43,17 @@ class SettingModal extends React.Component {
               <Icon name="user" color={"#000"} size={24} />
               <View style={styles.textContainer}>
                 <Text style={styles.text}> Edit Profile </Text>
-                <TouchableOpacity
-                  onPress={() =>
-                    this.props.navigation.navigate("AccountSetting")
-                  }
-                >
-                  <Text style={styles.text}> Account </Text>
-                </TouchableOpacity>
+                <TouchableWithoutFeedback>
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.props.navigation.navigate("AccountSetting");
+                      this.props.dispatch(modal.actions.setFalse());
+                    }}
+                  >
+                    <Text style={styles.text}> Account </Text>
+                  </TouchableOpacity>
+                </TouchableWithoutFeedback>
+
                 <Text style={styles.text}> Sign Out </Text>
               </View>
             </View>

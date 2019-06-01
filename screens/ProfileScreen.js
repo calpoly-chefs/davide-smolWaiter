@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Button, StatusBar, StyleSheet, AsyncStorage } from "react-native";
+import {
+  View,
+  Button,
+  StatusBar,
+  StyleSheet,
+  AsyncStorage,
+  Text
+} from "react-native";
 import UserIcon from "../components/UserIcon.js";
 import SettingModal from "../components/SettingModal.js";
 
@@ -22,17 +29,17 @@ export default class ProfileScreen extends React.Component {
         <View style={styles.bioText}>
           <Text>{bioText}</Text>
         </View>
-      <View style={styles.container}>
-        <Button title="I'm done, sign me out" onPress={this._signOutAsync} />
-        <StatusBar barStyle="default" />
+        <View style={styles.container}>
+          <Button title="I'm done, sign me out" onPress={this._signOutAsync} />
+          <StatusBar barStyle="default" />
+        </View>
       </View>
-    </View>
     );
   }
 
   _signOutAsync = async () => {
     await AsyncStorage.clear();
-    this.props.navigation.navigate('Auth');
+    this.props.navigation.navigate("Auth");
   };
 }
 

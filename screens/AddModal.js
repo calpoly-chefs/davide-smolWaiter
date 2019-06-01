@@ -14,6 +14,7 @@ class AddModal extends React.Component {
     return (
       <View style={styles.container}>
         {/* Modal */}
+        // TODO: Fix animation of modal
         <Modal
           visible={true}
           transparent={true}
@@ -40,7 +41,9 @@ class AddModal extends React.Component {
               </View>
               <View style={styles.iconContainer}>
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate("AddRecipeManual")}
+                  onPress={() =>
+                    this.props.navigation.navigate("AddRecipeManual")
+                  }
                 >
                   <Icon style={styles.icon} name="edit-2" size={35} />
                   <Text style={styles.iconText}> Manual </Text>
