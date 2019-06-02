@@ -22,11 +22,11 @@ let RecipeManualForm = props => {
   // TODO: Fix fields so ingredients work correctly
   addIngredients = ({fields}) => (
     <View>
-      {fields.map((ingredient, index) => (
+      {fields.map((ing, index) => (
         <View style={f_styles.ingredients}>
           <View style={f_styles.amount}>
             <Field
-              name={"amount"}
+              name={`${ing}.amt`}
               component={MyTextInput}
               placeholder={"2 cups"}
               label={index}
@@ -35,7 +35,7 @@ let RecipeManualForm = props => {
 
           <View style={f_styles.ingredient}>
             <Field
-              name={"ingredient"}
+              name={`${ing}.ing`}
               component={MyTextInput}
               placeholder={"chicken"}
               label={index}

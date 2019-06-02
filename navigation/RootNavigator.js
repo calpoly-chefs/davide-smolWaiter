@@ -16,10 +16,10 @@ const RootStack = createSwitchNavigator(
     App: MainTabNavigator,
 
     // the following screen is for testing purposes only
-    Practice: LoginScreen
+    Practice: AddRecipeManualScreen
   },
   {
-    initialRouteName: "AuthLoading",
+    initialRouteName: "Practice",
     headerMode: "none"
   }
 );
