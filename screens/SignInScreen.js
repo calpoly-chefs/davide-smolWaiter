@@ -3,11 +3,13 @@ import { StyleSheet, Image, View, Text, Button, AsyncStorage } from "react-nativ
 import { Field, reduxForm } from "redux-form";
 import { connect } from 'react-redux'
 import { login } from "../actions/actions"
+import store from "../state/configureStore"
+import SignInForm from "../components/SignInForm"
 
 class SignInScreen extends React.Component {
-    _signInAsync = async () => {
-        this.props.login();
-        const userToken = this.props.auth.isAuthenticated;
+    _signInAsync = async (creds) => {
+        await this.props.login(creds);
+        const userToken = store.getState().auth.token;
         await AsyncStorage.setItem('userToken', userToken.toString());
         this.props.navigation.navigate('App');
     };
@@ -22,23 +24,8 @@ class SignInScreen extends React.Component {
                     <View style={styles.signIn}>
 
                         {/* TODO: implement field */}
-                        {/* <View style={styles.field}>
-                    <Text>username / email </Text>
-                    <Field
-                        name={"cookTime"}
-                        component={MyTextInput}
-                        placeholder={""}
-                    />
-                </View>
-                <View style={styles.field}>
-                    <Text>password</Text>
-                    <Field
-                        name={"cookTime"}
-                        component={MyTextInput}
-                        placeholder={""}
-                    />
-                </View> */}
-                        <Button title="Sign in!" onPress={this._signInAsync} />
+
+                        <SignInForm onSubmit={this._signInAsync} />
                     </View>
                     <View style={styles.signUp}>
                         <Text style={styles.helpText}> Don't have an account yet? </Text>
@@ -59,18 +46,14 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        login: () => dispatch(login())
+        login: (credentials) => dispatch(login(credentials))
     }
 }
 
-SignIn = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(SignInScreen)
-
-export default reduxForm({
-    form: "signin-screen"
-})(SignIn);
 
 
 const styles = StyleSheet.create({

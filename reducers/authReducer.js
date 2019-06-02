@@ -1,4 +1,4 @@
-import { LOGIN_PENDING, LOGIN_FULFILLED, LOGIN_REJECTED } from "../constants/ActionTypes"
+import { LOGIN_PENDING, LOGIN_FULFILLED, LOGIN_REJECTED, TOKEN_UPDATED } from "../constants/ActionTypes"
 
 const initialState = {
     token: "",
@@ -29,6 +29,13 @@ export default function loginReducer(state = initialState, action) {
                 ...state,
                 isFetching: false,
                 errorMessage: "error: authentication failed"
+            };
+        case TOKEN_UPDATED:
+            console.log("updated to: " + action.token);
+            return {
+                ...state,
+                isFetching: false,
+                token: action.token
             };
         default:
             return state;

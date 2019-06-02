@@ -19,7 +19,6 @@ let RecipeManualForm = props => {
   const { handleSubmit } = props;
   const recipe = props.recipe;
 
-  // TODO: Fix fields so ingredients work correctly
   addIngredients = ({fields}) => (
     <View>
       {fields.map((ing, index) => (
