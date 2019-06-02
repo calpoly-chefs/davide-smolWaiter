@@ -9,12 +9,9 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
-  Picker
+  StyleSheet
 } from "react-native";
 import MyTextInput from "./MyTextInput";
-import MyPicker from "./MyPicker";
-import DropDownItem from "react-native-drop-down-item";
 import Icon from "react-native-vector-icons/Feather";
 import { fieldSubscriptionItems } from "final-form";
 
@@ -80,7 +77,7 @@ let RecipeManualForm = props => {
         </View>
       ))}
 
-      <TouchableOpacity onPress={() => fields.push({})}>
+      <TouchableOpacity onPress={() => fields.push({}) }>
         <Icon name="plus-circle" size={25} style={{ alignSelf: "center", paddingBottom:12 }}/>
       </TouchableOpacity>
     </View>

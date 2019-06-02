@@ -23,9 +23,9 @@ import Steps from "../components/Steps.js";
 
 let JournalEntryForm = props => {
   const { handleSubmit } = props;
-  const recipe = props.recipe.recipes.byId.r1;
-  const ingredients = props.recipe.ingredients;
-  const steps = props.recipe.steps;
+  // const recipe = props.recipe.recipes.byId.r1;
+  // const ingredients = props.recipe.ingredients;
+  // const steps = props.recipe.steps;
 
   const arrow_up = <Ionicon name='ios-arrow-up' size={20} color='black'/>
   const arrow_down = <Ionicon name='ios-arrow-down' size={20} color={'black'}/>
@@ -53,7 +53,7 @@ let JournalEntryForm = props => {
       </View>
 
       <View style={f_styles.time}>
-        <View style={f_styles.field}>
+        <View style={f_styles.field1}>
           <Text style={f_styles.text}>Prep Time</Text>
           <Field
             name={"prepTime"}
@@ -89,7 +89,7 @@ let JournalEntryForm = props => {
         />
       </View>
       
-      <View style={f_styles.field}>
+      {/* <View style={f_styles.field}>
         <DropDownItem
           key={i}
           contentVisible={false}
@@ -121,7 +121,7 @@ let JournalEntryForm = props => {
         >
             <Steps steps={steps} edit={true}/>
         </DropDownItem>
-      </View>
+      </View> */}
 
 
       <TouchableOpacity onPress={props.handleSubmit}>
@@ -163,6 +163,11 @@ const f_styles = StyleSheet.create({
   },
   text: {
     paddingBottom: 8,
+  },
+  field1: {
+    flex: 1,
+    paddingBottom: 12,
+    paddingRight: 5
   },
   field: {
     flex: 1,

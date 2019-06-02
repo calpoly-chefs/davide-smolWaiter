@@ -21,7 +21,7 @@ class AddJournalEntryScreen extends Component {
     // const recipe = Recipes()[0];
     return (
       <View style={je_styles.parent}>
-        <RecipeHeader recipe={recipe.recipes.byId.r1} />
+        {/* <RecipeHeader recipe={recipe.recipes.byId.r1} /> */}
         <JournalEntryForm
           onSubmit={values => Alert.alert("Submitted!", JSON.stringify(values))}
           style={je_styles.form}

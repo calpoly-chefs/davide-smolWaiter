@@ -9,7 +9,7 @@ export default class Steps extends React.Component {
         return steps.map((step, index) => {
             return (
                 <Step
-                    stepNum={index}
+                    stepNum={index+1}
                     text={step.step}
                     annotations={step.annotations}
                     edit={edit}
