@@ -24,7 +24,7 @@ class QuickActionsModal extends Component {
 
         {/* Modal */}
         <Modal
-          // FIXME: slide animation not working
+          style={{ margin: 0 }} // ensures modal streches to the edge of the screen
           visible={this.props.modal.isQuickActionsVisable}
           transparent={true}
           swipeDirection="down"

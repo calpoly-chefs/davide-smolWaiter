@@ -44,9 +44,8 @@ JournalStack.navigationOptions = {
   )
 };
 
-//TODO: modal transition
+//TODO: add recipe modal 
 const AddModalStack = createStackNavigator({
-  Add: AddRecipeScreen,
   AddRecipeManual: AddRecipeManualScreen
 });
 
@@ -57,6 +56,7 @@ AddModalStack.navigationOptions = {
   )
 };
 
+// FIXME: drawer modal
 const ProfileStack = createStackNavigator(
   {
     Profile: ProfileScreen,
