@@ -9,12 +9,9 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
-  Picker
+  StyleSheet
 } from "react-native";
 import MyTextInput from "./MyTextInput";
-import MyPicker from "./MyPicker";
-import DropDownItem from "react-native-drop-down-item";
 import Icon from "react-native-vector-icons/Feather";
 import { fieldSubscriptionItems } from "final-form";
 
@@ -25,11 +22,11 @@ let RecipeManualForm = props => {
   // TODO: Fix fields so ingredients work correctly
   addIngredients = ({fields}) => (
     <View>
-      {fields.map((ingredient, index) => (
+      {fields.map((ing, index) => (
         <View style={f_styles.ingredients}>
           <View style={f_styles.amount}>
             <Field
-              name={"amount"}
+              name={`${ing}.amt`}
               component={MyTextInput}
               placeholder={"2 cups"}
               label={index}
@@ -38,7 +35,7 @@ let RecipeManualForm = props => {
 
           <View style={f_styles.ingredient}>
             <Field
-              name={"ingredient"}
+              name={`${ing}.ing`}
               component={MyTextInput}
               placeholder={"chicken"}
               label={index}
@@ -80,7 +77,7 @@ let RecipeManualForm = props => {
         </View>
       ))}
 
-      <TouchableOpacity onPress={() => fields.push({})}>
+      <TouchableOpacity onPress={() => fields.push({}) }>
         <Icon name="plus-circle" size={25} style={{ alignSelf: "center", paddingBottom:12 }}/>
       </TouchableOpacity>
     </View>
@@ -109,6 +106,42 @@ let RecipeManualForm = props => {
       </View>
 
       <View style={f_styles.field}>
+        <Text style={f_styles.text}>Cook Time</Text>
+        <Field
+          name={"cookTime"}
+          component={MyTextInput}
+          placeholder={"15 min"}
+        />
+      </View>
+
+      <View style={f_styles.field}>
+        <Text style={f_styles.text}>Prep Time</Text>
+        <Field
+          name={"prepTime"}
+          component={MyTextInput}
+          placeholder={"20 min"}
+        />
+      </View>
+
+      <View style={f_styles.field}>
+        <Text style={f_styles.text}>Difficulty</Text>
+        <Field
+          name={"difficulty"}
+          component={MyTextInput}
+          placeholder={"5"}
+        />
+      </View>
+
+      <View style={f_styles.field}>
+        <Text style={f_styles.text}>Rating</Text>
+        <Field
+          name={"rating"}
+          component={MyTextInput}
+          placeholder={"5"}
+        />
+      </View>
+
+      <View style={f_styles.field}>
         <View style={f_styles.amount}>
           <Text style={f_styles.text}>Ingredients</Text>
           <FieldArray name="ingredients" component={addIngredients}/>
@@ -118,6 +151,25 @@ let RecipeManualForm = props => {
       <View style={f_styles.field}>
           <Text style={f_styles.text}>Steps</Text>
           <FieldArray name="steps" component={addSteps}/>
+      </View>
+
+      {/* Checkbox? */}
+      <View style={f_styles.field}>
+        <Text style={f_styles.text}>Public</Text>
+        <Field
+          name={"isPublic"}
+          component={MyTextInput}
+          placeholder={"Yes/No"}
+        />
+      </View>
+
+      {/* Make Hidden */}
+      <View style={f_styles.field}>
+        <Field
+          name={"source"}
+          component={MyTextInput}
+          placeholder={"Manual"}
+        />
       </View>
 
       <TouchableOpacity onPress={props.handleSubmit}>
@@ -195,7 +247,7 @@ const f_styles = StyleSheet.create({
     alignItems: "center",
     height: 35,
     width: 200,
-    marginBottom: 50
+    marginBottom: 120
   }
 });
 

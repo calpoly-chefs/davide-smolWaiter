@@ -14,7 +14,7 @@ class AddModal extends React.Component {
     return (
       <View style={styles.container}>
         {/* Modal */}
-        // TODO: Fix animation of modal
+        {/* // TODO: Fix animation of modal */}
         <Modal
           visible={true}
           transparent={true}

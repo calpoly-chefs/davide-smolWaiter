@@ -34,6 +34,14 @@ export function fetchAllRecipes(token) {
     }
 }
 
+export function createNewRecipe(recipe) {
+    console.log("recipe:" + recipe)
+    return {
+        type: RECIPE,
+        payload: api.post("/recipes", recipe)
+    }
+}
+
 // TODO: fetch all the things
 // TODO:
 export function createUser() {
