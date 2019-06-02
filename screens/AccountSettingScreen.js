@@ -1,6 +1,7 @@
 import React from "react";
 import UserIcon from "../components/UserIcon.js";
-import SettingModal from "../components/SettingModal.js";
+// TODO: 
+// import SettingModal from "../components/SettingModal.js";
 import { View, StyleSheet, Text } from "react-native";
 
 export default class AccountSettingScreen extends React.Component {

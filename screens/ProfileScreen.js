@@ -15,7 +15,8 @@ import { fetchUser } from "../actions/actions";
 class ProfileScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Profile",
-    headerRight: <SettingModal navigation={navigation} />
+    // TODO:
+    // headerRight: <SettingModal navigation={navigation} />
   });
 
   componentWillMount() {

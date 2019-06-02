@@ -7,7 +7,7 @@ import Store from "./state/Store";
 import AppNavigator from "./navigation/AppNavigator";
 
 // NOTE: to prevent interrupting your workflow the old store is still available for now.
-const store = configureStore(); // * new store
+const store = configureStore; // * new store
 // const store = Store; // * old store
 
 export default class App extends React.Component {

@@ -8,7 +8,7 @@ const initialState = {
 }
 
 export default function modalReducer(state = initialState, action) {
-    console.log(action)
+    // console.log(action)
     switch (action.type) {
         case TOGGLE_QUICK_ACTIONS:
             return {

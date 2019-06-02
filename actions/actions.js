@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-import { LOGIN, LOGOUT, CREATE_USER, RECIPE, TOGGLE_QUICK_ACTIONS, SET_CURRENT } from "../constants/ActionTypes"
+import { LOGIN, LOGOUT, CREATE_USER, RECIPE, TOGGLE_QUICK_ACTIONS, USER, SET_CURRENT } from "../constants/ActionTypes"
 import api from "../api"
-=======
-import {
-  LOGIN,
-  LOGOUT,
-  CREATE_USER,
-  RECIPE,
-  TOGGLE_QUICK_ACTIONS,
-  USER
-} from "../constants/ActionTypes";
-import api from "../api";
->>>>>>> 1b356e7191c70ac058a33d6a436d98698daf119d
 import fakeapi from "../practice/fakeapi";
 
 // authenticates a remy by username and password
@@ -26,10 +14,10 @@ export function login() {
       password: "password"
     })
     // .then(response => {
-    //     console.log("POST RESPONSE: ", JSON.stringify(response));
+    //   console.log("POST RESPONSE: ", JSON.stringify(response));
     // })
     // .catch(function (error) {
-    //     console.log(error);
+    //   console.log(error);
     // })
   };
 }
@@ -60,11 +48,11 @@ export function createUser() {
 }
 
 export function setCurrentRecipe(id) {
-    console.log("actions: " + id);
-    return {
-        type: SET_CURRENT,
-        id
-    }
+  console.log("actions: " + id);
+  return {
+    type: SET_CURRENT,
+    id
+  }
 }
 
 // TODO: 
