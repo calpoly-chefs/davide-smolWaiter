@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZW15In0.2vJkjEAcVkUz8k5c3Ds4eGOz6dCIpjbH4Dx3noqIqm8';
+const token = `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZW15PDNhbGZyZWRvIn0.kntgSPfTz7CXtruRuKokcSjxapIj7Z2h2TfIGlSgSng`;
 
 // TODO update token to be a dynamic token from localstorage or state
 // axios is HTTP client for accessing and sending data to a database

@@ -7,23 +7,18 @@ import {
   TextInput
 } from "react-native";
 import { WebBrowser } from "expo";
-import RecipeHeader from "../components/RecipeHeader";
-import CloudinaryImage from "react-native-cloudinary-image-display";
-import Recipes from "../constants/SomeRecipes";
 import RecipeManualForm from "../components/RecipeManualForm";
 import { Alert } from "react-native";
 import { connect } from "react-redux";
+import { createNewRecipe } from "../actions/actions";
 
 class AddRecipeManualScreen extends Component {
   render() {
-    const img1 = "bars_.jpg";
-    const recipe = this.props.recipe;
     return (
       <View style={rm_styles.parent}>
         <RecipeManualForm
-          onSubmit={values => Alert.alert("Submitted!", JSON.stringify(values))}
+          onSubmit={values => createNewRecipe(JSON.stringify(values))}
           style={rm_styles.form}
-          recipe={recipe}
         />
       </View>
     );
@@ -59,6 +54,19 @@ const rm_styles = StyleSheet.create({
   }
 });
 
-export default connect(state => ({ recipe: state.recipe }))(
-  AddRecipeManualScreen
-);
+function mapStateToProps(state) {
+  return {
+      recipes: state.recipes
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      createNewRecipe: (values) => dispatch(createNewRecipe(values))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddRecipeManualScreen)

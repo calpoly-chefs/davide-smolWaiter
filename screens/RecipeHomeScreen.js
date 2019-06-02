@@ -56,6 +56,7 @@ export default connect(
   mapDispatchToProps
 )(HomeScreen)
 
+
 // Style sheet
 const styles = StyleSheet.create({
   container: {
