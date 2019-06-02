@@ -13,6 +13,12 @@ import { connect } from "react-redux";
 import { createNewRecipe } from "../actions/actions";
 
 class AddRecipeManualScreen extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: "Add Recipe: Manual",
+    // TODO:
+    // headerRight: <SettingModal navigation={navigation} />
+  });
+
   render() {
     return (
       <View style={rm_styles.parent}>
@@ -56,13 +62,13 @@ const rm_styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-      recipes: state.recipes
+    recipes: state.recipes
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-      createNewRecipe: (values) => dispatch(createNewRecipe(values))
+    createNewRecipe: (values) => dispatch(createNewRecipe(values))
   }
 }
 
