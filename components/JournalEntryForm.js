@@ -1,7 +1,7 @@
 import React from "react";
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import store from '../state/Store.js'
+import store from "../state/Store.js";
 // import { Form, Field } from "react-final-form";
 import {
   ScrollView,
@@ -15,11 +15,10 @@ import MyTextInput from "./MyTextInput";
 import MyPicker from "./MyPicker";
 import DropDownItem from "react-native-drop-down-item";
 import Icon from "react-native-vector-icons/Feather";
-import Ionicon from "react-native-vector-icons/Ionicons"
+import Ionicon from "react-native-vector-icons/Ionicons";
 
 import Ingredients from "../components/Ingredients.js";
 import Steps from "../components/Steps.js";
-
 
 let JournalEntryForm = props => {
   const { handleSubmit } = props;
@@ -27,8 +26,10 @@ let JournalEntryForm = props => {
   const ingredients = props.recipe.ingredients;
   // const steps = props.recipe.steps;
 
-  const arrow_up = <Ionicon name='ios-arrow-up' size={20} color='black'/>
-  const arrow_down = <Ionicon name='ios-arrow-down' size={20} color={'black'}/>
+  const arrow_up = <Ionicon name="ios-arrow-up" size={20} color="black" />;
+  const arrow_down = (
+    <Ionicon name="ios-arrow-down" size={20} color={"black"} />
+  );
 
   return (
     <ScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
@@ -88,8 +89,7 @@ let JournalEntryForm = props => {
           placeholder={"309 Pool Party!"}
         />
       </View>
-      
-      <View style={f_styles.field}>
+      {/* <View style={f_styles.field}>
         <DropDownItem
           key={i}
           contentVisible={false}
@@ -97,9 +97,7 @@ let JournalEntryForm = props => {
           visibleImage={arrow_up}
           style={f_styles.dropdown}
           header={
-            <Text style={f_styles.dropdowntext}>
-              {"Annotate Ingredients"}
-            </Text>
+            <Text style={f_styles.dropdowntext}>{"Annotate Ingredients"}</Text>
           }
         >
             <Ingredients ingredients={ingredients} edit={true}/>
@@ -113,16 +111,11 @@ let JournalEntryForm = props => {
           invisibleImage={arrow_down}
           visibleImage={arrow_up}
           style={f_styles.dropdown}
-          header={
-            <Text style={f_styles.dropdowntext}>
-              {"Annotate Steps"}
-            </Text>
-          }
+          header={<Text style={f_styles.dropdowntext}>{"Annotate Steps"}</Text>}
         >
             <Steps steps={steps} edit={true}/>
         </DropDownItem>
-      </View>
-
+      </View> */}
 
       <TouchableOpacity onPress={props.handleSubmit}>
         <View style={f_styles.submit}>
@@ -142,7 +135,7 @@ const f_styles = StyleSheet.create({
     flexDirection: "row"
   },
   text: {
-    paddingBottom: 8,
+    paddingBottom: 8
   },
   field1: {
     flex: 1,
@@ -155,7 +148,7 @@ const f_styles = StyleSheet.create({
   },
   time: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "row"
   },
   dropdown: {
     alignSelf: "stretch"
@@ -175,6 +168,6 @@ const f_styles = StyleSheet.create({
   }
 });
 
-export default JournalEntryForm = reduxForm({
+export default (JournalEntryForm = reduxForm({
   form: "journalEntry"
-})(JournalEntryForm);
+})(JournalEntryForm));
