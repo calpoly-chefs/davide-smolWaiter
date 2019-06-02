@@ -6,8 +6,9 @@ import Ratings from "../components/Rating";
 import QuickActionsIcon from "../components/QuickActionsIcon";
 import { connect } from "react-redux";
 import modal from "../state/ModalSlice";
+import { toggleQuickActions } from "../actions/actions";
 
-class TestModal extends Component {
+class QuickActionsModal extends Component {
   render() {
     return (
       <View style={style.container}>
@@ -17,20 +18,20 @@ class TestModal extends Component {
           color={"#000"}
           size={24}
           onPress={() => {
-            this.props.dispatch(modal.actions.setTrue());
+            this.props.toggleQuickActions()
           }}
         />
 
         {/* Modal */}
         <Modal
           // FIXME: slide animation not working
-          visible={this.props.modal}
+          visible={this.props.modal.isQuickActionsVisable}
           transparent={true}
           swipeDirection="down"
           animationType={"slide"}
           animationOut={"slideInDown"}
-          onSwipeComplete={() => this.props.dispatch(modal.actions.toggle())}
-          onBackdropPress={() => this.props.dispatch(modal.actions.toggle())}
+          onSwipeComplete={() => this.props.toggleQuickActions()}
+          onBackdropPress={() => this.props.toggleQuickActions()}
           hideModalContentWhileAnimating={true}
         >
           <View style={style.mainContainer}>
@@ -116,5 +117,19 @@ const style = StyleSheet.create({
   }
 });
 
-// visiblity of the modal is stored in the state
-export default connect(state => ({ modal: state.modal }))(TestModal);
+function mapStateToProps(state) {
+  return {
+    modal: state.modal
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    toggleQuickActions: () => dispatch(toggleQuickActions())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(QuickActionsModal)
