@@ -8,22 +8,28 @@ import {
   Text
 } from "react-native";
 import UserIcon from "../components/UserIcon.js";
-import SettingModal from "../components/SettingModal.js";
+import SettingModal from "../modals/SettingModal.js";
+import { connect } from "react-redux";
+import { fetchUser } from "../actions/actions";
 
-export default class ProfileScreen extends React.Component {
+class ProfileScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Profile",
     headerRight: <SettingModal navigation={navigation} />
   });
 
+  componentWillMount() {
+    this.props.fetchUser();
+  }
+
   render() {
-    const username = "Alfredo \n Linguini";
+    const name = this.props.user.data.fName + "\n" + this.props.user.data.lName;
     const bioText =
       "Anyone can cook! I began my career working at one of the best restaurants in Paris,  Gusteau’s where I started as a garabage boy. Now I own a succesful restaurant, Ratatouille. Follow along with the recipes I try out in my own restaurant and recipes I make at home.";
     return (
       <View style={styles.container}>
         <View style={styles.childContainer}>
-          <Text style={styles.username}> {username} </Text>
+          <Text style={styles.username}>{name}</Text>
           <UserIcon size={120} />
         </View>
         <View style={styles.bioText}>
@@ -42,6 +48,24 @@ export default class ProfileScreen extends React.Component {
     this.props.navigation.navigate("Auth");
   };
 }
+
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+    auth: state.auth
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchUser: () => dispatch(fetchUser())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProfileScreen);
 
 const styles = StyleSheet.create({
   container: {

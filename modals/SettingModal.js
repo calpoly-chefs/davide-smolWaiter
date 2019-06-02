@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import modal from "../state/ModalSlice";
-import UserIcon from "./UserIcon.js";
+import UserIcon from "../components/UserIcon.js";
 import ModalWrapper from "react-native-modal-wrapper";
 import { connect } from "react-redux";
 
@@ -24,7 +24,7 @@ class SettingModal extends React.Component {
             this.props.dispatch(modal.actions.setTrue());
           }}
         />
-        // TODO: Modal animation need to be corrected
+        {/* TODO: Modal animation need to be corrected */}
         <ModalWrapper
           containerStyle={styles.modalContainer}
           visible={this.props.modal}
