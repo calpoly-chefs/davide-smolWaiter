@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, CREATE_USER, RECIPE } from "../constants/ActionTypes"
+import { LOGIN, LOGOUT, CREATE_USER, RECIPE, TOGGLE_QUICK_ACTIONS } from "../constants/ActionTypes"
 import api from "../api"
 import fakeapi from "../practice/fakeapi";
 
@@ -10,7 +10,7 @@ export function login() {
         // TODO: authenticate any user
         // TODO: input validation
         payload: api.post("login", {
-            username: "remy",
+            username: "remy<3alfredo",
             password: "password"
         })
         // .then(response => {
@@ -53,5 +53,11 @@ export function createUser() {
 export function logout() {
     return {
         type: LOGOUT
+    }
+}
+
+export function toggleQuickActions() {
+    return {
+        type: TOGGLE_QUICK_ACTIONS
     }
 }
