@@ -3,8 +3,10 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { WebBrowser } from "expo";
 import RecipeHeader from "../components/RecipeHeader";
 import CloudinaryImage from "react-native-cloudinary-image-display";
+import { setCurrentRecipe } from "../actions/actions";
+import { connect } from "react-redux";
 
-export default class RecipeCard extends Component {
+class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
     const img1 = "bars_.jpg";
@@ -12,16 +14,18 @@ export default class RecipeCard extends Component {
     return (
       <View style={rc_styles.parent}>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate("RecipeDetails", {
-            recipe: this.props.recipe
-          })}
+          onPress={() => 
+            {
+              this.props.navigation.navigate("RecipeDetails", {recipe: recipe});
+              setCurrentRecipe(recipe.id);
+              console.log("set: " + recipe.id)
+            }
+          }
           style={rc_styles.child}
         >
-          
-
           <CloudinaryImage
             cloudName={"littlechef"}
-            imageId={recipe.id == 1 ? img1 : img2}
+            imageId={recipe.id % 3 == 1 ? img1 : img2}
             width={350}
             height={134}
             style={rc_styles.image}
@@ -32,6 +36,25 @@ export default class RecipeCard extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+      // recipes: state.recipes,
+      modal: state.modal
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      setCurrentRecipe: (id) => dispatch(setCurrentRecipe(id))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RecipeCard)
+
 
 const rc_styles = StyleSheet.create({
   parent: {

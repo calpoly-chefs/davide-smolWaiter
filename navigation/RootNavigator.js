@@ -17,10 +17,10 @@ const RootStack = createSwitchNavigator(
 
     // the following screen is for testing purposes only
     // Practice: AddJournalEntryScreen
-    Practice: AddRecipeManualScreen
+    // Practice: AddRecipeManualScreen
   },
   {
-    initialRouteName: "Practice",
+    initialRouteName: "AuthLoading",
     headerMode: "none"
   }
 );

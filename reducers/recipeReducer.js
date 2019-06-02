@@ -27,6 +27,7 @@ export default function recipeReducer(state = initialState, action) {
                 isFetching: false,
                 errorMessage: "error: recipe could not be found"
             };
+
         default:
             return state;
     }

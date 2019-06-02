@@ -9,19 +9,22 @@ import {
 import { WebBrowser } from "expo";
 import RecipeHeader from "../components/RecipeHeader";
 import CloudinaryImage from "react-native-cloudinary-image-display";
-import Recipes from "../constants/SomeRecipes";
 import JournalEntryForm from "../components/JournalEntryForm";
 import { Alert } from "react-native";
 import { connect } from "react-redux";
+import { fetchAllRecipes } from "../actions/actions";
 
 class AddJournalEntryScreen extends Component {
+  componentWillMount() {
+    this.props.fetchAllRecipes();
+  }
+
   render() {
-    const img1 = "bars_.jpg";
-    const recipe = this.props.recipe;
-    // const recipe = Recipes()[0];
+    const recipe = this.props.recipes[this.props.recipes.currentRecipe];
+    console.log(this.props.recipes.currentRecipe)
     return (
       <View style={je_styles.parent}>
-        {/* <RecipeHeader recipe={recipe.recipes.byId.r1} /> */}
+        <RecipeHeader recipe={recipe} />
         <JournalEntryForm
           onSubmit={values => Alert.alert("Submitted!", JSON.stringify(values))}
           style={je_styles.form}
@@ -61,6 +64,23 @@ const je_styles = StyleSheet.create({
   }
 });
 
-export default connect(state => ({ recipe: state.recipe }))(
-  AddJournalEntryScreen
-);
+function mapStateToProps(state) {
+  return {
+      recipes: state.recipes
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      fetchAllRecipes: () => dispatch(fetchAllRecipes()),
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddJournalEntryScreen)
+
+// export default connect(state => ({ recipe: state.recipe }))(
+//   AddJournalEntryScreen
+// );

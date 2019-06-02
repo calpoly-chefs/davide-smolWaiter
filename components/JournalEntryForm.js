@@ -24,7 +24,7 @@ import Steps from "../components/Steps.js";
 let JournalEntryForm = props => {
   const { handleSubmit } = props;
   // const recipe = props.recipe.recipes.byId.r1;
-  // const ingredients = props.recipe.ingredients;
+  const ingredients = props.recipe.ingredients;
   // const steps = props.recipe.steps;
 
   const arrow_up = <Ionicon name='ios-arrow-up' size={20} color='black'/>
@@ -89,7 +89,7 @@ let JournalEntryForm = props => {
         />
       </View>
       
-      {/* <View style={f_styles.field}>
+      <View style={f_styles.field}>
         <DropDownItem
           key={i}
           contentVisible={false}
@@ -121,7 +121,7 @@ let JournalEntryForm = props => {
         >
             <Steps steps={steps} edit={true}/>
         </DropDownItem>
-      </View> */}
+      </View>
 
 
       <TouchableOpacity onPress={props.handleSubmit}>
@@ -130,26 +130,6 @@ let JournalEntryForm = props => {
         </View>
       </TouchableOpacity>
     </ScrollView>
-
-    // <Provider store={store}>
-    // <Form
-    //   onSubmit={handleSubmit}
-    // >
-    //   {({ handleSubmit, pristine, invalid }) => (
-    //     // <form onSubmit={handleSubmit}>
-    //       <View style={f_styles.field}>
-    //       <Text>Date</Text>
-    //       <Field
-    //         name={"date"}
-    //         component={input}
-    //         type={"text"}
-    //         placeholder={"Friday, March 15, 2019"}
-    //       />
-    //       </View>
-    //     // </form>
-    //   )}
-    // </Form>
-    // </Provider>
   );
 };
 

@@ -47,7 +47,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-      fetchAllRecipes: () => dispatch(fetchAllRecipes())
+      fetchAllRecipes: () => dispatch(fetchAllRecipes()),
   }
 }
 

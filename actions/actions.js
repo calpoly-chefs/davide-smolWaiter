@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, CREATE_USER, RECIPE, TOGGLE_QUICK_ACTIONS } from "../constants/ActionTypes"
+import { LOGIN, LOGOUT, CREATE_USER, RECIPE, TOGGLE_QUICK_ACTIONS, SET_CURRENT } from "../constants/ActionTypes"
 import api from "../api"
 import fakeapi from "../practice/fakeapi";
 
@@ -46,6 +46,14 @@ export function createNewRecipe(recipe) {
 export function createUser() {
     return {
         type: CREATE_USER
+    }
+}
+
+export function setCurrentRecipe(id) {
+    console.log("actions: " + id);
+    return {
+        type: SET_CURRENT,
+        id
     }
 }
 
