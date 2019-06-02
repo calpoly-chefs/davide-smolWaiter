@@ -1,5 +1,5 @@
 import React from "react"
-import { StyleSheet, Image, View, Text, Button, AsyncStorage } from "react-native"
+import { StyleSheet, Image, View, Text, Button, AsyncStorage, Alert } from "react-native"
 import { Field, reduxForm } from "redux-form";
 import { connect } from 'react-redux'
 import { login } from "../actions/actions"
@@ -8,10 +8,13 @@ import SignInForm from "../components/SignInForm"
 
 class SignInScreen extends React.Component {
     _signInAsync = async (creds) => {
-        await this.props.login(creds);
-        const userToken = store.getState().auth.token;
-        await AsyncStorage.setItem('userToken', userToken.toString());
-        this.props.navigation.navigate('App');
+        this.props.login(creds).then(() => {
+            const userToken = store.getState().auth.token;
+            AsyncStorage.setItem('userToken', userToken.toString());
+            this.props.navigation.navigate('App');
+        }).catch(error => {
+            Alert.alert("Identity theft is not a joke, Jim.");
+        });
     };
 
     render() {

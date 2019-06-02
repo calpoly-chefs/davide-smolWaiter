@@ -21,17 +21,19 @@ export default function loginReducer(state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
+                error: false,
                 token: action.payload.headers.authorization,
                 isAuthenticated: true
             };
         case LOGIN_REJECTED:
+            console.log("login rejected");
             return {
                 ...state,
                 isFetching: false,
+                error: true,
                 errorMessage: "error: authentication failed"
             };
         case TOKEN_UPDATED:
-            console.log("updated to: " + action.token);
             return {
                 ...state,
                 isFetching: false,

@@ -5,7 +5,6 @@ import fakeapi from "../practice/fakeapi";
 // authenticates a remy by username and password
 // stores the bearer token in the user slice to persist their session
 export function login(creds) {
-  console.log("creds in action: " + JSON.stringify(creds));
   return {
     type: LOGIN,
     // TODO: authenticate any user
