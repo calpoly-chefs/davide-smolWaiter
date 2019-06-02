@@ -35,10 +35,9 @@ export function fetchAllRecipes(token) {
 }
 
 export function createNewRecipe(recipe) {
-    console.log("recipe:" + recipe)
     return {
         type: RECIPE,
-        payload: api.post("/recipes", recipe)
+        payload: api.post("/recipes", JSON.stringify(recipe))
     }
 }
 

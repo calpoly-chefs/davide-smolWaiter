@@ -17,7 +17,7 @@ class AddRecipeManualScreen extends Component {
     return (
       <View style={rm_styles.parent}>
         <RecipeManualForm
-          onSubmit={values => createNewRecipe(JSON.stringify(values))}
+          onSubmit={values => createNewRecipe(values)}
           style={rm_styles.form}
         />
       </View>
