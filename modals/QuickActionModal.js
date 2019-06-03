@@ -18,7 +18,7 @@ class QuickActionsModal extends Component {
           color={"#000"}
           size={24}
           onPress={() => {
-            this.props.toggleQuickActions()
+            this.props.toggleQuickActions();
           }}
         />
 
@@ -38,8 +38,8 @@ class QuickActionsModal extends Component {
             {/* Modal Title */}
             <Text style={style.modalHeaderText}> Quick Actions </Text>
 
-            {/* Rate Recipe */}
-            <Ratings fillNum={0} dimension={35} />
+            {/* Rate Recipe
+            <Ratings fillNum={0} dimension={35} edit={true} /> */}
 
             {/* History */}
             <View style={style.historyContainer}>
@@ -84,7 +84,7 @@ const style = StyleSheet.create({
   mainContainer: {
     flex: 1,
     bottom: 0,
-    top: 500,
+    top: 650,
     paddingHorizontal: 20,
     backgroundColor: "#fff"
   },
@@ -120,16 +120,16 @@ const style = StyleSheet.create({
 function mapStateToProps(state) {
   return {
     modal: state.modal
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     toggleQuickActions: () => dispatch(toggleQuickActions())
-  }
+  };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(QuickActionsModal)
+)(QuickActionsModal);

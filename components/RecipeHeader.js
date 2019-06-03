@@ -3,10 +3,12 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { WebBrowser } from "expo";
 import Icon from "react-native-vector-icons/Feather";
 import Recipes from "../constants/SomeRecipes";
+import Rating from "../components/Rating";
 
 export default class RecipeHeader extends Component {
   render() {
     const recipe = this.props.recipe;
+    // TODO: updated author with state
     const author1 = "Mel's Kitchen";
     const author2 = "Chowhound";
 
@@ -14,11 +16,7 @@ export default class RecipeHeader extends Component {
       <View style={rh_styles.header} contentContainerSytle={rh_styles.content}>
         <Text style={rh_styles.title}> {recipe.title} </Text>
         <View style={rh_styles.rating}>
-          <Icon name="star" size={20} />
-          <Icon name="star" size={20} />
-          <Icon name="star" size={20} />
-          <Icon name="star" size={20} />
-          <Icon name="star" size={20} />
+          <Rating fillNum={recipe.rating} dimension={20} />
         </View>
         <Text style={rh_styles.author}>
           {recipe.id == 1 ? author1 : author2}
@@ -66,8 +64,7 @@ const rh_styles = StyleSheet.create({
   },
 
   rating: {
-    flex: 1,
-    flexDirection: "row",
+    width: 110,
     paddingBottom: 5
   },
 

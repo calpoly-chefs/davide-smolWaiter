@@ -16,7 +16,7 @@ import MyPicker from "./MyPicker";
 import DropDownItem from "react-native-drop-down-item";
 import Icon from "react-native-vector-icons/Feather";
 import Ionicon from "react-native-vector-icons/Ionicons";
-
+import Rating from "./Rating.js";
 import Ingredients from "../components/Ingredients.js";
 import Steps from "../components/Steps.js";
 
@@ -32,14 +32,10 @@ let JournalEntryForm = props => {
   );
   return (
     <ScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
-      <View style={f_styles.field}>
+      <View style={f_styles.rating}>
         <Text style={f_styles.text}>Rate</Text>
         <View style={f_styles.rating}>
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
+          <Rating edit={true} fillNum={0} dimension={30} />
         </View>
       </View>
 
@@ -134,8 +130,8 @@ const f_styles = StyleSheet.create({
     padding: 20
   },
   rating: {
-    flex: 1,
-    flexDirection: "row"
+    width: 150,
+    paddingBottom: 5
   },
   text: {
     paddingBottom: 8
@@ -170,7 +166,6 @@ const f_styles = StyleSheet.create({
     marginBottom: 50
   }
 });
-
 
 export default (JournalEntryForm = reduxForm({
   form: "journalEntry"
