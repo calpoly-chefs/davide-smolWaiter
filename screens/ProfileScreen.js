@@ -45,6 +45,8 @@ class ProfileScreen extends React.Component {
   }
 
   _signOutAsync = async () => {
+    const userToken = await AsyncStorage.getItem('userToken');
+    console.log("usr token: " + userToken);
     await AsyncStorage.clear();
     this.props.navigation.navigate("Auth");
   };

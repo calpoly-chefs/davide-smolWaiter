@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, ActivityIndicator, View, StatusBar, AsyncStorage } from 'react-native'
+import { updateToken } from '../actions/actions';
+import { connect } from "react-redux";
 
-export default class AuthLoadingScreen extends React.Component {
+class AuthLoadingScreen extends React.Component {
     constructor() {
         super();
         this._bootstrapAsync();
@@ -9,11 +11,13 @@ export default class AuthLoadingScreen extends React.Component {
 
     // Fetch the token from storage then navigate to our appropriate place
     _bootstrapAsync = async () => {
-        const userToken = await AsyncStorage.getItem('userToken');
-
+        //const userToken = await AsyncStorage.getItem('userToken');
+        const token = await AsyncStorage.getItem('userToken')
+        this.props.updateToken(token);
+        console.log("token updated action called for: "+token);
         // This will switch to the App screen or Auth screen and this loading
         // screen will be unmounted and thrown away.
-        this.props.navigation.navigate(userToken ? 'App' : 'Auth');
+        this.props.navigation.navigate(token ? 'App' : 'Auth');
     };
 
     // Render any loading content 
@@ -26,6 +30,23 @@ export default class AuthLoadingScreen extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        auth: state.auth
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        updateToken: (tkn) => dispatch(updateToken(tkn))
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AuthLoadingScreen);
 
 const styles = StyleSheet.create({
     container: {

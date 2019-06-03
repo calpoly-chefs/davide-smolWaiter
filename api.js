@@ -1,12 +1,6 @@
 import axios from 'axios';
 import store from "./state/configureStore"
-
-loadToken = async () => {
-    // userToken = await AsyncStorage.getItem('userToken')
-    // userToken = this.props.auth.token
-    console.log(userToken)
-    return userToken
-}
+import { AsyncStorage } from "react-native"
 
 
 
@@ -20,16 +14,14 @@ const client = axios.create({
     }
 })
 
+
 client.interceptors.request.use(function (config) {
-    // const token = this.loadToken()
-    // const token = store.getState().auth.token;
-    const token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyZW15PDNhbGZyZWRvIn0.kntgSPfTz7CXtruRuKokcSjxapIj7Z2h2TfIGlSgSng";
+    const token = store.getState().auth.token;
+    console.log("auth token:" + token);
     config.headers.Authorization = token;
     return config;
 });
 
-// client.defaults.headers.common['Authorization'] = token
-console.log("auth token:" + store.getState().auth.token)
 
 
 export default client

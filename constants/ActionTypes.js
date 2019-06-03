@@ -3,6 +3,8 @@ export const LOGIN_PENDING = "LOGIN_PENDING";
 export const LOGIN_FULFILLED = "LOGIN_FULFILLED";
 export const LOGIN_REJECTED = "LOGIN_REJECTED";
 
+export const TOKEN_UPDATED = "TOKEN_UPDATED";
+
 export const LOGOUT = "LOGOUT";
 
 export const CREATE_USER = "CREATE_USER";
