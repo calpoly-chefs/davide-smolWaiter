@@ -7,10 +7,9 @@ import MyTextInput from "./MyTextInput";
 import { connect } from "react-redux";
 
 class Ingredient extends React.Component {
-
   _onPress(edit, hasAnno) {
     edit && !hasAnno
-      ? Alert.alert("hello")
+      ? Alert.alert("This is an ingredient.")
       : null
   }
 
@@ -19,52 +18,52 @@ class Ingredient extends React.Component {
     const text = this.props.text;
     const hasAnno = annotations.length > 0 ? true : false
 
-    addAnnotation = ({ fields }) => (
-      this.props.edit && !hasAnno ?
-        <View style={ing_styles.container}>
-          <TouchableWithoutFeedback onPress={() => fields.push({})}>
-            <View style={ing_styles.childContainer}>
-              <Text style={ing_styles.ing_text}>{text}</Text>
-            </View>
-          </TouchableWithoutFeedback>
+    // addAnnotation = ({ fields }) => (
+    //   this.props.edit && !hasAnno ?
+    //     <View style={ing_styles.container}>
+    //       <TouchableWithoutFeedback onPress={() => fields.push({})}>
+    //         <View style={ing_styles.childContainer}>
+    //           <Text style={ing_styles.ing_text}>{text}</Text>
+    //         </View>
+    //       </TouchableWithoutFeedback>
 
-          {fields.map((anno, index) => (
-            index == 0 ?
-              <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
-              : null
-          )
-          )}
-        </View>
-        :
-        (!this.props.edit) || (this.props.edit && hasAnno) ?
-          <View style={ing_styles.container}>
-            <View style={ing_styles.childContainer}>
-              <Text style={ing_styles.ing_text}>{text}</Text>
-            </View>
-            {hasAnno ?
-              annotations.map((anno) => (
-                <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
-              ))
-              : null}
-          </View>
-          : null
-    )
+    //       {fields.map((anno, index) => (
+    //         index == 0 ?
+    //           <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
+    //           : null
+    //       )
+    //       )}
+    //     </View>
+    //     :
+    //     (!this.props.edit) || (this.props.edit && hasAnno) ?
+    //       <View style={ing_styles.container}>
+    //         <View style={ing_styles.childContainer}>
+    //           <Text style={ing_styles.ing_text}>{text}</Text>
+    //         </View>
+    //         {hasAnno ?
+    //           annotations.map((anno) => (
+    //             <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
+    //           ))
+    //           : null}
+    //       </View>
+    //       : null
+    // )
 
     return (
 
-      // <View style={ing_styles.container}>
-      //   <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit, hasAnno)}>
-      //     <View style={ing_styles.childContainer}>
-      //       <Text style={ing_styles.ing_text}>{text}</Text>
-      //     </View>
-      //   </TouchableWithoutFeedback>
-      //   {hasAnno ?
-      //   annotations.map( (anno) => (
-      //     <Annotation annotation={anno} id={this.props.id} edit={this.props.edit}/>
-      //   )) 
-      //   : null}
-      // </View>
-      <FieldArray name="annotation" component={addAnnotation} />
+      <View style={ing_styles.container}>
+        <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit, hasAnno)}>
+          <View style={ing_styles.childContainer}>
+            <Text style={ing_styles.ing_text}>{text}</Text>
+          </View>
+        </TouchableWithoutFeedback>
+        {hasAnno ?
+        annotations.map( (anno) => (
+          <Annotation annotation={anno} id={this.props.id} edit={this.props.edit}/>
+        )) 
+        : <Annotation annotation={""} id={this.props.id} edit={this.props.edit}/>}
+      </View>
+      // <FieldArray name="annotation" component={addAnnotation} />
     );
   }
 }

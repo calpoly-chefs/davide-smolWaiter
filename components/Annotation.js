@@ -13,12 +13,19 @@ export default class Annotation extends React.Component {
   render() {
     const anno = this.props.annotation;
     return (
+      // For every ingredient and step, if editable, return a Field component
+      this.props.edit ?
       <View style={anno_styles.container}>
         <Field
           name={"annotation" + anno.id}
           component={AnnotationInput}
           placeholder={anno.comment}
         />
+      </View>
+      : // else, return text
+      // FIXME: WEIRD SPACE I HATE IT @Hannah
+      <View style={anno_styles.container}>
+        <Text style={anno_styles.anno_text}>{anno.comment}</Text>
       </View>
     );
   }
