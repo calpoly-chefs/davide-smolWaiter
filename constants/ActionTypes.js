@@ -20,6 +20,8 @@ export const SET_CURRENT = 'SET_CURRENT';
 
 export const TOGGLE_QUICK_ACTIONS = "TOGGLE_QUICK_ACTIONS";
 
+export const LOAD = "LOAD"
+
 export const USER = "USER";
 export const USER_PENDING = "USER_PENDING";
 export const USER_FULFILLED = "USER_FULFILLED";

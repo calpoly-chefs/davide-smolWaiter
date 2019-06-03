@@ -1,7 +1,7 @@
 import React from "react";
 import { Alert, View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { Field, reduxForm } from "redux-form";
-import AnnotationInput from "./MyTextInput";
+import AnnotationInput from "./AnnotationInput";
 
 export default class Annotation extends React.Component {
   _onPress(edit) {
@@ -13,17 +13,13 @@ export default class Annotation extends React.Component {
   render() {
     const anno = this.props.annotation;
     return (
-      // <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
-        <View style={anno_styles.container}>
-          {/* <Text style={anno_styles.anno_text}>{text}</Text> */}
-          <Field
-            name={"annotation" + anno.id}
-            component={AnnotationInput}
-            placeholder={anno.comment}
-          />
-          <Text style={anno_styles.anno_date}>{anno.date}</Text>
-        </View>
-      // {/* </TouchableWithoutFeedback> */}
+      <View style={anno_styles.container}>
+        <Field
+          name={"annotation" + anno.id}
+          component={AnnotationInput}
+          placeholder={anno.comment}
+        />
+      </View>
     );
   }
 }
@@ -32,19 +28,20 @@ const anno_styles = StyleSheet.create({
   container: {
     marginLeft: 15,
     marginRight: 15,
-    alignItems: "flex-start",
-    backgroundColor: "#fff"
+    // alignItems: "flex-start",
+    // backgroundColor: "#fff"
+    // backgroundColor: "red"
   },
-
-  container: {
-    marginLeft: 30,
-    marginRight: 30,
-    alignItems: "flex-start",
-    backgroundColor: "#FFE684",
-    borderBottomRightRadius: 7,
-    borderBottomLeftRadius: 7,
-    justifyContent: "space-around"
-  },
+  // container: {
+  //   marginLeft: 30,
+  //   marginRight: 30,
+  //   alignItems: "flex-start",
+  //   // backgroundColor: "#FFE684",
+  //   backgroundColor: "blue",
+  //   borderBottomRightRadius: 7,
+  //   borderBottomLeftRadius: 7,
+  //   justifyContent: "space-around"
+  // },
 
   anno_text: {
     paddingLeft: 15,
@@ -52,14 +49,5 @@ const anno_styles = StyleSheet.create({
     paddingRight: 15,
     fontSize: 14,
     fontWeight: "bold"
-  },
-
-  anno_date: {
-    paddingLeft: 15,
-    paddingTop: 2,
-    paddingRight: 15,
-    paddingBottom: 10,
-    fontSize: 10,
-    color: "grey"
   }
 });

@@ -1,8 +1,5 @@
 import React from "react";
-import { Provider } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import store from "../state/Store.js";
-// import { Form, Field } from "react-final-form";
 import {
   ScrollView,
   View,
@@ -12,26 +9,44 @@ import {
   Picker
 } from "react-native";
 import MyTextInput from "./MyTextInput";
-import MyPicker from "./MyPicker";
-import DropDownItem from "react-native-drop-down-item";
 import Icon from "react-native-vector-icons/Feather";
-import Ionicon from "react-native-vector-icons/Ionicons";
-
 import Ingredients from "../components/Ingredients.js";
 import Steps from "../components/Steps.js";
+import { load as loadAnnotations } from "../actions/actions"
+import { connect } from 'react-redux'
+
+import Ionicon from "react-native-vector-icons/Ionicons";
+import MyPicker from "./MyPicker";
+import DropDownItem from "react-native-drop-down-item";
 
 let JournalEntryForm = props => {
-  const { handleSubmit } = props;
-  // const recipe = props.recipe.recipes.byId.r1;
+  const { handleSubmit, loadAnnotations } = props;
   const ingredients = props.recipe.ingredients;
   const steps = props.recipe.steps;
 
-  const arrow_up = <Ionicon name="ios-arrow-up" size={20} color="black" />;
-  const arrow_down = (
-    <Ionicon name="ios-arrow-down" size={20} color={"black"} />
-  );
+  // initial data
+  const data = {}
+  ingredients.map(ingredient => {
+    if (ingredient.annotations.length > 0) { // when annotation exists 
+      key = "annotation" + ingredient.annotations[0].id;
+      value = ingredient.annotations[0].comment;
+      data[key] = value
+    }
+  })
+  steps.map(step => {
+    if (step.annotations.length > 0) { // when annotation exists 
+      key = "annotation" + step.annotations[0].id;
+      value = step.annotations[0].comment;
+      data[key] = value
+    }
+  })
+
+  // initial data gets populated in the form
+  loadAnnotations(data)
+
   return (
     <ScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
+
       <View style={f_styles.field}>
         <Text style={f_styles.text}>Rate</Text>
         <View style={f_styles.rating}>
@@ -171,7 +186,23 @@ const f_styles = StyleSheet.create({
   }
 });
 
+function mapStateToProps(state) {
+  return {
+    initialValues: state.annotations.data // pulls initial values from annotations reducer
+  };
+}
 
-export default (JournalEntryForm = reduxForm({
-  form: "journalEntry"
-})(JournalEntryForm));
+function mapDispatchToProps(dispatch) {
+  return {
+    loadAnnotations: (data) => dispatch(loadAnnotations(data))
+  };
+}
+
+JournalEntryForm = reduxForm({
+  form: "journalEntry" // uniquely identifies this form
+})(JournalEntryForm);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(JournalEntryForm);

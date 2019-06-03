@@ -9,38 +9,44 @@ import { connect } from "react-redux";
 class Ingredient extends React.Component {
 
   _onPress(edit, hasAnno) {
-    edit && !hasAnno 
-    ? Alert.alert("hello")
-    : null
+    edit && !hasAnno
+      ? Alert.alert("hello")
+      : null
   }
 
   render() {
     const annotations = this.props.annotations;
     const text = this.props.text;
     const hasAnno = annotations.length > 0 ? true : false
+    console.log("anno: " + annotations);
+    console.log("text: " + text);
+    console.log("hasAnno: " + hasAnno);
+
     return (
-      
+
       <View style={ing_styles.container}>
+
         <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit, hasAnno)}>
           <View style={ing_styles.childContainer}>
             <Text style={ing_styles.ing_text}>{text}</Text>
           </View>
         </TouchableWithoutFeedback>
+
         {hasAnno ?
-        annotations.map( (anno) => (
-          <Annotation annotation={anno} edit={this.props.edit}/>
-        )) 
-        : null}
+          annotations.map((anno) => (
+            <Annotation annotation={anno} edit={this.props.edit} />
+          ))
+          : null}
       </View>
     );
   }
 }
 
 const ing_styles = StyleSheet.create({
-  // FIXME: this styling is redundant
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
+    // backgroundColor: "green"
   },
 
   childContainer: {
@@ -49,6 +55,7 @@ const ing_styles = StyleSheet.create({
     marginTop: 10,
     alignItems: "flex-start",
     backgroundColor: "#F0F0EA",
+    // backgroundColor: "purple",
     borderRadius: 7
   },
   ing_text: {

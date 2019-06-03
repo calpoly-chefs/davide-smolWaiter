@@ -4,6 +4,7 @@ import recipes from "./recipeReducer";
 import modal from "./modalReducer";
 import user from "./userReducer";
 import { reducer as formReducer } from "redux-form";
+import annotations from "./formReducer"
 
 // combines all reducers into a single root reducer
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   modal,
   recipes,
   user,
-  form: formReducer
+  form: formReducer,
+  annotations
 });
 
 export default rootReducer;

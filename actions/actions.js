@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, CREATE_USER, RECIPE, TOGGLE_QUICK_ACTIONS, USER, SET_CURRENT, TOKEN_UPDATED } from "../constants/ActionTypes"
+import { LOGIN, LOGOUT, CREATE_USER, RECIPE, TOGGLE_QUICK_ACTIONS, USER, SET_CURRENT, TOKEN_UPDATED, LOAD } from "../constants/ActionTypes"
 import api from "../api"
 import fakeapi from "../practice/fakeapi";
 
@@ -81,9 +81,15 @@ export function toggleQuickActions() {
 }
 
 export function updateToken(token) {
-  console.log("Action called on: "+token);
+  console.log("Action called on: " + token);
   return {
     type: TOKEN_UPDATED,
     token: token
+  }
+}
+
+export function load(data) {
+  return {
+    type: LOAD, data
   }
 }

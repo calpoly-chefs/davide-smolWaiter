@@ -21,7 +21,7 @@ export default function AnnotationInput(props) {
         onFocus={input.onFocus}
         value={input.value}
         style={t_styles.input}
-        // keyboardType={"number-pad"}
+      // keyboardType={"number-pad"}
       />
     </View>
   );
@@ -33,9 +33,10 @@ const t_styles = StyleSheet.create({
     padding: 10
   },
   inputContainer: {
-    // backgroundColor: "#F0F0EA",
-    // borderRadius: 8,
-    // borderColor: "#53E69D"
+    backgroundColor: "#FFE684",
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    borderColor: "#53E69D"
   },
   valid: {
     borderColor: "#53E69D"
