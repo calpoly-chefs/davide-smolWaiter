@@ -15,6 +15,63 @@ import { connect } from "react-redux";
 import { fetchAllRecipes } from "../actions/actions";
 import modal from "../state/ModalSlice";
 
+const testRecipe =     {
+  "title": "some recipe with stuff in it",
+  "source": "manual",
+  "difficulty": 10,
+  "prepTime": 12,
+  "cookTime": 1,
+  "ingredients": [
+      {
+          "quantity": 5,
+          "units": "cups",
+          "ingredient": "Magic",
+          "id": 3,
+          "annotations": [{
+            "comment":"less magic",
+            "id": 10,
+            "ingredientid":3,
+            "date": "2019-06-02" 
+          }]
+      },
+      {
+          "quantity": 5,
+          "units": "Pounds",
+          "ingredient": "Butter",
+          "id": 4,
+          "annotations": []
+      }
+  ],
+  "steps": [
+      {
+          "step": "do stuff",
+          "id": 5,
+          "annotations": [{
+            "comment":"More stuff needed",
+            "id": 11,
+            "instructionid":5,
+            "date": "2019-06-02" 
+          }]
+      },
+      {
+          "step": "Add Magic",
+          "id": 6,
+          "annotations": []
+      },
+      {
+          "step": "Season to taste",
+          "id": 7,
+          "annotations": []
+      }
+  ],
+  "tags": null,
+  "id": 2,
+  "rating": 5,
+  "userID": 1,
+  "username": null,
+  "public": true
+}
+
 class AddJournalEntryScreen extends Component {
   render() {
     const recipe = this.props.modal.currentRecipe;
@@ -24,7 +81,7 @@ class AddJournalEntryScreen extends Component {
         <JournalEntryForm
           onSubmit={values => Alert.alert("Submitted!", JSON.stringify(values))}
           style={je_styles.form}
-          recipe={recipe}
+          recipe={testRecipe}
         />
       </View>
     );
