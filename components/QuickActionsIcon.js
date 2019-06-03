@@ -2,6 +2,7 @@ import React from "react";
 import { Image, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import modal from "../state/ModalSlice";
+import { toggleQuickActions } from "../actions/actions"
 
 class QuickActionsIcon extends React.Component {
   // props:
@@ -15,7 +16,7 @@ class QuickActionsIcon extends React.Component {
     return (
       <TouchableOpacity
         onPress={() => {
-          this.props.dispatch(modal.actions.setFalse());
+          this.props.toggleQuickActions();
           this.props.navigation.navigate(this.props.nextScreen.toString());
         }}
       >
@@ -49,4 +50,19 @@ const style = StyleSheet.create({
   }
 });
 
-export default connect(state => ({ modal: state.modal }))(QuickActionsIcon);
+function mapStateToProps(state) {
+  return {
+    modal: state.modal
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    toggleQuickActions: () => dispatch(toggleQuickActions())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(QuickActionsIcon)

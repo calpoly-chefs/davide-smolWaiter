@@ -13,15 +13,11 @@ import JournalEntryForm from "../components/JournalEntryForm";
 import { Alert } from "react-native";
 import { connect } from "react-redux";
 import { fetchAllRecipes } from "../actions/actions";
+import modal from "../state/ModalSlice";
 
 class AddJournalEntryScreen extends Component {
-  componentWillMount() {
-    this.props.fetchAllRecipes();
-  }
-
   render() {
-    const recipe = this.props.recipes[this.props.recipes.currentRecipe];
-    console.log(this.props.recipes.currentRecipe)
+    const recipe = this.props.modal.currentRecipe;
     return (
       <View style={je_styles.parent}>
         <RecipeHeader recipe={recipe} />
@@ -66,13 +62,14 @@ const je_styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-      recipes: state.recipes
+    recipes: state.recipes,
+    modal: state.modal
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-      fetchAllRecipes: () => dispatch(fetchAllRecipes()),
+    fetchAllRecipes: () => dispatch(fetchAllRecipes()),
   }
 }
 
@@ -80,7 +77,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AddJournalEntryScreen)
-
-// export default connect(state => ({ recipe: state.recipe }))(
-//   AddJournalEntryScreen
-// );

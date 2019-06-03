@@ -41,13 +41,13 @@ class HomeScreen extends React.Component {
 
 function mapStateToProps(state) {
   return {
-      recipes: state.recipes
+    recipes: state.recipes
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-      fetchAllRecipes: () => dispatch(fetchAllRecipes()),
+    fetchAllRecipes: () => dispatch(fetchAllRecipes()),
   }
 }
 
@@ -56,8 +56,6 @@ export default connect(
   mapDispatchToProps
 )(HomeScreen)
 
-
-// Style sheet
 const styles = StyleSheet.create({
   container: {
     flex: 1,

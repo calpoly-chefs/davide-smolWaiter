@@ -4,7 +4,7 @@ const initialState = {
     isQuickActionsVisable: false,
     isAddRecipeModalVisable: false,
     isSettingsModalVisable: false,
-    currentRecipe: 0
+    currentRecipe: null
 }
 
 export default function modalReducer(state = initialState, action) {
@@ -19,7 +19,7 @@ export default function modalReducer(state = initialState, action) {
             console.log(action)
             return {
                 ...state,
-                currentRecipe: action.id,
+                currentRecipe: action.recipe,
             };
         default:
             return state;

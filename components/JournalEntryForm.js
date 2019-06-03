@@ -24,13 +24,12 @@ let JournalEntryForm = props => {
   const { handleSubmit } = props;
   // const recipe = props.recipe.recipes.byId.r1;
   const ingredients = props.recipe.ingredients;
-  // const steps = props.recipe.steps;
+  const steps = props.recipe.steps;
 
   const arrow_up = <Ionicon name="ios-arrow-up" size={20} color="black" />;
   const arrow_down = (
     <Ionicon name="ios-arrow-down" size={20} color={"black"} />
   );
-
   return (
     <ScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
       <View style={f_styles.field}>
@@ -89,6 +88,10 @@ let JournalEntryForm = props => {
           placeholder={"309 Pool Party!"}
         />
       </View>
+
+      <Ingredients ingredients={ingredients} edit={true} />
+      <Steps steps={steps} edit={true} />
+
       {/* <View style={f_styles.field}>
         <DropDownItem
           key={i}
@@ -167,6 +170,7 @@ const f_styles = StyleSheet.create({
     marginBottom: 50
   }
 });
+
 
 export default (JournalEntryForm = reduxForm({
   form: "journalEntry"

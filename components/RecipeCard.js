@@ -14,12 +14,11 @@ class RecipeCard extends Component {
     return (
       <View style={rc_styles.parent}>
         <TouchableOpacity
-          onPress={() => 
-            {
-              this.props.navigation.navigate("RecipeDetails", {recipe: recipe});
-              setCurrentRecipe(recipe.id);
-              console.log("set: " + recipe.id)
-            }
+          onPress={() => {
+            this.props.navigation.navigate("RecipeDetails", { recipe: recipe });
+            this.props.setCurrentRecipe(recipe);
+            console.log("set: " + recipe)
+          }
           }
           style={rc_styles.child}
         >
@@ -39,14 +38,14 @@ class RecipeCard extends Component {
 
 function mapStateToProps(state) {
   return {
-      // recipes: state.recipes,
-      modal: state.modal
+    // recipes: state.recipes,
+    modal: state.modal
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-      setCurrentRecipe: (id) => dispatch(setCurrentRecipe(id))
+    setCurrentRecipe: (id) => dispatch(setCurrentRecipe(id))
   }
 }
 

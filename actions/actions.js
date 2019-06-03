@@ -39,24 +39,21 @@ export function createNewRecipe(recipe) {
   };
 }
 
-// TODO: fetch all the things
-// TODO:
+// TODO: 
 export function createUser() {
   return {
     type: CREATE_USER
   };
 }
 
-export function setCurrentRecipe(id) {
-  console.log("actions: " + id);
+export function setCurrentRecipe(recipe) {
+  console.log("actions: " + recipe);
   return {
     type: SET_CURRENT,
-    id
+    recipe
   }
 }
 
-// TODO: 
-// TODO:
 export function logout() {
   return {
     type: LOGOUT
