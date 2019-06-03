@@ -13,13 +13,9 @@ const rootReducer = combineReducers({
   modal,
   recipes,
   user,
-<<<<<<< HEAD
   form: formReducer,
-  annotations
-=======
-  journal,
-  form: formReducer
->>>>>>> 46bb585f7782f9854a07d5d1f2ef137b616a8c11
+  annotations,
+  journal
 });
 
 export default rootReducer;
