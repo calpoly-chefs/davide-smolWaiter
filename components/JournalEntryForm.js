@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import MyTextInput from "./MyTextInput";
 import Icon from "react-native-vector-icons/Feather";
-import Ionicon from "react-native-vector-icons/Ionicons";
 import Rating from "./Rating.js";
 import Ingredients from "../components/Ingredients.js";
 import Steps from "../components/Steps.js";
@@ -34,6 +33,7 @@ let JournalEntryForm = props => {
       value = ingredient.annotations[0].comment;
       data[key] = value
     }
+    console.log(ingredient)
   })
   steps.map(step => {
     if (step.annotations.length > 0) { // when annotation exists 
@@ -42,6 +42,8 @@ let JournalEntryForm = props => {
       data[key] = value
     }
   })
+
+  console.log(data)
 
   // initial data gets populated in the form
   loadAnnotations(data)
