@@ -11,6 +11,7 @@ export default class Steps extends React.Component {
                 <Step
                     stepNum={index+1}
                     text={step.step}
+                    id={step.id}
                     annotations={step.annotations}
                     edit={edit}
                 />

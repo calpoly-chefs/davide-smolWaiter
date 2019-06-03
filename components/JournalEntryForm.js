@@ -1,5 +1,9 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+<<<<<<< HEAD
+=======
+import store from "../state/Store.js";
+>>>>>>> 46bb585f7782f9854a07d5d1f2ef137b616a8c11
 import {
   ScrollView,
   View,
@@ -10,6 +14,11 @@ import {
 } from "react-native";
 import MyTextInput from "./MyTextInput";
 import Icon from "react-native-vector-icons/Feather";
+<<<<<<< HEAD
+=======
+import Ionicon from "react-native-vector-icons/Ionicons";
+import Rating from "./Rating.js";
+>>>>>>> 46bb585f7782f9854a07d5d1f2ef137b616a8c11
 import Ingredients from "../components/Ingredients.js";
 import Steps from "../components/Steps.js";
 import { load as loadAnnotations } from "../actions/actions"
@@ -20,7 +29,11 @@ import MyPicker from "./MyPicker";
 import DropDownItem from "react-native-drop-down-item";
 
 let JournalEntryForm = props => {
+<<<<<<< HEAD
   const { handleSubmit, loadAnnotations } = props;
+=======
+  const { handleSubmit } = props;
+>>>>>>> 46bb585f7782f9854a07d5d1f2ef137b616a8c11
   const ingredients = props.recipe.ingredients;
   const steps = props.recipe.steps;
 
@@ -46,15 +59,15 @@ let JournalEntryForm = props => {
 
   return (
     <ScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
+<<<<<<< HEAD
 
       <View style={f_styles.field}>
+=======
+      <View style={f_styles.rating}>
+>>>>>>> 46bb585f7782f9854a07d5d1f2ef137b616a8c11
         <Text style={f_styles.text}>Rate</Text>
         <View style={f_styles.rating}>
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
+          <Rating edit={true} fillNum={0} dimension={30} />
         </View>
       </View>
 
@@ -149,8 +162,8 @@ const f_styles = StyleSheet.create({
     padding: 20
   },
   rating: {
-    flex: 1,
-    flexDirection: "row"
+    width: 150,
+    paddingBottom: 5
   },
   text: {
     paddingBottom: 8
@@ -186,6 +199,7 @@ const f_styles = StyleSheet.create({
   }
 });
 
+<<<<<<< HEAD
 function mapStateToProps(state) {
   return {
     initialValues: state.annotations.data // pulls initial values from annotations reducer
@@ -206,3 +220,8 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(JournalEntryForm);
+=======
+export default (JournalEntryForm = reduxForm({
+  form: "journalEntry"
+})(JournalEntryForm));
+>>>>>>> 46bb585f7782f9854a07d5d1f2ef137b616a8c11

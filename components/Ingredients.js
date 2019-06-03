@@ -13,6 +13,7 @@ export default class Ingredients extends React.Component {
                     text={`${ingredient.quantity} ${ingredient.units} ${
                         ingredient.ingredient
                     }`}
+                    id={ingredient.id}
                     annotations={ingredient.annotations}
                     edit={edit}
                 />

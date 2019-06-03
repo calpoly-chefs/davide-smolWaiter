@@ -14,7 +14,7 @@ import { fetchUser } from "../actions/actions";
 
 class ProfileScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "Profile",
+    title: "Profile"
     // TODO:
     // headerRight: <SettingModal navigation={navigation} />
   });
@@ -45,7 +45,7 @@ class ProfileScreen extends React.Component {
   }
 
   _signOutAsync = async () => {
-    const userToken = await AsyncStorage.getItem('userToken');
+    const userToken = await AsyncStorage.getItem("userToken");
     console.log("usr token: " + userToken);
     await AsyncStorage.clear();
     this.props.navigation.navigate("Auth");
@@ -54,8 +54,7 @@ class ProfileScreen extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user,
-    auth: state.auth
+    user: state.user
   };
 }
 

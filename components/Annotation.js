@@ -13,6 +13,7 @@ export default class Annotation extends React.Component {
   render() {
     const anno = this.props.annotation;
     return (
+<<<<<<< HEAD
       <View style={anno_styles.container}>
         <Field
           name={"annotation" + anno.id}
@@ -20,6 +21,19 @@ export default class Annotation extends React.Component {
           placeholder={anno.comment}
         />
       </View>
+=======
+      // <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
+        <View style={anno_styles.container}>
+          {/* <Text style={anno_styles.anno_text}>{text}</Text> */}
+          <Field
+            name={`pid-${this.props.id}`}
+            component={AnnotationInput}
+            placeholder={anno.text}
+          />
+          <Text style={anno_styles.anno_date}>{anno.date}</Text>
+        </View>
+      // {/* </TouchableWithoutFeedback> */}
+>>>>>>> 46bb585f7782f9854a07d5d1f2ef137b616a8c11
     );
   }
 }
