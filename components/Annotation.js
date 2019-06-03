@@ -17,9 +17,9 @@ export default class Annotation extends React.Component {
         <View style={anno_styles.container}>
           {/* <Text style={anno_styles.anno_text}>{text}</Text> */}
           <Field
-            name={"annotation" + anno.id}
+            name={`pid-${this.props.id}`}
             component={AnnotationInput}
-            placeholder={anno.comment}
+            placeholder={anno.text}
           />
           <Text style={anno_styles.anno_date}>{anno.date}</Text>
         </View>

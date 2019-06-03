@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, CREATE_USER, RECIPE, TOGGLE_QUICK_ACTIONS, USER, SET_CURRENT, TOKEN_UPDATED } from "../constants/ActionTypes"
+import { LOGIN, LOGOUT, CREATE_USER, RECIPE, TOGGLE_QUICK_ACTIONS, USER, SET_CURRENT, TOKEN_UPDATED, JOURNAL_ENTRY } from "../constants/ActionTypes"
 import api from "../api"
 import fakeapi from "../practice/fakeapi";
 
@@ -44,7 +44,6 @@ export function createUser() {
 }
 
 export function setCurrentRecipe(recipe) {
-  console.log("actions: " + recipe);
   return {
     type: SET_CURRENT,
     recipe
@@ -81,9 +80,16 @@ export function toggleQuickActions() {
 }
 
 export function updateToken(token) {
-  console.log("Action called on: "+token);
   return {
     type: TOKEN_UPDATED,
     token: token
   }
+}
+
+export function createJournalEntry(entry) {
+  console.log(JSON.stringify(entry))
+  return {
+    type: JOURNAL_ENTRY,
+    payload: api.post("/journalentries", JSON.stringify(entry))
+  };
 }

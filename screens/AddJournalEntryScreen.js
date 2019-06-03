@@ -12,7 +12,7 @@ import CloudinaryImage from "react-native-cloudinary-image-display";
 import JournalEntryForm from "../components/JournalEntryForm";
 import { Alert } from "react-native";
 import { connect } from "react-redux";
-import { fetchAllRecipes } from "../actions/actions";
+import { createJournalEntry } from "../actions/actions";
 import modal from "../state/ModalSlice";
 
 const testRecipe =     {
@@ -73,13 +73,26 @@ const testRecipe =     {
 }
 
 class AddJournalEntryScreen extends Component {
+
+  makeJournalEntry = (recipe, annotationsObj) => {
+    annotations = [];
+    console.log(JSON.stringify(annotationsObj));
+    for (var id in annotationsObj) {
+      annotations.push({"parentid": id.split("-")[1], "comment": annotationsObj[id]});
+    }
+    return {
+      "recipeid": recipe.id,
+      "annotations": annotations
+    }
+  }
+
   render() {
     const recipe = this.props.modal.currentRecipe;
     return (
       <View style={je_styles.parent}>
         <RecipeHeader recipe={recipe} />
         <JournalEntryForm
-          onSubmit={values => Alert.alert("Submitted!", JSON.stringify(values))}
+          onSubmit={annos => this.props.createJournalEntry(this.makeJournalEntry(recipe, annos))}
           style={je_styles.form}
           recipe={testRecipe}
         />
@@ -126,7 +139,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchAllRecipes: () => dispatch(fetchAllRecipes()),
+    createJournalEntry: (jentry) => dispatch(createJournalEntry(jentry)),
   }
 }
 
