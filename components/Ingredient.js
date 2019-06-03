@@ -28,7 +28,7 @@ class Ingredient extends React.Component {
         </TouchableWithoutFeedback>
         {hasAnno ?
         annotations.map( (anno) => (
-          <Annotation date={anno.date} text={anno.text} edit={this.props.edit}/>
+          <Annotation annotation={anno} edit={this.props.edit}/>
         )) 
         : null}
       </View>

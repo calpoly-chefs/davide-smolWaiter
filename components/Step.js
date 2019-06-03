@@ -30,7 +30,7 @@ class Step extends React.Component {
         </View>
         {hasAnno 
           ? annotations.map( (anno) => (
-              <Annotation date={anno.date} text={anno.text} edit={this.props.edit}/>
+              <Annotation annotation={anno} edit={this.props.edit}/>
             )) 
           : null}
       </View>

@@ -11,18 +11,17 @@ export default class Annotation extends React.Component {
   }
 
   render() {
-    const text = this.props.text;
-    const date = this.props.date;
+    const anno = this.props.annotation;
     return (
       // <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit)}>
         <View style={anno_styles.container}>
           {/* <Text style={anno_styles.anno_text}>{text}</Text> */}
           <Field
-            name={"annotation" + date}
+            name={"annotation" + anno.id}
             component={AnnotationInput}
-            placeholder={text}
+            placeholder={anno.comment}
           />
-          <Text style={anno_styles.anno_date}>{date}</Text>
+          <Text style={anno_styles.anno_date}>{anno.date}</Text>
         </View>
       // {/* </TouchableWithoutFeedback> */}
     );
