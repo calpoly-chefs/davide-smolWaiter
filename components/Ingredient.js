@@ -2,7 +2,7 @@ import React from "react";
 import { Alert, View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { FileText } from "react-feather";
 import Annotation from "./Annotation.js";
-import { Field, reduxForm } from "redux-form";
+import { Field, FieldArray, reduxForm } from "redux-form";
 import MyTextInput from "./MyTextInput";
 import { connect } from "react-redux";
 
@@ -18,20 +18,53 @@ class Ingredient extends React.Component {
     const annotations = this.props.annotations;
     const text = this.props.text;
     const hasAnno = annotations.length > 0 ? true : false
-    return (
-      
-      <View style={ing_styles.container}>
-        <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit, hasAnno)}>
+
+    addAnnotation = ({fields}) => (
+      this.props.edit && !hasAnno ?
+        <View style={ing_styles.container}>
+          <TouchableWithoutFeedback onPress={() => fields.push({}) }>
+            <View style={ing_styles.childContainer}>
+              <Text style={ing_styles.ing_text}>{text}</Text>
+            </View>
+          </TouchableWithoutFeedback>
+
+          {fields.map( (anno, index) => (
+              index == 0 ?
+                <Annotation annotation={anno} id={this.props.id} edit={this.props.edit}/>
+              : null
+            )
+          )}
+        </View>
+      : 
+      (!this.props.edit) || (this.props.edit && hasAnno) ?
+        <View style={ing_styles.container}>
           <View style={ing_styles.childContainer}>
             <Text style={ing_styles.ing_text}>{text}</Text>
           </View>
-        </TouchableWithoutFeedback>
-        {hasAnno ?
-        annotations.map( (anno) => (
-          <Annotation annotation={anno} id={this.props.id} edit={this.props.edit}/>
-        )) 
-        : null}
-      </View>
+          {hasAnno ?
+          annotations.map( (anno) => (
+            <Annotation annotation={anno} id={this.props.id} edit={this.props.edit}/>
+          )) 
+          : null}
+        </View>
+      : null
+    )
+
+    return (
+      
+      // <View style={ing_styles.container}>
+      //   <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit, hasAnno)}>
+      //     <View style={ing_styles.childContainer}>
+      //       <Text style={ing_styles.ing_text}>{text}</Text>
+      //     </View>
+      //   </TouchableWithoutFeedback>
+      //   {hasAnno ?
+      //   annotations.map( (anno) => (
+      //     <Annotation annotation={anno} id={this.props.id} edit={this.props.edit}/>
+      //   )) 
+      //   : null}
+      // </View>
+      <FieldArray name="annotation" component={addAnnotation} />
     );
   }
 }
@@ -56,5 +89,9 @@ const ing_styles = StyleSheet.create({
     fontSize: 14
   }
 });
+
+Ingredient = reduxForm({
+  form: "ingredient"
+})(Ingredient);
 
 export default connect(state => ({ recipe: state.recipe }))(Ingredient);

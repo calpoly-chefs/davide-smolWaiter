@@ -2,7 +2,6 @@ import React from "react";
 import { Provider } from "react-redux";
 import { Field, reduxForm } from "redux-form";
 import store from "../state/Store.js";
-// import { Form, Field } from "react-final-form";
 import {
   ScrollView,
   View,
@@ -22,7 +21,6 @@ import Steps from "../components/Steps.js";
 
 let JournalEntryForm = props => {
   const { handleSubmit } = props;
-  // const recipe = props.recipe.recipes.byId.r1;
   const ingredients = props.recipe.ingredients;
   const steps = props.recipe.steps;
 
