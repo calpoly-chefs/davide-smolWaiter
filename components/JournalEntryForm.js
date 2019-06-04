@@ -11,7 +11,7 @@ import MyTextInput from "./MyTextInput";
 import Rating from "./Rating.js";
 import Ingredients from "../components/Ingredients.js";
 import Steps from "../components/Steps.js";
-import { load as loadAnnotations } from "../actions/actions"
+import { load as loadAnnotations } from "../state/actions"
 import { connect } from 'react-redux'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
@@ -29,7 +29,7 @@ let JournalEntryForm = props => {
     var yyyy = today.getFullYear();
     if (dd < 10) {
       dd = '0' + dd;
-    } 
+    }
     if (mm < 10) {
       mm = '0' + mm;
     }
@@ -77,7 +77,7 @@ let JournalEntryForm = props => {
         <Field
           name={"date"}
           component={MyTextInput}
-          // placeholder={"mm/dd/yyyy"}
+        // placeholder={"mm/dd/yyyy"}
         />
       </View>
 

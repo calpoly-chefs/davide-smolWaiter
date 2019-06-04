@@ -1,10 +1,12 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
-import modal from "../state/ModalSlice";
 import Modal from "react-native-modal";
 import Rating from "./Rating.js";
 import { connect } from "react-redux";
+
+// FIXME: modals need to use the state in order to slide up and down correctly
+// import modal from "../state/ModalSlice";
 
 class JournalFilter extends React.Component {
   // TODO:

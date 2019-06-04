@@ -9,7 +9,7 @@ import {
   TOKEN_UPDATED,
   JOURNAL_ENTRY,
   LOAD
-} from "../constants/ActionTypes";
+} from "./actionTypes";
 import api from "../api";
 
 // authenticates a remy by username and password

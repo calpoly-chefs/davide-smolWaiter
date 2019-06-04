@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { login } from "../actions/actions";
+import { login } from "../state/actions";
 import store from "../state/configureStore";
 import SignInForm from "../components/SignInForm";
 

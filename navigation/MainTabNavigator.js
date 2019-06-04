@@ -10,7 +10,7 @@ import RecipesDetailsScreen from "../screens/RecipeDetailsScreen";
 import AddJournalEntryScreen from "../screens/AddJournalEntryScreen";
 import JournalHomeScreen from "../screens/JournalHomeScreen";
 import JournalDetailsScreen from "../screens/JournalDetailsScreen";
-import AddRecipeScreen from "../screens/AddModal";
+import AddRecipeScreen from "../modals/AddRecipeModal";
 import AddRecipeManualScreen from "../screens/AddRecipeManualScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import AccountSettingScreen from "../screens/AccountSettingScreen";

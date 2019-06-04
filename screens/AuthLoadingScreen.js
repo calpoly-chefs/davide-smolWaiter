@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, ActivityIndicator, View, StatusBar, AsyncStorage } from 'react-native'
-import { updateToken } from '../actions/actions';
+import { updateToken } from '../state/actions';
 import { connect } from "react-redux";
 
 class AuthLoadingScreen extends React.Component {

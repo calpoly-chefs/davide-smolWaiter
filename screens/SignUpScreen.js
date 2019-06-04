@@ -1,7 +1,7 @@
 import React from "react"
 import { StyleSheet, Image, View, Text, Button } from "react-native"
 import { connect } from 'react-redux'
-import { createUser } from "../actions/actions"
+import { createUser } from "../state/actions"
 
 class SignUpScreen extends React.Component {
     render() {

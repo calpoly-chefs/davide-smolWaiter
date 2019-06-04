@@ -1,4 +1,4 @@
-import { LOAD } from "../constants/ActionTypes"
+import { LOAD } from "../actionTypes"
 
 export default function formReducer(state = {}, action) {
     switch (action.type) {

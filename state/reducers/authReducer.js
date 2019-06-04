@@ -1,4 +1,4 @@
-import { LOGIN_PENDING, LOGIN_FULFILLED, LOGIN_REJECTED, TOKEN_UPDATED } from "../constants/ActionTypes"
+import { LOGIN_PENDING, LOGIN_FULFILLED, LOGIN_REJECTED, TOKEN_UPDATED } from "../actionTypes"
 
 const initialState = {
     token: "",

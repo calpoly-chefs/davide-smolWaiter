@@ -8,11 +8,9 @@ import {
   TextInput
 } from "react-native";
 import JournalEntryFormHeader from "../components/JournalEntryFormHeader";
-import CloudinaryImage from "react-native-cloudinary-image-display";
 import JournalEntryForm from "../components/JournalEntryForm";
 import { connect } from "react-redux";
-import { createJournalEntry } from "../actions/actions";
-import modal from "../state/ModalSlice";
+import { createJournalEntry } from "../state/actions";
 
 class AddJournalEntryScreen extends Component {
   makeJournalEntry = (recipe, journalEntry) => {
@@ -30,7 +28,7 @@ class AddJournalEntryScreen extends Component {
           stepid: anno.split("-")[1],
           comment: journalEntry[anno]
         });
-      }      
+      }
     }
     return {
       date: journalEntry["date"],
@@ -46,12 +44,11 @@ class AddJournalEntryScreen extends Component {
       <View style={je_styles.parent}>
         <JournalEntryFormHeader recipe={recipe} />
         <JournalEntryForm
-          onSubmit={annos =>
-            {
-              this.props.createJournalEntry(this.makeJournalEntry(recipe, annos))
-              Alert.alert("Journal Entry saved.");
-              this.props.navigation.navigate("RecipeHome");
-            }
+          onSubmit={annos => {
+            this.props.createJournalEntry(this.makeJournalEntry(recipe, annos))
+            Alert.alert("Journal Entry saved.");
+            this.props.navigation.navigate("RecipeHome");
+          }
           }
           style={je_styles.form}
           recipe={recipe}

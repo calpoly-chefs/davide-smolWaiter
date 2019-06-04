@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import RecipeManualForm from "../components/RecipeManualForm";
 import { connect } from "react-redux";
-import { createNewRecipe } from "../actions/actions";
+import { createNewRecipe } from "../state/actions";
 
 class AddRecipeManualScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -27,12 +27,11 @@ class AddRecipeManualScreen extends Component {
     return (
       <View style={rm_styles.parent}>
         <RecipeManualForm
-          onSubmit={values =>
-            {
-              createNewRecipe(this.formatRecipe(values));
-              Alert.alert("Recipe saved.");
-              this.props.navigation.navigate("RecipeHome");
-            }
+          onSubmit={values => {
+            createNewRecipe(this.formatRecipe(values));
+            Alert.alert("Recipe saved.");
+            this.props.navigation.navigate("RecipeHome");
+          }
           }
           style={rm_styles.form}
         />

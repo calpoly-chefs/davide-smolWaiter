@@ -3,7 +3,7 @@ import {
   USER_FULFILLED,
   USER_REJECTED,
   USER_UPDATE
-} from "../constants/ActionTypes";
+} from "../actionTypes";
 
 const initialState = {
   data: {},

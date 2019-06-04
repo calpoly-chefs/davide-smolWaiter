@@ -1,6 +1,5 @@
 import React from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
-import store from '../state/Store.js'
 import {
   View,
   Text,
@@ -16,7 +15,7 @@ let RecipeManualForm = props => {
   const { handleSubmit } = props;
   const recipe = props.recipe;
 
-  addIngredients = ({fields}) => (
+  addIngredients = ({ fields }) => (
     <View>
       {fields.map((ing, index) => (
         <View style={f_styles.ingredients}>
@@ -40,19 +39,19 @@ let RecipeManualForm = props => {
 
           <View style={f_styles.delete}>
             <TouchableOpacity onPress={() => fields.remove(index)}>
-              <Icon name="minus-circle" size={25} color="red"/>
+              <Icon name="minus-circle" size={25} color="red" />
             </TouchableOpacity>
           </View>
         </View>
       ))}
 
       <TouchableOpacity onPress={() => fields.push({})}>
-        <Icon name="plus-circle" size={25} style={{ alignSelf: "center", paddingBottom:12 }}/>
+        <Icon name="plus-circle" size={25} style={{ alignSelf: "center", paddingBottom: 12 }} />
       </TouchableOpacity>
     </View>
   )
 
-  addSteps = ({fields}) => (
+  addSteps = ({ fields }) => (
     <View>
       {fields.map((step, index) => (
         <View style={f_styles.steps}>
@@ -67,14 +66,14 @@ let RecipeManualForm = props => {
 
           <View style={f_styles.delete}>
             <TouchableOpacity onPress={() => fields.remove(index)}>
-              <Icon name="minus-circle" size={25} color="red"/>
+              <Icon name="minus-circle" size={25} color="red" />
             </TouchableOpacity>
           </View>
         </View>
       ))}
 
-      <TouchableOpacity onPress={() => fields.push({}) }>
-        <Icon name="plus-circle" size={25} style={{ alignSelf: "center", paddingBottom:12 }}/>
+      <TouchableOpacity onPress={() => fields.push({})}>
+        <Icon name="plus-circle" size={25} style={{ alignSelf: "center", paddingBottom: 12 }} />
       </TouchableOpacity>
     </View>
   )
@@ -136,13 +135,13 @@ let RecipeManualForm = props => {
       <View style={f_styles.field}>
         <View style={f_styles.amount}>
           <Text style={f_styles.text}>Ingredients</Text>
-          <FieldArray name="ingredients" component={addIngredients}/>
+          <FieldArray name="ingredients" component={addIngredients} />
         </View>
       </View>
 
       <View style={f_styles.field}>
-          <Text style={f_styles.text}>Steps</Text>
-          <FieldArray name="steps" component={addSteps}/>
+        <Text style={f_styles.text}>Steps</Text>
+        <FieldArray name="steps" component={addSteps} />
       </View>
 
       {/* TODO: Make Checkbox */}

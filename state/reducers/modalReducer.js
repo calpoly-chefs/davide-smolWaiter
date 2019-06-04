@@ -1,4 +1,4 @@
-import { TOGGLE_QUICK_ACTIONS, SET_CURRENT } from "../constants/ActionTypes"
+import { TOGGLE_QUICK_ACTIONS, SET_CURRENT } from "../actionTypes"
 
 const initialState = {
     isQuickActionsVisable: false,

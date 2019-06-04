@@ -1,4 +1,4 @@
-import { JOURNAL_ENTRY_PENDING, JOURNAL_ENTRY_FULFILLED, JOURNAL_ENTRY_REJECTED } from "../constants/ActionTypes"
+import { JOURNAL_ENTRY_PENDING, JOURNAL_ENTRY_FULFILLED, JOURNAL_ENTRY_REJECTED } from "../actionTypes"
 
 const initialState = {
     data: [],

@@ -5,8 +5,7 @@ import Icon from "react-native-vector-icons/Feather";
 import Ratings from "../components/Rating";
 import QuickActionsIcon from "../components/QuickActionsIcon";
 import { connect } from "react-redux";
-import modal from "../state/ModalSlice";
-import { toggleQuickActions } from "../actions/actions";
+import { toggleQuickActions } from "../state/actions";
 
 class QuickActionsModal extends Component {
   render() {

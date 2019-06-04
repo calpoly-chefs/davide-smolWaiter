@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import UserIcon from "../components/UserIcon.js";
 import { connect } from "react-redux";
-import { fetchUser } from "../actions/actions";
+import { fetchUser } from "../state/actions";
 // import SettingModal from "../modals/SettingModal.js";
 
 class ProfileScreen extends React.Component {
@@ -46,7 +46,7 @@ class ProfileScreen extends React.Component {
   }
 
   _signOutAsync = async () => {
-    // const userToken = await AsyncStorage.getItem("userToken");
+    // const userTowken = await AsyncStorage.getItem("userToken");
     // console.log("usr token: " + userToken);
     await AsyncStorage.clear();
     this.props.navigation.navigate("Auth");

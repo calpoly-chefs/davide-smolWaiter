@@ -1,8 +1,7 @@
 import React from "react";
 import { Image, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
-import modal from "../state/ModalSlice";
-import { toggleQuickActions } from "../actions/actions"
+import { toggleQuickActions } from "../state/actions"
 
 class QuickActionsIcon extends React.Component {
   // props:

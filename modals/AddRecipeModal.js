@@ -3,9 +3,8 @@ import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import Modal from "react-native-modal";
 import { connect } from "react-redux";
-import modal from "../state/ModalSlice";
 
-class AddModal extends React.Component {
+class AddRecipeModal extends React.Component {
   static navigationOptions = {
     title: "Add"
   };
@@ -98,4 +97,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(state => ({ modal: state.modal }))(AddModal);
+export default connect(state => ({ modal: state.modal }))(AddRecipeModal);

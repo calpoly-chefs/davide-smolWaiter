@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import RecipeHeader from "../components/RecipeHeader";
 import CloudinaryImage from "react-native-cloudinary-image-display";
-import { setCurrentRecipe } from "../actions/actions";
+import { setCurrentRecipe } from "../state/actions";
 import { connect } from "react-redux";
 
 class RecipeCard extends Component {

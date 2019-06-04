@@ -8,7 +8,6 @@ export default AuthStack = createStackNavigator(
         Login: LoginScreen,
         SignUp: SignUpScreen
         // TODO: Forgot password screen 
-
     },
     {
         headerMode: "none"
