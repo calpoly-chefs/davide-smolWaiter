@@ -1,8 +1,6 @@
 import React from "react";
-import { Provider } from 'react-redux';
 import { Field, FieldArray, reduxForm } from "redux-form";
 import store from '../state/Store.js'
-// import { Form, Field } from "react-final-form";
 import {
   Alert,
   ScrollView,
@@ -13,7 +11,8 @@ import {
 } from "react-native";
 import MyTextInput from "./MyTextInput";
 import Icon from "react-native-vector-icons/Feather";
-import { fieldSubscriptionItems } from "final-form";
+import Rating from "./Rating.js";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 let RecipeManualForm = props => {
   const { handleSubmit } = props;
@@ -83,18 +82,7 @@ let RecipeManualForm = props => {
   )
 
   return (
-    <ScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
-      {/* <View style={f_styles.field}>
-        <Text style={f_styles.text}>Rate</Text>
-        <View style={f_styles.rating}>
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-          <Icon name="star" size={30} />
-        </View>
-      </View> */}
-
+    <KeyboardAwareScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
       <View style={f_styles.field}>
         <Text style={f_styles.text}>Title</Text>
         <Field
@@ -102,6 +90,13 @@ let RecipeManualForm = props => {
           component={MyTextInput}
           placeholder={"Chicken Enchiladas"}
         />
+      </View>
+
+      <View style={f_styles.field}>
+        <Text style={f_styles.text}>Rate</Text>
+        <View style={f_styles.rating}>
+          <Rating edit={true} fillNum={0} dimension={30} />
+        </View>
       </View>
 
       <View style={f_styles.field}>
@@ -131,14 +126,14 @@ let RecipeManualForm = props => {
         />
       </View>
 
-      <View style={f_styles.field}>
+      {/* <View style={f_styles.field}>
         <Text style={f_styles.text}>Rating</Text>
         <Field
           name={"rating"}
           component={MyTextInput}
           placeholder={"5"}
         />
-      </View>
+      </View> */}
 
       <View style={f_styles.field}>
         <View style={f_styles.amount}>
@@ -176,7 +171,7 @@ let RecipeManualForm = props => {
           <Text>Submit!</Text>
         </View>
       </TouchableOpacity>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 };
 
@@ -229,13 +224,6 @@ const f_styles = StyleSheet.create({
   step: {
     flex: 12,
     paddingRight: 5
-  },
-
-  dropdown: {
-    alignSelf: "stretch"
-  },
-  dropdowntext: {
-    fontSize: 18
   },
 
   submit: {

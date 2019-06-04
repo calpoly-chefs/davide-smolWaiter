@@ -13,6 +13,7 @@ import Ingredients from "../components/Ingredients.js";
 import Steps from "../components/Steps.js";
 import { load as loadAnnotations } from "../actions/actions"
 import { connect } from 'react-redux'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 let JournalEntryForm = props => {
   const { handleSubmit, loadAnnotations } = props;
@@ -63,7 +64,7 @@ let JournalEntryForm = props => {
   loadAnnotations(data)
 
   return (
-    <ScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
+    <KeyboardAwareScrollView keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
       <View style={f_styles.rating}>
         <Text style={f_styles.text}>Rate</Text>
         <View style={f_styles.rating}>
@@ -125,7 +126,7 @@ let JournalEntryForm = props => {
           <Text>Submit!</Text>
         </View>
       </TouchableOpacity>
-    </ScrollView>
+    </KeyboardAwareScrollView>
   );
 };
 

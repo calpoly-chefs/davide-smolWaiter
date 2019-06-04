@@ -42,16 +42,13 @@ export default class Annotation extends React.Component {
 const anno_styles = StyleSheet.create({
   anno: {
     flex: 1,
-    alignItems: "flex-start",
     justifyContent: "center",
-
     borderBottomRightRadius: 8,
     borderBottomLeftRadius: 8,
     marginLeft: 15,
     marginRight: 15,
     height: 50,
     backgroundColor: "#FFE684",
-
   },
 
   anno_text: {
