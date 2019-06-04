@@ -9,7 +9,8 @@ export default class UserIcon extends React.Component {
 
   render() {
     const size = this.props.size;
-    const imageId = "user_" + this.props.id + ".png";
+    // const imageId = "user_" + this.props.id + ".png";
+    const imageId = "user_1.png";
     return (
       <View style={styles(size).parent}>
         <CloudinaryImage

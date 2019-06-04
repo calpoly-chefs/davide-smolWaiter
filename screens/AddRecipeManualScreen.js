@@ -7,11 +7,9 @@ import {
   TextInput,
   Alert
 } from "react-native";
-import { WebBrowser } from "expo";
 import RecipeManualForm from "../components/RecipeManualForm";
 import { connect } from "react-redux";
 import { createNewRecipe } from "../actions/actions";
-import { AlertCircle } from "react-feather";
 
 class AddRecipeManualScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -29,11 +27,12 @@ class AddRecipeManualScreen extends Component {
     return (
       <View style={rm_styles.parent}>
         <RecipeManualForm
-          onSubmit={values => {
-            // values["source"] = "manual";
-            // Alert.alert(JSON.stringify(values));
-            createNewRecipe(this.formatRecipe(values));
-          }
+          onSubmit={values =>
+            {
+              createNewRecipe(this.formatRecipe(values));
+              Alert.alert("Recipe saved.");
+              this.props.navigation.navigate("RecipeHome");
+            }
           }
           style={rm_styles.form}
         />

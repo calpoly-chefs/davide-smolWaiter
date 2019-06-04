@@ -2,8 +2,6 @@ import React from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
 import store from '../state/Store.js'
 import {
-  Alert,
-  ScrollView,
   View,
   Text,
   TouchableOpacity,
@@ -126,14 +124,14 @@ let RecipeManualForm = props => {
         />
       </View>
 
-      {/* <View style={f_styles.field}>
+      <View style={f_styles.field}>
         <Text style={f_styles.text}>Rating</Text>
         <Field
           name={"rating"}
           component={MyTextInput}
           placeholder={"5"}
         />
-      </View> */}
+      </View>
 
       <View style={f_styles.field}>
         <View style={f_styles.amount}>
@@ -147,7 +145,7 @@ let RecipeManualForm = props => {
           <FieldArray name="steps" component={addSteps}/>
       </View>
 
-      {/* Checkbox? */}
+      {/* TODO: Make Checkbox */}
       <View style={f_styles.field}>
         <Text style={f_styles.text}>Public</Text>
         <Field
@@ -157,18 +155,9 @@ let RecipeManualForm = props => {
         />
       </View>
 
-      {/* Make Hidden */}
-      {/* <View style={f_styles.field}>
-        <Field
-          name={"source"}
-          component={MyTextInput}
-          placeholder={"Manual"}
-        />
-      </View> */}
-
-      <TouchableOpacity onPress={props.handleSubmit}>
-        <View style={f_styles.submit}>
-          <Text>Submit!</Text>
+      <TouchableOpacity onPress={handleSubmit}>
+        <View style={f_styles.save}>
+          <Text>Save</Text>
         </View>
       </TouchableOpacity>
     </KeyboardAwareScrollView>
@@ -226,7 +215,7 @@ const f_styles = StyleSheet.create({
     paddingRight: 5
   },
 
-  submit: {
+  save: {
     backgroundColor: "#53E69D",
     borderRadius: 8,
     paddingTop: 10,

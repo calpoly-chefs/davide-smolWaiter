@@ -77,7 +77,7 @@ let JournalEntryForm = props => {
         <Field
           name={"date"}
           component={MyTextInput}
-          placeholder={"mm/dd/yyyy"}
+          // placeholder={"mm/dd/yyyy"}
         />
       </View>
 
@@ -122,8 +122,8 @@ let JournalEntryForm = props => {
       <Steps steps={steps} edit={true} />
 
       <TouchableOpacity onPress={handleSubmit}>
-        <View style={f_styles.submit}>
-          <Text>Submit!</Text>
+        <View style={f_styles.save}>
+          <Text>Save</Text>
         </View>
       </TouchableOpacity>
     </KeyboardAwareScrollView>
@@ -160,9 +160,10 @@ const f_styles = StyleSheet.create({
   dropdowntext: {
     fontSize: 18
   },
-  submit: {
+  save: {
     backgroundColor: "#53E69D",
     borderRadius: 8,
+    marginTop: 10,
     paddingTop: 10,
     alignSelf: "center",
     alignItems: "center",

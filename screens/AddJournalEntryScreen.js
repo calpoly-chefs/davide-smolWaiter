@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import {
+  Alert,
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   TextInput
 } from "react-native";
-import { WebBrowser } from "expo";
 import JournalEntryFormHeader from "../components/JournalEntryFormHeader";
 import CloudinaryImage from "react-native-cloudinary-image-display";
 import JournalEntryForm from "../components/JournalEntryForm";
-import { Alert } from "react-native";
 import { connect } from "react-redux";
 import { createJournalEntry } from "../actions/actions";
 import modal from "../state/ModalSlice";
@@ -48,7 +47,11 @@ class AddJournalEntryScreen extends Component {
         <JournalEntryFormHeader recipe={recipe} />
         <JournalEntryForm
           onSubmit={annos =>
-            this.props.createJournalEntry(this.makeJournalEntry(recipe, annos))
+            {
+              this.props.createJournalEntry(this.makeJournalEntry(recipe, annos))
+              Alert.alert("Journal Entry saved.");
+              this.props.navigation.navigate("RecipeHome");
+            }
           }
           style={je_styles.form}
           recipe={recipe}
