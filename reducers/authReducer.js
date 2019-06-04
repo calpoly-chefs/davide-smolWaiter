@@ -26,7 +26,7 @@ export default function loginReducer(state = initialState, action) {
                 isAuthenticated: true
             };
         case LOGIN_REJECTED:
-            console.log("login rejected");
+            // console.log("login rejected");
             return {
                 ...state,
                 isFetching: false,

@@ -14,7 +14,7 @@ class AuthLoadingScreen extends React.Component {
         //const userToken = await AsyncStorage.getItem('userToken');
         const token = await AsyncStorage.getItem('userToken')
         this.props.updateToken(token);
-        console.log("token updated action called for: "+token);
+        // console.log("token updated action called for: "+token);
         // This will switch to the App screen or Auth screen and this loading
         // screen will be unmounted and thrown away.
         this.props.navigation.navigate(token ? 'App' : 'Auth');

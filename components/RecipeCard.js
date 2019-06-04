@@ -17,7 +17,6 @@ class RecipeCard extends Component {
           onPress={() => {
             this.props.navigation.navigate("RecipeDetails", { recipe: recipe });
             this.props.setCurrentRecipe(recipe);
-            console.log("set: " + recipe)
           }
           }
           style={rc_styles.child}

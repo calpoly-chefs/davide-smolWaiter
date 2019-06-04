@@ -16,7 +16,6 @@ export default function modalReducer(state = initialState, action) {
                 isQuickActionsVisable: !state.isQuickActionsVisable,
             };
         case SET_CURRENT:
-            console.log(action)
             return {
                 ...state,
                 currentRecipe: action.recipe,

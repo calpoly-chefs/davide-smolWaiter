@@ -93,7 +93,7 @@ export function load(data) {
 }
 
 export function createJournalEntry(entry) {
-  console.log(JSON.stringify(entry))
+  console.log("JOURNAL ENTRY: " + JSON.stringify(entry))
   return {
     type: JOURNAL_ENTRY,
     payload: api.post("/journalentries", JSON.stringify(entry))
