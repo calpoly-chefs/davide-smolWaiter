@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { WebBrowser } from "expo";
 import RecipeHeader from "../components/RecipeHeader";
 import CloudinaryImage from "react-native-cloudinary-image-display";
 import { setCurrentRecipe } from "../actions/actions";
@@ -16,8 +15,7 @@ class RecipeCard extends Component {
           onPress={() => {
             this.props.navigation.navigate("RecipeDetails", { recipe: recipe });
             this.props.setCurrentRecipe(recipe);
-          }
-          }
+          }}
           style={rc_styles.child}
         >
           <CloudinaryImage
@@ -38,20 +36,19 @@ function mapStateToProps(state) {
   return {
     // recipes: state.recipes,
     modal: state.modal
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setCurrentRecipe: (id) => dispatch(setCurrentRecipe(id))
-  }
+    setCurrentRecipe: id => dispatch(setCurrentRecipe(id))
+  };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RecipeCard)
-
+)(RecipeCard);
 
 const rc_styles = StyleSheet.create({
   parent: {

@@ -5,17 +5,8 @@ import {
   TouchableWithoutFeedback,
   StyleSheet
 } from "react-native";
-import { getDefaultMiddleware } from "redux-starter-kit";
 
 export default class Rating extends React.Component {
-  // props:
-  //   rating - integer representing the current rating for a recipe
-  //            (the number of stars to fill)
-
-  //   TODO:
-  //      - add support for dynamic sizing
-  //      - write function to display variable number of filled stars
-
   _onPress(edit, num) {
     if (edit) {
       this.setState({
