@@ -25,8 +25,9 @@ class ProfileScreen extends React.Component {
 
   render() {
     const name = this.props.user.data.fName + "\n" + this.props.user.data.lName;
+    // TODO: connect this to the backend
     const bioText =
-      "Anyone can cook! I began my career working at one of the best restaurants in Paris,  Gusteau’s where I started as a garabage boy. Now I own a succesful restaurant, Ratatouille. Follow along with the recipes I try out in my own restaurant and recipes I make at home.";
+      "Anyone can cook! I had the most humble of beginnings. I may not seem like much, being a rat, but I have become one of the most prominent chef's in France. I began my career at one of the best resturants in Paris, Gusteau’s. Now I own a succesful restaurant, Ratatouille. Follow along with the recipes I try out in my own restaurant and recipes I make at home.";
     return (
       <View style={styles.container}>
         <View style={styles.childContainer}>
