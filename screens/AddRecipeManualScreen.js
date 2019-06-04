@@ -20,6 +20,11 @@ class AddRecipeManualScreen extends Component {
     // headerRight: <SettingModal navigation={navigation} />
   });
 
+  formatRecipe = (vals) => {
+    vals.source = "manual";
+    return vals;
+  }
+
   render() {
     return (
       <View style={rm_styles.parent}>
@@ -27,7 +32,7 @@ class AddRecipeManualScreen extends Component {
           onSubmit={values => {
             // values["source"] = "manual";
             // Alert.alert(JSON.stringify(values));
-            createNewRecipe(values);
+            createNewRecipe(this.formatRecipe(values));
           }
           }
           style={rm_styles.form}

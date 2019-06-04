@@ -158,13 +158,13 @@ let RecipeManualForm = props => {
       </View>
 
       {/* Make Hidden */}
-      <View style={f_styles.field}>
+      {/* <View style={f_styles.field}>
         <Field
           name={"source"}
           component={MyTextInput}
           placeholder={"Manual"}
         />
-      </View>
+      </View> */}
 
       <TouchableOpacity onPress={props.handleSubmit}>
         <View style={f_styles.submit}>
