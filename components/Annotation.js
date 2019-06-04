@@ -13,6 +13,7 @@ export default class Annotation extends React.Component {
   render() {
     const anno = this.props.annotation;
 
+    // Determines how to show annotations: hid, editable, or not editable
     if (this.props.hide) {
       return null;
     }

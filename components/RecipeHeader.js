@@ -1,16 +1,11 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
-import { WebBrowser } from "expo";
-import Icon from "react-native-vector-icons/Feather";
-import Recipes from "../constants/SomeRecipes";
+import { Text, View, StyleSheet } from "react-native";
 import Rating from "../components/Rating";
 
 export default class RecipeHeader extends Component {
   render() {
     const recipe = this.props.recipe;
-    // TODO: updated author with state
-    const author1 = "Mel's Kitchen";
-    const author2 = "Chowhound";
+    // TODO: updated author with state, currently hard-coded
 
     return (
       <View style={rh_styles.header} contentContainerSytle={rh_styles.content}>
@@ -19,9 +14,10 @@ export default class RecipeHeader extends Component {
           <Rating fillNum={recipe.rating} dimension={20} />
         </View>
         <Text style={rh_styles.author}>
-          {recipe.id == 1 ? author1 : author2}
+          {/* {recipe.username} */}
+          Auguste Gusteau
         </Text>
-        <Text style={rh_styles.time}>Time: {makeTime(recipe.time)}</Text>
+        <Text style={rh_styles.time}>Time: {makeTime(recipe.prepTime + recipe.cookTime)}</Text>
       </View>
     );
   }
@@ -42,8 +38,6 @@ const makeTime = time => {
 //   }
 //   return title;
 // };
-
-const makeTags = tags => {};
 
 const rh_styles = StyleSheet.create({
   header: {
@@ -69,14 +63,11 @@ const rh_styles = StyleSheet.create({
   },
 
   author: {
-    // marginLeft: 4,
     fontSize: 16,
     paddingBottom: 5
   },
 
   time: {
     fontSize: 13
-    // marginLeft: 4,
-    // textAlign: "left",
   }
 });

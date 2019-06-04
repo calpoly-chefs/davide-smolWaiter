@@ -9,8 +9,7 @@ import { connect } from "react-redux";
 class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
-    const img1 = "bars_.jpg";
-    const img2 = "macarons.jpg";
+
     return (
       <View style={rc_styles.parent}>
         <TouchableOpacity
@@ -23,7 +22,7 @@ class RecipeCard extends Component {
         >
           <CloudinaryImage
             cloudName={"littlechef"}
-            imageId={recipe.id % 3 == 1 ? img1 : img2}
+            imageId={"recipe_" + recipe.id + ".jpg"}
             width={350}
             height={134}
             style={rc_styles.image}

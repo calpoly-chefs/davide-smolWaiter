@@ -21,7 +21,7 @@ export default function AnnotationInput(props) {
         onFocus={input.onFocus}
         value={input.value}
         style={t_styles.input}
-      // keyboardType={"number-pad"}
+        // keyboardType={"number-pad"}
       />
     </View>
   );

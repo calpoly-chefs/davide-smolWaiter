@@ -1,9 +1,6 @@
 import React from "react";
-import { TextInput, View, Text, StyleSheet } from "react-native";
+import { TextInput, View, StyleSheet } from "react-native";
 
-/**
- * to be wrapped with redux-form Field component
- */
 export default function MyTextInput(props) {
   const { input, meta, ...inputProps } = props;
 

@@ -55,7 +55,6 @@ const step_styles = StyleSheet.create({
     marginTop: 10, // adds white space above component
   },
 
-  // FIXME: id does not properly center numbers greater than 10
   // TODO: use flex-box styling rather than hardcoded values
   id: {
     position: "absolute",
@@ -67,11 +66,11 @@ const step_styles = StyleSheet.create({
   },
 
   id_text: {
-    paddingTop: 6,
-    paddingLeft: 10.5,
+    paddingTop: 7,
     fontSize: 14,
     fontWeight: "bold",
     color: "white",
+    alignSelf: "center"
   },
 
   step: {

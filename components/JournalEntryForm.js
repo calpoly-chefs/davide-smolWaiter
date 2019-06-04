@@ -6,19 +6,13 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Picker
 } from "react-native";
 import MyTextInput from "./MyTextInput";
-import Icon from "react-native-vector-icons/Feather";
 import Rating from "./Rating.js";
 import Ingredients from "../components/Ingredients.js";
 import Steps from "../components/Steps.js";
 import { load as loadAnnotations } from "../actions/actions"
 import { connect } from 'react-redux'
-
-import Ionicon from "react-native-vector-icons/Ionicons";
-import MyPicker from "./MyPicker";
-import DropDownItem from "react-native-drop-down-item";
 
 let JournalEntryForm = props => {
   const { handleSubmit, loadAnnotations } = props;
@@ -106,35 +100,7 @@ let JournalEntryForm = props => {
       <Ingredients ingredients={ingredients} edit={true} />
       <Steps steps={steps} edit={true} />
 
-      {/* <View style={f_styles.field}>
-        <DropDownItem
-          key={i}
-          contentVisible={false}
-          invisibleImage={arrow_down}
-          visibleImage={arrow_up}
-          style={f_styles.dropdown}
-          header={
-            <Text style={f_styles.dropdowntext}>{"Annotate Ingredients"}</Text>
-          }
-        >
-            <Ingredients ingredients={ingredients} edit={true}/>
-        </DropDownItem>
-      </View>
-
-      <View style={f_styles.field}>
-        <DropDownItem
-          key={i}
-          contentVisible={false}
-          invisibleImage={arrow_down}
-          visibleImage={arrow_up}
-          style={f_styles.dropdown}
-          header={<Text style={f_styles.dropdowntext}>{"Annotate Steps"}</Text>}
-        >
-            <Steps steps={steps} edit={true}/>
-        </DropDownItem>
-      </View> */}
-
-      <TouchableOpacity onPress={props.handleSubmit}>
+      <TouchableOpacity onPress={handleSubmit}>
         <View style={f_styles.submit}>
           <Text>Submit!</Text>
         </View>
