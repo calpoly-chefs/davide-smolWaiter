@@ -7,7 +7,7 @@ import {
   TextInput
 } from "react-native";
 import { WebBrowser } from "expo";
-import RecipeHeader from "../components/RecipeHeader";
+import JournalEntryFormHeader from "../components/JournalEntryFormHeader";
 import CloudinaryImage from "react-native-cloudinary-image-display";
 import JournalEntryForm from "../components/JournalEntryForm";
 import { Alert } from "react-native";
@@ -16,26 +16,30 @@ import { createJournalEntry } from "../actions/actions";
 import modal from "../state/ModalSlice";
 
 class AddJournalEntryScreen extends Component {
-
   makeJournalEntry = (recipe, annotationsObj) => {
     annotations = [];
     console.log("WILL -- " + JSON.stringify(annotationsObj));
     for (var id in annotationsObj) {
-      annotations.push({ "parentid": id.split("-")[1], "comment": annotationsObj[id] });
+      annotations.push({
+        parentid: id.split("-")[1],
+        comment: annotationsObj[id]
+      });
     }
     return {
-      "recipeid": recipe.id,
-      "annotations": annotations
-    }
-  }
+      recipeid: recipe.id,
+      annotations: annotations
+    };
+  };
 
   render() {
     const recipe = this.props.modal.currentRecipe;
     return (
       <View style={je_styles.parent}>
-        <RecipeHeader recipe={recipe} />
+        <JournalEntryFormHeader recipe={recipe} />
         <JournalEntryForm
-          onSubmit={annos => this.props.createJournalEntry(this.makeJournalEntry(recipe, annos))}
+          onSubmit={annos =>
+            this.props.createJournalEntry(this.makeJournalEntry(recipe, annos))
+          }
           style={je_styles.form}
           recipe={recipe}
         />
@@ -77,16 +81,16 @@ function mapStateToProps(state) {
   return {
     recipes: state.recipes,
     modal: state.modal
-  }
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    createJournalEntry: (jentry) => dispatch(createJournalEntry(jentry)),
-  }
+    createJournalEntry: jentry => dispatch(createJournalEntry(jentry))
+  };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddJournalEntryScreen)
+)(AddJournalEntryScreen);
