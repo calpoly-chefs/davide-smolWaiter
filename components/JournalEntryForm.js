@@ -19,11 +19,30 @@ let JournalEntryForm = props => {
   const ingredients = props.recipe.ingredients;
   const steps = props.recipe.steps;
 
+  getDate = () => {
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var minutes = today.getMinutes();
+
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+      dd = '0' + dd;
+    } 
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+    return mm + '/' + dd + '/' + yyyy + ' ' + today.getHours() + ':' + minutes;
+  }
+
   // initial data
   const data = {}
   ingredients.map(ingredient => {
     if (ingredient.annotations.length > 0) { // when annotation exists 
-      key = "pid-" + ingredient.id;
+      key = "ing-" + ingredient.id;
       value = ingredient.annotations[0].comment;
       data[key] = value
     }
@@ -31,11 +50,12 @@ let JournalEntryForm = props => {
   })
   steps.map(step => {
     if (step.annotations.length > 0) { // when annotation exists 
-      key = "pid-" + step.id;
+      key = "step-" + step.id;
       value = step.annotations[0].comment;
       data[key] = value
     }
   })
+  data["date"] = getDate();
 
   console.log(data)
 
@@ -56,7 +76,7 @@ let JournalEntryForm = props => {
         <Field
           name={"date"}
           component={MyTextInput}
-          placeholder={"Friday, March 15, 2019"}
+          placeholder={"mm/dd/yyyy"}
         />
       </View>
 

@@ -16,18 +16,28 @@ import { createJournalEntry } from "../actions/actions";
 import modal from "../state/ModalSlice";
 
 class AddJournalEntryScreen extends Component {
-  makeJournalEntry = (recipe, annotationsObj) => {
-    annotations = [];
-    console.log("WILL -- " + JSON.stringify(annotationsObj));
-    for (var id in annotationsObj) {
-      annotations.push({
-        parentid: id.split("-")[1],
-        comment: annotationsObj[id]
-      });
+  makeJournalEntry = (recipe, journalEntry) => {
+    var stpAnnos = [];
+    var ingAnnos = [];
+
+    for (var anno in journalEntry) {
+      if (anno.split("-")[0] == "ing") {
+        ingAnnos.push({
+          ingid: anno.split("-")[1],
+          comment: journalEntry[anno]
+        });
+      } else if (anno.split("-")[0] == "step") {
+        stpAnnos.push({
+          stepid: anno.split("-")[1],
+          comment: journalEntry[anno]
+        });
+      }      
     }
     return {
-      recipeid: recipe.id,
-      annotations: annotations
+      date: journalEntry["date"],
+      recipe: recipe.id,
+      stepannotations: stpAnnos,
+      ingredientannotations: ingAnnos
     };
   };
 

@@ -41,9 +41,9 @@ class Step extends React.Component {
         {/* Annotation */}
         {hasAnno ? annotations.map((anno) =>
           // annotation exists
-          <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />) :
+          <Annotation annotation={anno} id={this.props.id} type={"step"} edit={this.props.edit} />) :
           // new annotation
-          <Annotation annotation={""} id={this.props.id} edit={this.props.edit} hide={!this.state.hasAnno} />
+          <Annotation annotation={""} id={this.props.id} type={"step"} edit={this.props.edit} hide={!this.state.hasAnno} />
         }
       </View>
     );

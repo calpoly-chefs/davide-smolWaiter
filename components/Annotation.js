@@ -22,7 +22,7 @@ export default class Annotation extends React.Component {
         // FIXME: text styling for new annotations
         <View style={anno_styles.anno}>
           <Field
-            name={`pid-${this.props.id}`}
+            name={`${this.props.type}-${this.props.id}`}
             component={AnnotationInput}
           // placeholder={anno.comment} // DEPRECATED: form gets pre-populated with existing annotations
           />
