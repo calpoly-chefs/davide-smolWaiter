@@ -1,26 +1,41 @@
 import React from "react";
-import { Alert, View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
+import { Switch, Alert, View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import { FileText, Bold, AlignCenter } from "react-feather";
 import Annotation from "./Annotation.js";
 import { connect } from "react-redux";
 
 class Step extends React.Component {
+  // constructor() {
+  //   this.state = {
+  //     hasAnno: false
+  //   };
+  // }
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     hasAnno: false,
+  //   };
+  // }
+
   _onPress(edit, hasAnno) {
     edit && !hasAnno
       ? Alert.alert("This is a step.")
       : null
+    // this.setState({ hasAnno: !this.state.hasAnno })
   }
 
   render() {
+
     const annotations = this.props.annotations;
     const text = this.props.text;
     const stepNum = this.props.stepNum;
-    const hasAnno = annotations.length > 0 ? true : false
+    const hasAnno = annotations.length > 0 ?
+      true : false;
 
     return (
-      
       <View style={step_styles.container}>
-        <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit, hasAnno)}>
+        <TouchableWithoutFeedback onPress={() => this._onPress(edit, hasAnno)}>
           <View style={step_styles.childTextContainer}>
             <Text style={step_styles.step_text}>{text}</Text>
           </View>
@@ -28,19 +43,18 @@ class Step extends React.Component {
         <View style={step_styles.childIdContainer}>
           <Text style={step_styles.id_text}>{stepNum}</Text>
         </View>
-        {hasAnno 
-          ? annotations.map( (anno) => (
-              <Annotation annotation={anno} id={this.props.id} edit={this.props.edit}/>
-            )) 
-          : null}
+        {hasAnno
+          ? annotations.map((anno) => (
+            <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
+          ))
+          : <Annotation annotation={""} id={this.props.id} edit={this.props.edit} hide={!this.props.hasAnno} />}
       </View>
-      
+
     );
   }
 }
 
 const step_styles = StyleSheet.create({
-  // FIXME: this styling is redundent
   container: {
     // marginLeft: 10,
     // marginRight: 10,

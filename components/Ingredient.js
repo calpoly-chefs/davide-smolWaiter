@@ -18,37 +18,6 @@ class Ingredient extends React.Component {
     const text = this.props.text;
     const hasAnno = annotations.length > 0 ? true : false
 
-    // addAnnotation = ({ fields }) => (
-    //   this.props.edit && !hasAnno ?
-    //     <View style={ing_styles.container}>
-    //       <TouchableWithoutFeedback onPress={() => fields.push({})}>
-    //         <View style={ing_styles.childContainer}>
-    //           <Text style={ing_styles.ing_text}>{text}</Text>
-    //         </View>
-    //       </TouchableWithoutFeedback>
-
-    //       {fields.map((anno, index) => (
-    //         index == 0 ?
-    //           <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
-    //           : null
-    //       )
-    //       )}
-    //     </View>
-    //     :
-    //     (!this.props.edit) || (this.props.edit && hasAnno) ?
-    //       <View style={ing_styles.container}>
-    //         <View style={ing_styles.childContainer}>
-    //           <Text style={ing_styles.ing_text}>{text}</Text>
-    //         </View>
-    //         {hasAnno ?
-    //           annotations.map((anno) => (
-    //             <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
-    //           ))
-    //           : null}
-    //       </View>
-    //       : null
-    // )
-
     return (
 
       <View style={ing_styles.container}>
@@ -58,12 +27,11 @@ class Ingredient extends React.Component {
           </View>
         </TouchableWithoutFeedback>
         {hasAnno ?
-        annotations.map( (anno) => (
-          <Annotation annotation={anno} id={this.props.id} edit={this.props.edit}/>
-        )) 
-        : <Annotation annotation={""} id={this.props.id} edit={this.props.edit}/>}
+          annotations.map((anno) => (
+            <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
+          ))
+          : <Annotation annotation={""} id={this.props.id} edit={this.props.edit} hide={true} />}
       </View>
-      // <FieldArray name="annotation" component={addAnnotation} />
     );
   }
 }
@@ -89,9 +57,5 @@ const ing_styles = StyleSheet.create({
     fontSize: 14
   }
 });
-
-Ingredient = reduxForm({
-  form: "ingredient"
-})(Ingredient);
 
 export default connect(state => ({ recipe: state.recipe }))(Ingredient);

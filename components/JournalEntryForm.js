@@ -29,15 +29,15 @@ let JournalEntryForm = props => {
   const data = {}
   ingredients.map(ingredient => {
     if (ingredient.annotations.length > 0) { // when annotation exists 
-      key = "annotation" + ingredient.annotations[0].id;
+      key = "pid-" + ingredient.id;
       value = ingredient.annotations[0].comment;
       data[key] = value
     }
-    console.log(ingredient)
+    // console.log(ingredient)
   })
   steps.map(step => {
     if (step.annotations.length > 0) { // when annotation exists 
-      key = "annotation" + step.annotations[0].id;
+      key = "pid-" + step.id;
       value = step.annotations[0].comment;
       data[key] = value
     }

@@ -12,21 +12,26 @@ export default class Annotation extends React.Component {
 
   render() {
     const anno = this.props.annotation;
+    // console.log("ANNOTATION" + this.props.id + " " + anno.comment)
+    if (this.props.hide) {
+      return null;
+    }
     return (
       // For every ingredient and step, if editable, return a Field component
       this.props.edit ?
-      <View style={anno_styles.container}>
-        <Field
-          name={"annotation" + anno.id}
-          component={AnnotationInput}
-          placeholder={anno.comment}
-        />
-      </View>
-      : // else, return text
-      // FIXME: WEIRD SPACE I HATE IT @Hannah
-      <View style={anno_styles.container}>
-        <Text style={anno_styles.anno_text}>{anno.comment}</Text>
-      </View>
+        <View style={anno_styles.inputContainer}>
+          <Field
+            name={`pid-${this.props.id}`}
+            component={AnnotationInput}
+            placeholder={anno.comment}
+          />
+        </View>
+        : // else, return text
+
+        // FIXME: WEIRD SPACE I HATE IT @Hannah
+        <View style={anno_styles.inputContainer}>
+          <Text style={anno_styles.anno_text}>{anno.comment}</Text>
+        </View>
     );
   }
 }
@@ -50,11 +55,27 @@ const anno_styles = StyleSheet.create({
   //   justifyContent: "space-around"
   // },
 
+  input: {
+
+  },
+  inputContainer: {
+    backgroundColor: "#FFE684",
+    borderBottomRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    borderColor: "#53E69D",
+    marginLeft: 15,
+    marginRight: 15,
+    height: 50,
+    padding: 10
+  },
+
   anno_text: {
-    paddingLeft: 15,
-    paddingTop: 10,
-    paddingRight: 15,
+    // paddingLeft: 15,
+    // paddingTop: 10,
+    // paddingRight: 15,
     fontSize: 14,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    height: 50,
+    padding: 10,
   }
 });

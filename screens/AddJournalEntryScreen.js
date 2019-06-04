@@ -15,70 +15,13 @@ import { connect } from "react-redux";
 import { createJournalEntry } from "../actions/actions";
 import modal from "../state/ModalSlice";
 
-const testRecipe =     {
-  "title": "some recipe with stuff in it",
-  "source": "manual",
-  "difficulty": 10,
-  "prepTime": 12,
-  "cookTime": 1,
-  "ingredients": [
-      {
-          "quantity": 5,
-          "units": "cups",
-          "ingredient": "Magic",
-          "id": 3,
-          "annotations": [{
-            "comment":"less magic",
-            "id": 10,
-            "ingredientid":3,
-            "date": "2019-06-02" 
-          }]
-      },
-      {
-          "quantity": 5,
-          "units": "Pounds",
-          "ingredient": "Butter",
-          "id": 4,
-          "annotations": []
-      }
-  ],
-  "steps": [
-      {
-          "step": "do stuff",
-          "id": 5,
-          "annotations": [{
-            "comment":"More stuff needed",
-            "id": 11,
-            "instructionid":5,
-            "date": "2019-06-02" 
-          }]
-      },
-      {
-          "step": "Add Magic",
-          "id": 6,
-          "annotations": []
-      },
-      {
-          "step": "Season to taste",
-          "id": 7,
-          "annotations": []
-      }
-  ],
-  "tags": null,
-  "id": 2,
-  "rating": 5,
-  "userID": 1,
-  "username": null,
-  "public": true
-}
-
 class AddJournalEntryScreen extends Component {
 
   makeJournalEntry = (recipe, annotationsObj) => {
     annotations = [];
-    console.log(JSON.stringify(annotationsObj));
+    console.log("WILL -- " + JSON.stringify(annotationsObj));
     for (var id in annotationsObj) {
-      annotations.push({"parentid": id.split("-")[1], "comment": annotationsObj[id]});
+      annotations.push({ "parentid": id.split("-")[1], "comment": annotationsObj[id] });
     }
     return {
       "recipeid": recipe.id,
@@ -94,7 +37,7 @@ class AddJournalEntryScreen extends Component {
         <JournalEntryForm
           onSubmit={annos => this.props.createJournalEntry(this.makeJournalEntry(recipe, annos))}
           style={je_styles.form}
-          recipe={testRecipe}
+          recipe={recipe}
         />
       </View>
     );

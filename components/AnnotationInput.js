@@ -28,16 +28,16 @@ export default function AnnotationInput(props) {
 }
 
 const t_styles = StyleSheet.create({
-  input: {
-    height: 50,
-    padding: 10
-  },
-  inputContainer: {
-    backgroundColor: "#FFE684",
-    borderBottomRightRadius: 8,
-    borderBottomLeftRadius: 8,
-    borderColor: "#53E69D"
-  },
+  // input: {
+  //   height: 50,
+  //   padding: 10
+  // },
+  // inputContainer: {
+  //   backgroundColor: "#FFE684",
+  //   borderBottomRightRadius: 8,
+  //   borderBottomLeftRadius: 8,
+  //   borderColor: "#53E69D"
+  // },
   valid: {
     borderColor: "#53E69D"
   },
