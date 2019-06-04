@@ -8,9 +8,9 @@ import {
   Text
 } from "react-native";
 import UserIcon from "../components/UserIcon.js";
-import SettingModal from "../modals/SettingModal.js";
 import { connect } from "react-redux";
 import { fetchUser } from "../actions/actions";
+// import SettingModal from "../modals/SettingModal.js";
 
 class ProfileScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -31,7 +31,7 @@ class ProfileScreen extends React.Component {
       <View style={styles.container}>
         <View style={styles.childContainer}>
           <Text style={styles.username}>{name}</Text>
-          <UserIcon size={120} />
+          <UserIcon size={120} id={this.props.user.data.id} />
         </View>
         <View style={styles.bioText}>
           <Text>{bioText}</Text>
@@ -45,7 +45,7 @@ class ProfileScreen extends React.Component {
   }
 
   _signOutAsync = async () => {
-    const userToken = await AsyncStorage.getItem("userToken");
+    // const userToken = await AsyncStorage.getItem("userToken");
     // console.log("usr token: " + userToken);
     await AsyncStorage.clear();
     this.props.navigation.navigate("Auth");
