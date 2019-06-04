@@ -1,96 +1,89 @@
 import React from "react";
-import { Switch, Alert, View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
-import { FileText, Bold, AlignCenter } from "react-feather";
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import Annotation from "./Annotation.js";
 import { connect } from "react-redux";
 
+// TODO: refactor (see shared code => ./component/Ingredient)
 class Step extends React.Component {
-  // constructor() {
-  //   this.state = {
-  //     hasAnno: false
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasAnno: false,
+    };
+  }
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     hasAnno: false,
-  //   };
-  // }
-
-  _onPress(edit, hasAnno) {
-    edit && !hasAnno
-      ? Alert.alert("This is a step.")
-      : null
-    // this.setState({ hasAnno: !this.state.hasAnno })
+  _toggleAnnotation(edit) {
+    if (edit) {
+      this.setState({ hasAnno: !this.state.hasAnno })
+    }
   }
 
   render() {
-
     const annotations = this.props.annotations;
     const text = this.props.text;
     const stepNum = this.props.stepNum;
-    const hasAnno = annotations.length > 0 ?
-      true : false;
+    const hasAnno = annotations.length > 0 ? true : false;
 
     return (
       <View style={step_styles.container}>
-        <TouchableWithoutFeedback onPress={() => this._onPress(edit, hasAnno)}>
-          <View style={step_styles.childTextContainer}>
-            <Text style={step_styles.step_text}>{text}</Text>
+        {/* Step */}
+        <TouchableWithoutFeedback onPress={() => this._toggleAnnotation(this.props.edit)}>
+          <View>
+            <View style={step_styles.step}>
+              <Text style={step_styles.step_text}>{text}</Text>
+            </View>
+            <View style={step_styles.id}>
+              <Text style={step_styles.id_text}>{stepNum}</Text>
+            </View>
           </View>
         </TouchableWithoutFeedback>
-        <View style={step_styles.childIdContainer}>
-          <Text style={step_styles.id_text}>{stepNum}</Text>
-        </View>
-        {hasAnno
-          ? annotations.map((anno) => (
-            <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
-          ))
-          : <Annotation annotation={""} id={this.props.id} edit={this.props.edit} hide={!this.props.hasAnno} />}
-      </View>
 
+        {/* Annotation */}
+        {hasAnno ? annotations.map((anno) =>
+          // annotation exists
+          <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />) :
+          // new annotation
+          <Annotation annotation={""} id={this.props.id} edit={this.props.edit} hide={!this.state.hasAnno} />
+        }
+      </View>
     );
   }
 }
 
 const step_styles = StyleSheet.create({
   container: {
-    // marginLeft: 10,
-    // marginRight: 10,
-    marginTop: 10
+    marginTop: 10, // adds white space above component
   },
 
-  childIdContainer: {
+  // FIXME: id does not properly center numbers greater than 10
+  // TODO: use flex-box styling rather than hardcoded values
+  id: {
     position: "absolute",
     top: 0,
-    alignItems: "flex-start",
-    backgroundColor: "#000",
     width: 30,
     height: 30,
-    borderRadius: 20
-  },
-
-  childTextContainer: {
-    marginLeft: 12,
-    marginTop: 10,
-    alignItems: "flex-start",
-    backgroundColor: "#F0F0EA",
-    borderRadius: 7,
-    justifyContent: "space-around"
-  },
-
-  step_text: {
-    padding: 15,
-    fontSize: 14
+    borderRadius: 20,
+    backgroundColor: "#000"
   },
 
   id_text: {
     paddingTop: 6,
     paddingLeft: 10.5,
     fontSize: 14,
+    fontWeight: "bold",
     color: "white",
-    fontWeight: "bold"
+  },
+
+  step: {
+    marginLeft: 12, // shifts step left to accomidate id
+    marginTop: 10,
+    borderRadius: 7,
+    backgroundColor: "#F0F0EA"
+  },
+
+  step_text: {
+    padding: 15,
+    fontSize: 16
   }
 });
 

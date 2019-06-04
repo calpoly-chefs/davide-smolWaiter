@@ -6,11 +6,19 @@ import { Field, FieldArray, reduxForm } from "redux-form";
 import MyTextInput from "./MyTextInput";
 import { connect } from "react-redux";
 
+// TODO: refactor (see shared code => ./component/Step)
 class Ingredient extends React.Component {
-  _onPress(edit, hasAnno) {
-    edit && !hasAnno
-      ? Alert.alert("This is an ingredient.")
-      : null
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasAnno: false,
+    };
+  }
+
+  _toggleAnnotation(edit) {
+    if (edit) {
+      this.setState({ hasAnno: !this.state.hasAnno })
+    }
   }
 
   render() {
@@ -19,18 +27,21 @@ class Ingredient extends React.Component {
     const hasAnno = annotations.length > 0 ? true : false
 
     return (
-
       <View style={ing_styles.container}>
-        <TouchableWithoutFeedback onPress={() => this._onPress(this.props.edit, hasAnno)}>
-          <View style={ing_styles.childContainer}>
+        {/* Ingredient */}
+        <TouchableWithoutFeedback onPress={() => this._toggleAnnotation(this.props.edit)}>
+          <View style={ing_styles.ing}>
             <Text style={ing_styles.ing_text}>{text}</Text>
           </View>
         </TouchableWithoutFeedback>
-        {hasAnno ?
-          annotations.map((anno) => (
-            <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />
-          ))
-          : <Annotation annotation={""} id={this.props.id} edit={this.props.edit} hide={true} />}
+
+        {/* Annotation */}
+        {hasAnno ? annotations.map((anno) =>
+          // annotation exists
+          <Annotation annotation={anno} id={this.props.id} edit={this.props.edit} />) :
+          // new annotation
+          <Annotation annotation={""} id={this.props.id} edit={this.props.edit} hide={!this.state.hasAnno} />
+        }
       </View>
     );
   }
@@ -38,23 +49,16 @@ class Ingredient extends React.Component {
 
 const ing_styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // backgroundColor: "#fff",
-    // backgroundColor: "green"
+    marginTop: 8, // adds white space above component
   },
-
-  childContainer: {
-    // marginLeft: 10,
-    // marginRight: 10,
+  ing: {
     marginTop: 10,
-    alignItems: "flex-start",
-    backgroundColor: "#F0F0EA",
-    // backgroundColor: "purple",
-    borderRadius: 7
+    borderRadius: 7,
+    backgroundColor: "#F0F0EA"
   },
   ing_text: {
     padding: 15,
-    fontSize: 14
+    fontSize: 16
   }
 });
 
