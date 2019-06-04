@@ -36,10 +36,6 @@ export function createNewRecipe(recipe) {
   };
 }
 
-<<<<<<< HEAD
-=======
-// TODO:
->>>>>>> 8a3380cdae4b70fa0c8e6f2c65b9133f7a3b60a7
 export function createUser() {
   return {
     type: CREATE_USER
