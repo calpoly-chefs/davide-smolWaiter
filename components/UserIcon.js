@@ -1,21 +1,20 @@
 import React from "react";
 import CloudinaryImage from "react-native-cloudinary-image-display";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 export default class UserIcon extends React.Component {
   static navigationOptions = {
     title: "Profile"
-    // headerRight: <JournalFilter navigation={navigation} />
-    // TODO: add settings icon
   };
 
   render() {
     const size = this.props.size;
+    const imageId = "user_" + this.props.id + ".png";
     return (
       <View style={styles(size).parent}>
         <CloudinaryImage
           cloudName={"littlechef"}
-          imageId={"alfredo.png"}
+          imageId={imageId}
           width={1}
           height={1}
           style={styles(size).image}

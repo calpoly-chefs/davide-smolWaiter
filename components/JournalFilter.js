@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, Dimensions } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import modal from "../state/ModalSlice";
 import Modal from "react-native-modal";
@@ -7,6 +7,11 @@ import Rating from "./Rating.js";
 import { connect } from "react-redux";
 
 class JournalFilter extends React.Component {
+  // TODO:
+  //   - needs to be connected to the backend to pull from
+  //     db, currently uses old store
+  //   - write filtering functions and connect to each filtering type
+
   render() {
     return (
       <View style={styles.mainContainer}>
@@ -30,10 +35,13 @@ class JournalFilter extends React.Component {
         >
           <View style={styles.modalContainer}>
             <View style={styles.mHeader}>
+              {/* TODO: place in TouchableOpacity with an onPress to toggle the modal */}
               <Text> Cancel </Text>
               <Text style={styles.headerText}> Sort Journal </Text>
+              {/* TODO: place in TouchableOpacity with an onPress to toggle the modal */}
               <Text style={styles.doneButton}> Done </Text>
             </View>
+            {/* TODO: connect filters */}
             <View style={styles.filtersContainer}>
               <View style={styles.filterContainer}>
                 <Text style={styles.ratingText}>RATING - Highest First</Text>

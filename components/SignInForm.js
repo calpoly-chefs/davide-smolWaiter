@@ -1,16 +1,9 @@
 import React from "react";
-import { Provider } from "react-redux";
-import { Field, FieldArray, reduxForm } from "redux-form";
-import store from "../state/Store.js";
-// import { Form, Field } from "react-final-form";
-import { Alert, View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Field, reduxForm } from "redux-form";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import MyTextInput from "./MyTextInput";
-import Icon from "react-native-vector-icons/Feather";
-import { fieldSubscriptionItems } from "final-form";
 
 let SignInForm = props => {
-  const { handleSubmit } = props;
-
   return (
     <View keyboardShouldPersistTaps={"handled"} style={f_styles.parent}>
       <View style={f_styles.field}>
@@ -21,7 +14,6 @@ let SignInForm = props => {
         />
       </View>
 
-      {/* TODO: mask password field */}
       <View style={f_styles.field}>
         <Field
           type={"password"}

@@ -17,7 +17,9 @@ export default class RecipeHeader extends Component {
           {/* {recipe.username} */}
           Auguste Gusteau
         </Text>
-        <Text style={rh_styles.time}>Time: {makeTime(recipe.prepTime + recipe.cookTime)}</Text>
+        <Text style={rh_styles.time}>
+          Time: {makeTime(recipe.prepTime + recipe.cookTime)}
+        </Text>
       </View>
     );
   }
