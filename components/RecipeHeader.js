@@ -18,7 +18,7 @@ export default class RecipeHeader extends Component {
           Auguste Gusteau
         </Text>
         <Text style={rh_styles.time}>
-          Time: {makeTime(recipe.prepTime + recipe.cookTime)}
+          Total Time: {makeTime(recipe.prepTime + recipe.cookTime)}
         </Text>
       </View>
     );

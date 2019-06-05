@@ -58,8 +58,6 @@ let JournalEntryForm = props => {
   })
   data["date"] = getDate();
 
-  console.log(data)
-
   // initial data gets populated in the form
   loadAnnotations(data)
 

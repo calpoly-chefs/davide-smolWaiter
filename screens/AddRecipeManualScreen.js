@@ -20,7 +20,6 @@ class AddRecipeManualScreen extends Component {
 
   formatRecipe = (vals) => {
     vals.source = "manual";
-    console.log(vals);
     return vals;
   }
 

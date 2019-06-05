@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Image,
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -13,6 +14,13 @@ import RecipeCard from "../components/RecipeCard";
 import { connect } from "react-redux";
 
 class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      refreshing: false,
+    };
+  }
+
   // Header
   static navigationOptions = {
     title: "Recipes"
@@ -23,12 +31,25 @@ class HomeScreen extends React.Component {
     this.props.fetchAllRecipes();
   }
 
+  _onRefresh = () => {
+    this.setState({refreshing: true});
+    this.props.fetchAllRecipes().then(() => {
+      this.setState({refreshing: false});
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <ScrollView
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
+          refreshControl={
+            <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this._onRefresh}
+            />
+          }
         >
           {this.props.recipes.data.map((rec) => (
             <RecipeCard recipe={rec} navigation={this.props.navigation} />

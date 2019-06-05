@@ -5,7 +5,6 @@ import { Text, View, StyleSheet } from "react-native";
 export default class JournalEntryFormHeader extends Component {
   render() {
     const recipe = this.props.recipe;
-    console.log(recipe);
     const imageId = "recipe_" + this.props.recipe.id + ".png";
     return (
       <View style={rh_styles.header}>
