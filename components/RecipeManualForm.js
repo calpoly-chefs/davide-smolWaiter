@@ -19,18 +19,27 @@ let RecipeManualForm = props => {
     <View>
       {fields.map((ing, index) => (
         <View style={f_styles.ingredients}>
-          <View style={f_styles.amount}>
+          <View style={f_styles.quantity}>
             <Field
-              name={`${ing}.amt`}
+              name={`${ing}.quantity`}
               component={MyTextInput}
-              placeholder={"2 cups"}
+              placeholder={"2"}
+              label={index}
+            />
+          </View>
+
+          <View style={f_styles.units}>
+            <Field
+              name={`${ing}.units`}
+              component={MyTextInput}
+              placeholder={"cups"}
               label={index}
             />
           </View>
 
           <View style={f_styles.ingredient}>
             <Field
-              name={`${ing}.ing`}
+              name={`${ing}.ingredient`}
               component={MyTextInput}
               placeholder={"chicken"}
               label={index}
@@ -57,7 +66,7 @@ let RecipeManualForm = props => {
         <View style={f_styles.steps}>
           <View style={f_styles.step}>
             <Field
-              name={step}
+              name={`${step}.step`}
               component={MyTextInput}
               placeholder={"Cook it."}
               label={index}
@@ -189,12 +198,16 @@ const f_styles = StyleSheet.create({
     paddingBottom: 12
   },
 
-  amount: {
+  quantity: {
+    flex: 2,
+    paddingRight: 5
+  },
+  units: {
     flex: 4,
     paddingRight: 5
   },
   ingredient: {
-    flex: 9,
+    flex: 5,
     paddingRight: 5,
   },
 

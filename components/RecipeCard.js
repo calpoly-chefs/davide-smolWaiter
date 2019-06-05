@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 class RecipeCard extends Component {
   render() {
     const recipe = this.props.recipe;
-
     return (
       <View style={rc_styles.parent}>
         <TouchableOpacity
